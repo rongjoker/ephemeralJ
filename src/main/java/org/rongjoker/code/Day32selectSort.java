@@ -5,7 +5,7 @@ import org.junit.Test;
 import java.util.Arrays;
 
 /**
- * 倒计时32天，写插入选择排序
+ * 倒计时32天，写选择排序
  *
  * @date 10/29/2020
  */
