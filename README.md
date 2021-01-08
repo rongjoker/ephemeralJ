@@ -1,2 +1,3 @@
 # ephemeralJ
-permanent thoughts,ephemeral codes
+ephemeral codes,permanent thoughts.
+
