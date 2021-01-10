@@ -3,7 +3,6 @@ package org.rongjoker.dp.longest;
 import org.junit.Test;
 
 /**
- * 股票买卖相关第一个题目
  *
  * @date 01/09/2021
  * 1143. 最长公共子序列  https://leetcode-cn.com/problems/longest-common-subsequence/
