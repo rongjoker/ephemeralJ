@@ -13,19 +13,24 @@ public class BestTimeToBuyAndSellStock3 {
 
     /**
      * 123. 买卖股票的最佳时机 III   https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iii/
+     * <p>
+     * 给定一个数组，它的第 i 个元素是一支给定的股票在第 i 天的价格。
+     * <p>
+     * 设计一个算法来计算你所能获取的最大利润。你最多可以完成 两笔 交易。
+     * <p>
+     * 注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。
+     * <p>
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iii
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
      */
     @Test
     public void test123() {
 
-        int[] array = {3, 3, 5, 0, 0, 3, 1, 4};
-        array = new int[]{1,2,3,4,5};
+        int[] array = {1};//[3,2,6,5,0,3]
+//        int[] array = {3,3,5,0,0,3,1,4};//[3,2,6,5,0,3]
 
         System.out.println(maxProfitDp(array));
-
-//        array = new int[]{0, 2, -5, 0, 3, -2, 3};
-//        System.out.println("-------kkkk-------");
-//        System.out.println(max(array,0,4));
-//        System.out.println(max(array, 4, array.length));
 
 
     }
@@ -40,12 +45,15 @@ public class BestTimeToBuyAndSellStock3 {
      * @return
      */
     public int maxProfitDp(int[] prices) {
-        if (prices.length < 2)
+
+        int n = prices.length-1;
+
+        if (n < 1)
             return 0;
-        int[] difference = new int[prices.length - 1];
+        int[] difference = new int[n];
 
         boolean minus = true;
-        for (int i = 1; i < prices.length; i++) {
+        for (int i = 1; i <=n; i++) {
             difference[i - 1] = prices[i] - prices[i - 1];
             if (difference[i - 1] > 0)
                 minus = false;
@@ -54,41 +62,39 @@ public class BestTimeToBuyAndSellStock3 {
         if (minus)
             return 0;
 
-        if(difference.length==1)
+        if (n == 1)
             return difference[0];
 
-        int max = 0;
+        int[][] dp = new int[n][4];
 
-        for (int i = 0; i <= difference.length - 1; i++) {
-
-            max = Math.max(
-                    max(difference, i , difference.length) + max(difference, 0, i)
-                    , max);
-        }
-
-        return max;
-
-    }
-
-
-    public int max(int[] difference, int low, int high) {
-
-        if (high-low == 0)
-            return 0;
-        if (high-low == 1)
-            return difference[low];
-
-
-        int max = difference[low];
         int temp = 0;
-        for (int i = low; i < high; i++) {
+        for (int i = 0; i < n ; i++) {
 
             if (temp > 0)
                 temp = temp + difference[i];
             else temp = difference[i];
-            max = Math.max(temp, max);
+
+            dp[i][0] = temp;
+            dp[i][1] = Math.max(temp,i>0?dp[i-1][1]:0);
         }
 
+        temp = 0;
+        for (int i = n-1; i >1 ; i--) {//可以第二笔交易的范围
+
+            if (temp > 0)
+                temp = temp + difference[i];
+            else temp = difference[i];
+
+            dp[i-2][2] = temp;
+            dp[i-2][3] = Math.max(temp,i>n-2?dp[i-1][3]:0);
+
+        }
+
+        int max = 0;
+
+        for (int i = 0; i < n; i++) {
+            max = Math.max(max, dp[i][1] + dp[i][3]);
+        }
         return max;
 
     }
