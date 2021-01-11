@@ -4,6 +4,7 @@ import org.junit.Test;
 
 /**
  * 01背包，最原始的方法
+ * 01背包的条件是每个物品最多只有1个，这个是很关键的一个条件，极大的简化了问题的难度，相当于一个最原始的问题
  * @date 01/05/2021
  */
 public class ZeroOnePackage {

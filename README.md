@@ -27,3 +27,5 @@ ephemeral codes,permanent thoughts.
 
 ### 01/11/2021
 746. 使用最小花费爬楼梯<br>
+64. 最小路径和<br>
+322. 零钱兑换(本质是充分+完全背包)<br>
