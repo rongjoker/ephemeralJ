@@ -29,3 +29,4 @@ ephemeral codes,permanent thoughts.
 746. 使用最小花费爬楼梯<br>
 64. 最小路径和<br>
 322. 零钱兑换(本质是充分+完全背包)<br>
+931. 下降路径最小和(dp+滑动窗口最大值才是最优解,待update)<br>
