@@ -1,5 +1,6 @@
 # ephemeralJ
-ephemeral codes,permanent thoughts.
+兄弟会背叛你，女人会离开你，金钱会诱惑你，生活会刁难你，只有算法不会，不会就是不会，怎么学都不会。<br>
+ephemeral codes,permanent thoughts.<br>
 
 ### 01/05/2021
 [各种背包](src/main/java/org/rongjoker/dp/pack01)
