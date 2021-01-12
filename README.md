@@ -33,4 +33,5 @@ ephemeral codes,permanent thoughts.
 983. 最低票价(其实就是完全背包套了一层皮)<br>
 
 ### 01/12/2021
-455. 分发饼干<br>
+455. 分发饼干(leetcode抵达30题)<br>
+55. 跳跃游戏(greedy经典题目，可以进一步优化时空)<br>
