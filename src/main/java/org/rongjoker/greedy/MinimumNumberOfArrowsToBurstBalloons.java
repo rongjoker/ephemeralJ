@@ -23,9 +23,10 @@ public class MinimumNumberOfArrowsToBurstBalloons {
     @Test
     public void test452() {
 
-        int[][] points = {{1, 2}};
+        int[][] points = {{1, 2},{2,3}};
 
-        System.out.println(findMinArrowShots(points));
+//        System.out.println(findMinArrowShots(points));
+        System.out.println(findMinArrowShotsOptimize(points));
 
 
     }
@@ -33,6 +34,7 @@ public class MinimumNumberOfArrowsToBurstBalloons {
 
     /**
      * 右边排序，复杂度非常高 6.51%/5.06%
+     *
      * @param points
      * @return
      */
@@ -49,14 +51,32 @@ public class MinimumNumberOfArrowsToBurstBalloons {
                 hit = points[i][1];
                 for (int j = i + 1; j < length; j++) {
                     int[] point = points[j];
-                    if (point[0] <= hit && point[1] >= hit) g[j] = 1;
+//                    if (point[0] <= hit && point[1] >= hit) g[j] = 1;//point[1] >= hit不需要判断末尾，因为是按照末尾排序的
+                    if (point[0] <= hit) g[j] = 1;//优化到23.48%
+                    else break;
                 }
                 min++;
             }
         }
+        return min;
+    }
 
+    /**
+     * 50.67%/7.70%
+     * @param points
+     * @return
+     */
+    public int findMinArrowShotsOptimize(int[][] points) {
+        if (points.length == 0) return 0;
 
-
+        Arrays.sort(points, Comparator.comparingInt(a -> a[1]));
+        int length = points.length, hit = points[0][1], min = 1;
+        for (int i = 1; i < length; i++) {
+            if(points[i][0]>hit){
+                min++;
+                hit = points[i][1];
+            }
+        }
         return min;
     }
 

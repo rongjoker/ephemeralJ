@@ -37,6 +37,9 @@ ephemeral codes,permanent thoughts;兄弟会背叛你，女人会离开你，金
 ### 01/12/2021
 [455. 分发饼干(greedy;leetcode抵达30题)](src/main/java/org/rongjoker/greedy/AssignCookies.java)<br>
 [55. 跳跃游戏(greedy经典题目,可以从后向前遍历进一步优化时空)](src/main/java/org/rongjoker/greedy/JumpGame.java)<br>
-[452. 用最少数量的箭引爆气球(greedy;复杂度有待降低)](src/main/java/org/rongjoker/greedy/MinimumNumberOfArrowsToBurstBalloons.java)<br>
+[452. 用最少数量的箭引爆气球(greedy;利用区间不重叠优化代码和性能)](src/main/java/org/rongjoker/greedy/MinimumNumberOfArrowsToBurstBalloons.java)<br>
+
+### 01/13/2021
+[1155. 掷骰子的N种方法](src/main/java/org/rongjoker/dp/ways/NumberOfDiceRollsWithTargetSum.java)<br>
 [435. 无重叠区间](src/main/java/org/rongjoker/greedy/NonOverlappingIntervals.java)<br>
 [406. 根据身高重建队列](src/main/java/org/rongjoker/greedy/QueueReconstructionByHeight.java)<br>
