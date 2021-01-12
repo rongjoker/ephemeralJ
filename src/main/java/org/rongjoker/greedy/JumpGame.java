@@ -17,6 +17,8 @@ public class JumpGame {
     @Test
     public void test55(){
 
+
+
 //        int [] nums = {2,0,1,1,2,1,0,0,0};
         int [] nums = {2};
 
