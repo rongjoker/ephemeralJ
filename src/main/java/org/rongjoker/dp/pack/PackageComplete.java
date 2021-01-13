@@ -1,10 +1,10 @@
-package org.rongjoker.dp.pack01;
+package org.rongjoker.dp.pack;
 
 import org.junit.Test;
 
 /**
  * 完全背包，类似01背包最优化的方案，从左向右操作,非常精巧
- * 完全背包也是很多dp题目的母题
+ * 完全背包也是很多dp题目的母题，如322. 零钱兑换，983. 最低票价
  * @date 01/05/2021
  */
 public class PackageComplete {

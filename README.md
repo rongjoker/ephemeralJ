@@ -3,16 +3,16 @@ ephemeral codes,permanent thoughts;兄弟会背叛你，女人会离开你，金
 
 
 ### 01/05/2021
-[各种背包](src/main/java/org/rongjoker/dp/pack01)
+[各种背包](src/main/java/org/rongjoker/dp/pack)
 
 ### 01/07/2021
-[53. 最大子序和](src/main/java/org/rongjoker/dp/pack01/HomeWork.java)<br>
-[152. 乘积最大子数组](src/main/java/org/rongjoker/dp/pack01/HomeWork.java)<br>
+[53. 最大子序和](src/main/java/org/rongjoker/dp/pack/HomeWork.java)<br>
+[152. 乘积最大子数组](src/main/java/org/rongjoker/dp/pack/HomeWork.java)<br>
 
 ### 01/08/2021
-[918. 环形子数组的最大和](src/main/java/org/rongjoker/dp/pack01/HomeWork.java)<br>
-[120. 三角形最小路径和](src/main/java/org/rongjoker/dp/pack01/HomeWork.java)<br>
-[198. 打家劫舍](src/main/java/org/rongjoker/dp/pack01/HomeWork.java)<br>
+[918. 环形子数组的最大和](src/main/java/org/rongjoker/dp/pack/HomeWork.java)<br>
+[120. 三角形最小路径和](src/main/java/org/rongjoker/dp/pack/HomeWork.java)<br>
+[198. 打家劫舍](src/main/java/org/rongjoker/dp/pack/HomeWork.java)<br>
 [121. 买卖股票的最佳时机](src/main/java/org/rongjoker/dp/stock/BestTimeToBuyAndSellStock.java)<br>
 [122. 买卖股票的最佳时机 II](src/main/java/org/rongjoker/dp/stock/BestTimeToBuyAndSellStock2.java)<br>
 
@@ -40,6 +40,8 @@ ephemeral codes,permanent thoughts;兄弟会背叛你，女人会离开你，金
 [452. 用最少数量的箭引爆气球(greedy;利用区间不重叠优化代码和性能)](src/main/java/org/rongjoker/greedy/MinimumNumberOfArrowsToBurstBalloons.java)<br>
 
 ### 01/13/2021
+chrome的ublock origin 插件添加一个filter(https://assets.leetcode-cn.com/lccn-resources/cn.js)即可浏览英文版leetcode<br>
+[多重背包,利用二进制的思路转化为01背包,时间复杂度降低到O(V*sum(logc))](src/main/java/org/rongjoker/dp/pack/PackageMultiple.java)<br>
 [1155. 掷骰子的N种方法](src/main/java/org/rongjoker/dp/ways/NumberOfDiceRollsWithTargetSum.java)<br>
 [435. 无重叠区间](src/main/java/org/rongjoker/greedy/NonOverlappingIntervals.java)<br>
 [406. 根据身高重建队列](src/main/java/org/rongjoker/greedy/QueueReconstructionByHeight.java)<br>

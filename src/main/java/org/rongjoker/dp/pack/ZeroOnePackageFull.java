@@ -1,4 +1,4 @@
-package org.rongjoker.dp.pack01;
+package org.rongjoker.dp.pack;
 
 import org.junit.Test;
 
