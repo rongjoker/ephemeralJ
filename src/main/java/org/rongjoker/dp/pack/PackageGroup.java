@@ -6,12 +6,13 @@ import org.junit.Test;
  * 分组背包，也是很多dp题目的母题，如1155. 掷骰子的N种方法
  *
  * 物品被划分为很多组，每个组里每种物品都有1个，每组只能选一个
+ * 有点类似排列组合
  *
  * @date 01/13/2021
  */
 public class PackageGroup {
 
-    int V = 13;//最大容量
+    int V = 7;//最大容量
 
     int k = 11;//k组
 
@@ -20,30 +21,22 @@ public class PackageGroup {
     @Test
     public void testPackage() {
         //重量w[i]表示第i件物品的重量
-        int w[] = new int[]{2};
+        int w[] = new int[]{2, 3, 4};
         //价值v[i]表示第i件物品价值
-        int v[] = new int[]{3};
+        int v[] = new int[]{5, 6, 7};
 
-        int c[] = new int[]{6};
 
         //背包重量
         int n = w.length;
 
-//        for (int i = 1; i <= n; i++) {
-//            maxValue01(w[i - 1], v[i - 1]);
-//            maxValueComplete(w[i-1],v[i-1]);
-//        }
-
-        for (int i = 1; i <= n; i++) {
-            maxValueMultiple(w[i-1],v[i-1],c[i-1]);
+        //状态转移方程：取 （k-1的V内最大值）和dp[index - w[k]]+v[k] 的较大值(逻辑类似完全背包的一部分，即在上一个的基础上基础轮一遍新的)
+        for (int i = 0; i < k; i++) {//一次循环结束，即记录总共有i组的最大值
+            for (int j = 1; j <= n; j++) {
+                maxValue01(w[j-1],v[j-1]);
+            }
         }
 
-
         System.out.println(dp[V]);
-
-
-
-
 
     }
 
@@ -63,52 +56,6 @@ public class PackageGroup {
             dp[j] = Math.max(dp[j], dp[j - w] + v);
         }
     }
-
-
-    /**
-     * 完全背包
-     * 用01背包的思路解完全背包
-     * 比如有物品1无数个，物品2无数个，背包容量7
-     * 可以把物品1，物品1，物品1，物品1...看作01背包中的每个不同的物品，每一个都是从自己的上次转移过来的
-     * 转移方程为当前的（而不是前一个）和当右位移后+v取最大值
-     *
-     * @param w 物品重量
-     * @param v 物品价值
-     * @return
-     */
-    public void maxValueComplete(int w, int v) {
-
-        for (int j = w; j <= V; j++) {
-            dp[j] = Math.max(dp[j], dp[j - w] + v);
-        }
-    }
-
-    /**
-     * 多重背包
-     * 利用二进制把每个背包转换为多个01背包
-     * 复杂度V*sum(logc)
-     *
-     * @param
-     * @param w 重量
-     * @param v 价值
-     * @param c 数量
-     * @return
-     */
-    public void maxValueMultiple(int w, int v, int c) {
-        if (c * w > V) {//数量足够装满背包，相当于完全背包
-            this.maxValueComplete(w, v);
-        } else {
-            int index = 1;
-            for (; index <= c; index <<= 1) {//二进制分割，比如6，分割成1、2、3相当于每个都只有1个的01背包
-                c-=index;//直接原地减，避免后续计算出错
-                this.maxValue01(w * index, c * index);//相当于01背包
-            }
-
-            if(c>0)
-                this.maxValue01(w * c, v*c);//相当于01背包
-        }
-    }
-
 
 
 

@@ -1,4 +1,4 @@
-package org.rongjoker.dp.paths;
+package org.rongjoker.dp.ways;
 
 import org.junit.Test;
 

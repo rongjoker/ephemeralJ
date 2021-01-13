@@ -42,6 +42,9 @@ ephemeral codes,permanent thoughts;兄弟会背叛你，女人会离开你，金
 ### 01/13/2021
 chrome的ublock origin 插件添加一个filter(https://assets.leetcode-cn.com/lccn-resources/cn.js)即可浏览英文版leetcode<br>
 [多重背包,利用二进制的思路转化为01背包,时间复杂度降低到O(V*sum(logc))](src/main/java/org/rongjoker/dp/pack/PackageMultiple.java)<br>
-[1155. 掷骰子的N种方法](src/main/java/org/rongjoker/dp/ways/NumberOfDiceRollsWithTargetSum.java)<br>
+[分组背包,理解后较为精彩](src/main/java/org/rongjoker/dp/pack/PackageGroup.java)<br>
+[1155. 掷骰子的N种方法(参考分组背包，感觉是最近做的最精彩的题目)](src/main/java/org/rongjoker/dp/ways/NumberOfDiceRollsWithTargetSum.java)<br>
+
+### 01/14/2021
 [435. 无重叠区间](src/main/java/org/rongjoker/greedy/NonOverlappingIntervals.java)<br>
 [406. 根据身高重建队列](src/main/java/org/rongjoker/greedy/QueueReconstructionByHeight.java)<br>

@@ -13,7 +13,7 @@ public class ZeroOnePackage {
     @Test
     public void test01package() {
         //重量w[i]表示第i件物品的重量
-        int w[] = new int[]{0, 2, 4, 3};
+        int w[] = new int[]{0, 2, 3, 4};
         //价值v[i]表示第i件物品价值
         int v[] = new int[]{0, 5, 6, 7};
         //总物品数
