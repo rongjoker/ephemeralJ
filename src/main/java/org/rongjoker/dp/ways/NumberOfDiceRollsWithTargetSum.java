@@ -32,7 +32,7 @@ public class NumberOfDiceRollsWithTargetSum {
 
         if(d==1)return dp_previous[target];
 
-        for (int i = 1; i < d; i++) {
+        for (int i = 1; i < d; i++) {//从第一个骰子依次累加
             dp_current =new int[target+1];//每一轮重置
 
             for (int j = 0; j <= target; j++) {//当目标是0\1\2\3-target等情况下最大值
