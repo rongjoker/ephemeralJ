@@ -43,8 +43,12 @@ ephemeral codes,permanent thoughts;兄弟会背叛你，女人会离开你，金
 chrome的ublock origin 插件添加一个filter(https://assets.leetcode-cn.com/lccn-resources/cn.js)即可浏览英文版leetcode<br>
 [多重背包,利用二进制的思路转化为01背包,时间复杂度降低到O(V*sum(logc))](src/main/java/org/rongjoker/dp/pack/PackageMultiple.java)<br>
 [分组背包,理解后较为精彩](src/main/java/org/rongjoker/dp/pack/PackageGroup.java)<br>
-[1155. 掷骰子的N种方法(参考分组背包，感觉是最近做的最精彩的题目)](src/main/java/org/rongjoker/dp/ways/NumberOfDiceRollsWithTargetSum.java)<br>
+[1155. 掷骰子的N种方法(参考分组背包,最近做的最精彩的dp)](src/main/java/org/rongjoker/dp/ways/NumberOfDiceRollsWithTargetSum.java)<br>
+有知乎大佬称leetcode为小学奥数，把一个题目的多种解法比作孔乙己的回字的几种写法。大骇。<br>
 
 ### 01/14/2021
+开始复习滑动窗口(sw)+双指针(tp)+快慢指针(fsp),这类题目比较冷门，不过可以练习对hash和队列之类数据结构的巧妙掌握和诡谲应用<br>
+[滑动窗口最小子串(sw)](src/main/java/org/rongjoker/sw/ShortestSubString.java)<br>
+[219. 存在重复元素 II(sw入门,典型的利用hashset做滑动窗口的题目)](src/main/java/org/rongjoker/sw/ContainsDuplicateIi.java)<br>
 [435. 无重叠区间](src/main/java/org/rongjoker/greedy/NonOverlappingIntervals.java)<br>
 [406. 根据身高重建队列](src/main/java/org/rongjoker/greedy/QueueReconstructionByHeight.java)<br>

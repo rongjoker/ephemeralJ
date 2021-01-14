@@ -39,7 +39,7 @@ public class NumberOfDiceRollsWithTargetSum {
                 for (int k = 1; k <= f; k++) {//多种数字轮流测试
                     if(j-k>=0){
                         dp_current[j]  += dp_previous[j-k];//会有多种情况满足反复累加，比如4；有1+3；2+2；3+1；相当于previous[3]+previous[2]+previous[1]累加
-                        if(dp_current[j]>mod)dp_current[j]%=mod;//想加就可能过大，所以在此取余
+                        if(dp_current[j]>mod)dp_current[j]%=mod;//相加就可能过大，所以在此取余
                     }
                 }
 
