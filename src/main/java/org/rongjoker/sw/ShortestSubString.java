@@ -3,7 +3,7 @@ package org.rongjoker.sw;
 import org.junit.Test;
 
 /**
- * @date 01/13/2021
+ * @date 01/14/2021
  *
  * 滑动窗口
  *
@@ -17,8 +17,6 @@ public class ShortestSubString {
      */
     @Test
     public void testSliding(){
-
-
 
         String shortest = null;
 
