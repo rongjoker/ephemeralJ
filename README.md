@@ -55,6 +55,8 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 [494. 目标和(dp)](src/main/java/org/rongjoker/dp/ways/targetSum.java)<br>
 
 
+
+[142. 环形链表 II(fsp)](src/main/java/org/rongjoker/sw/LinkedListCycle.java)<br>
 [688. “马”在棋盘上的概率(dp)](src/main/java/org/rongjoker/dp/ways/KnightProbabilityInChessboard.java)<br>
 [435. 无重叠区间](src/main/java/org/rongjoker/greedy/NonOverlappingIntervals.java)<br>
 [406. 根据身高重建队列](src/main/java/org/rongjoker/greedy/QueueReconstructionByHeight.java)<br>
