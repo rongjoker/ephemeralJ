@@ -63,6 +63,7 @@ public class targetSum {
 
     /**
      * 优化为动态hashmap,这种有bug，无法处理数组包含重复的情况
+     * 用-left 替换-1*left能节省速度
      * @param nums
      * @param S
      * @return
@@ -74,12 +75,12 @@ public class targetSum {
             sum+=nums[i];
         }
 
-        if (S > sum || S < -1*(sum))
+        if (S > sum || S < -sum)
             return 0;
         Map<Integer, Integer> previous = new HashMap<>();
         Map<Integer, Integer> current = null;
 
-        for (int k = -1*(sum); k <= sum; k++) {
+        for (int k = -sum; k <= sum; k++) {
             previous.put(k, 0);
         }
         previous.put(0, 1);
@@ -88,7 +89,7 @@ public class targetSum {
             current = new HashMap<>();
             Set<Integer> integers = previous.keySet();
             for (int k : integers) {
-                left = nums[i];right = left * (-1);
+                left = nums[i];right = -left;
                 current.put(k, (null == previous.get(k - left) ? 0 : previous.get(k - left)) + (null == previous.get(k - right) ? 0 : previous.get(k - right)));
             }
             previous = current;

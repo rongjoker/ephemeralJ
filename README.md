@@ -56,6 +56,11 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 ### 01/15/2021
 [494. 目标和(dp+hash;可以用dfs解决)](src/main/java/org/rongjoker/dp/ways/targetSum.java)<br>
+[15. 三数之和(tp经典题目;排序+双指针实现去重和O(n))](src/main/java/org/rongjoker/sw/Sum3.java)<br>
+[3. 无重复字符的最长子串(sw;利用并查集可以进一步优化时空待后续)](src/main/java/org/rongjoker/sw/Sum3.java)<br>
+排序在双指针和贪心算法等问题中往往是预操作；"连续子数组"暗示使用滑动窗口
+
+###@todo
 [142. 环形链表 II(fsp)](src/main/java/org/rongjoker/sw/LinkedListCycle.java)<br>
 [688. “马”在棋盘上的概率(dp)](src/main/java/org/rongjoker/dp/ways/KnightProbabilityInChessboard.java)<br>
 [435. 无重叠区间](src/main/java/org/rongjoker/greedy/NonOverlappingIntervals.java)<br>
