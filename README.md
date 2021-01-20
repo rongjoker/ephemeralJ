@@ -65,6 +65,10 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 ### 01/19/2021
 [11. 盛最多水的容器(tp;求面积最大,类似快速排序的思路)](src/main/java/org/rongjoker/sw/ContainerWithMostWater.java)<br>
 
+### 01/20/2021
+开始复习并查集(ds)、深度(dfs)和广度(bfs)，几个月不接触，已经生疏了<br>
+[并查集按照rank优化(ds)](src/main/java/org/rongjoker/ds/DisjointSetRank.java)<br>
+
 ### Todo
 [56. 合并区间](src/main/java/org/rongjoker/merge/MergeIntervals.java)<br>
 [142. 环形链表 II(fsp)](src/main/java/org/rongjoker/sw/LinkedListCycle.java)<br>
