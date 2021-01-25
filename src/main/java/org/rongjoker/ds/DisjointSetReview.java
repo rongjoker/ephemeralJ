@@ -21,6 +21,8 @@ public class DisjointSetReview {
 
         };
 
+
+
         int length = edge.length;
 
         int[] parent = new int[6];
