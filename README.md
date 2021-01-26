@@ -72,7 +72,11 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 ### 01/25/2021
 [200. 岛屿数量(dfs)](src/main/java/org/rongjoker/ds/NumberOfIslands200dfs.java)<br>
 [200. 岛屿数量(bfs)](src/main/java/org/rongjoker/ds/NumberOfIslands200bfs.java)<br>
+
+### 01/26/2021
 [200. 岛屿数量(ds)](src/main/java/org/rongjoker/ds/NumberOfIslands200ds.java)<br>
+[547. 省份数量(ds)](src/main/java/org/rongjoker/ds/NumberOfProvinces547ds.java)<br>
+
 
 ### Todo
 [56. 合并区间](src/main/java/org/rongjoker/merge/MergeIntervals.java)<br>
