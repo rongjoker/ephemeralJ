@@ -6,6 +6,7 @@ import org.junit.Test;
  * @date 01/25/2021
  * <p>
  * 200. 岛屿数量 https://leetcode-cn.com/problems/number-of-islands/
+ * dfs的方式解决
  */
 public class NumberOfIslands200dfs {
 
@@ -46,6 +47,8 @@ public class NumberOfIslands200dfs {
 
     /**
      * 深度优先,引入每个点
+     *      * 找第一个点，然后第一个点去找第二个点，一直找到最后一个点，然后倒回去找最后一个点的上一个点是否还有连接点，有就继续找，一直找到起点,
+     *      * 即一个点一直找到尽头，再返回上一层继续找到尽头
      *
      * @param grid
      * @param r
