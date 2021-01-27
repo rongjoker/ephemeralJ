@@ -35,17 +35,10 @@ public class ReverseLinkedList206 {
 
     }
 
-      public static class ListNode {
-      int val;
-      ListNode next;
-      ListNode() {}
-      ListNode(int val) { this.val = val; }
-      ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-  }
 
 
     /**
-     * 迭代，2个节点依次向前移动，向右的箭头依次转变为向左
+     * 迭代，2个节点依次向前移动，向右的箭头依次转变为向左,有点类似挨着的双指针，依次向前迭代
      * @param head
      * @return
      */
