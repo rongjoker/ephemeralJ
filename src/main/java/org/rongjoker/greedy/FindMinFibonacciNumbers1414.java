@@ -9,7 +9,7 @@ import java.util.List;
  * @date 01/28/2021
  * <p>
  * 1414. 和为 K 的最少斐波那契数字数目 https://leetcode-cn.com/problems/find-the-minimum-number-of-fibonacci-numbers-whose-sum-is-k/
- * 从最大的向最小的遍历，不为负就一直原地累加
+ * 从最大的向最小的遍历，不为负就一直原地累加，用贪心的思维一直试探
  * 不看题解，5分钟写完
  */
 public class FindMinFibonacciNumbers1414 {
