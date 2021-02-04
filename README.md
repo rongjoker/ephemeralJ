@@ -93,7 +93,7 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 [94. 二叉树的中序遍历(递归和栈)](src/main/java/org/rongjoker/binarytree/InorderTraversal94.java)<br>
 [144. 二叉树的前序遍历(递归和栈)](src/main/java/org/rongjoker/binarytree/InorderTraversal144.java)<br>
 [145. 二叉树的后序遍历(递归和栈)](src/main/java/org/rongjoker/binarytree/PostorderTraversal145.java)<br>
-[1339. 分裂二叉树的最大乘积](src/main/java/org/rongjoker/binarytree/MaximumProductOfSplittedBinaryTree1339.java)<br>
+[1339. 分裂二叉树的最大乘积(考试题目,刷至50题)](src/main/java/org/rongjoker/binarytree/MaximumProductOfSplittedBinaryTree1339.java)<br>
 
 
 
