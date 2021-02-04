@@ -88,6 +88,14 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 ### 02/04/2021
 [剑指 Offer 62. 圆圈中最后剩下的数字(约瑟夫换:线性表+链表)](src/main/java/org/rongjoker/list/LastRemainingNumber.java)<br>
+[637. 二叉树的层平均值(优化后的方法天秀)](src/main/java/org/rongjoker/binarytree/AverageOfLevels637.java)<br>
+[102. 二叉树的层序遍历](src/main/java/org/rongjoker/binarytree/LevelOrder102.java)<br>
+[94. 二叉树的中序遍历(递归和栈)](src/main/java/org/rongjoker/binarytree/InorderTraversal94.java)<br>
+[144. 二叉树的前序遍历(递归和栈)](src/main/java/org/rongjoker/binarytree/InorderTraversal144.java)<br>
+[145. 二叉树的后序遍历(递归和栈)](src/main/java/org/rongjoker/binarytree/PostorderTraversal145.java)<br>
+[1339. 分裂二叉树的最大乘积](src/main/java/org/rongjoker/binarytree/MaximumProductOfSplittedBinaryTree1339.java)<br>
+
+
 
 [142. 环形链表 II(fsp)](src/main/java/org/rongjoker/sw/LinkedListCycle.java)<br>
 [688. “马”在棋盘上的概率(dp)](src/main/java/org/rongjoker/dp/ways/KnightProbabilityInChessboard.java)<br>
