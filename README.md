@@ -86,6 +86,8 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 ### 01/28/2021
 [1414. 和为 K 的最少斐波那契数字数目(greedy)](src/main/java/org/rongjoker/greedy/FindMinFibonacciNumbers1414.java)<br>
 
+### 02/04/2021
+[剑指 Offer 62. 圆圈中最后剩下的数字(约瑟夫换:线性表+链表)](src/main/java/org/rongjoker/list/LastRemainingNumber.java)<br>
 
 [142. 环形链表 II(fsp)](src/main/java/org/rongjoker/sw/LinkedListCycle.java)<br>
 [688. “马”在棋盘上的概率(dp)](src/main/java/org/rongjoker/dp/ways/KnightProbabilityInChessboard.java)<br>
