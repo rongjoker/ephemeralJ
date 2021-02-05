@@ -96,6 +96,9 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 [1339. 分裂二叉树的最大乘积(考试题目,刷至50题)](src/main/java/org/rongjoker/binarytree/MaximumProductOfSplittedBinaryTree1339.java)<br>
 
 
+### 02/05/2021
+[377. 组合总和 Ⅳ (dp题目,本质是完全背包,几分钟bug free)](src/main/java/org/rongjoker/dp/ways/CombinationSum4_377.java)<br>
+
 
 [142. 环形链表 II(fsp)](src/main/java/org/rongjoker/sw/LinkedListCycle.java)<br>
 [688. “马”在棋盘上的概率(dp)](src/main/java/org/rongjoker/dp/ways/KnightProbabilityInChessboard.java)<br>
