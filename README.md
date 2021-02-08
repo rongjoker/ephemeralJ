@@ -102,6 +102,10 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 ### 02/08/2021
 [684. 冗余连接(ds)](src/main/java/org/rongjoker/ds/RedundantConnection684.java)<br>
+[226. 翻转二叉树](src/main/java/org/rongjoker/binarytree/InvertBinaryTree226.java)<br>
+[98. 验证二叉搜索树(好题目,方法三结合了数学思维)](src/main/java/org/rongjoker/binarytree/ValidateBinarySearchTree98.java)<br>
+[529. 扫雷游戏(dfs,比较稀碎的一个题目)](src/main/java/org/rongjoker/ds/Minesweeper.java)<br>
+
 
 ### @todo
 1223. 掷骰子模拟

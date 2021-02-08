@@ -14,7 +14,7 @@ import java.util.List;
  *
  * 利用递归和栈来分别解决
  */
-public class InorderTraversal144 {
+public class PreorderTraversal144 {
 
     @Test
     public void test144(){
@@ -51,7 +51,6 @@ public class InorderTraversal144 {
 
 
     /**
-     * 利用栈来实现,左节点先入栈，一直到最左节点，然后取出，找右节点，入栈，重复操作
      * 记录入栈的顺序，即先序遍历的顺序
      * @param root
      * @return
