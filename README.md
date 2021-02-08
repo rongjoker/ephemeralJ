@@ -100,6 +100,11 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 [377. 组合总和 Ⅳ (dp题目,本质是完全背包,几分钟bug free)](src/main/java/org/rongjoker/dp/ways/CombinationSum4_377.java)<br>
 
 
+### 02/08/2021
+[684. 冗余连接(ds)](src/main/java/org/rongjoker/ds/RedundantConnection684.java)<br>
+
+### @todo
+1223. 掷骰子模拟
 [142. 环形链表 II(fsp)](src/main/java/org/rongjoker/sw/LinkedListCycle.java)<br>
 [688. “马”在棋盘上的概率(dp)](src/main/java/org/rongjoker/dp/ways/KnightProbabilityInChessboard.java)<br>
 [435. 无重叠区间](src/main/java/org/rongjoker/greedy/NonOverlappingIntervals.java)<br>

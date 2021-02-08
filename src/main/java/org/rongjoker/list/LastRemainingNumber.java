@@ -19,6 +19,8 @@ public class LastRemainingNumber {
     @Test
     public void test62(){
 
+
+
         System.out.println(lastRemaining(10,17));
 
 
@@ -41,7 +43,7 @@ public class LastRemainingNumber {
         int index=0;
         while (n>1){
             index = (index+m-1)%n;
-            list.remove(index);
+            list.remove(index);//需要根据下标来删除，故用线性表
             //按照下标应该向前移动1位，继续循环，由于删除了一个坐标，相当于实现了移动1位，故不需要再移动
             --n;
         }
