@@ -1,4 +1,4 @@
-package org.rongjoker.dp.ways;
+package org.rongjoker.dp.distinct;
 
 /**
  * @date 01/14/2021
@@ -6,4 +6,6 @@ package org.rongjoker.dp.ways;
  *
  */
 public class KnightProbabilityInChessboard {
+
+
 }

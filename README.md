@@ -22,16 +22,16 @@ Ephemeral codes,permanent thoughts;<br>
 
 
 ### 01/10/2021
-[62. 不同路径](src/main/java/org/rongjoker/dp/paths/UniquePaths.java)<br>
+[62. 不同路径](src/main/java/org/rongjoker/dp/distinct/UniquePaths.java)<br>
 [300. 最长递增子序列](src/main/java/org/rongjoker/dp/longest/LongestIncreasingSubSequence.java)<br>
 [5. 最长回文子串](src/main/java/org/rongjoker/dp/longest/LongestPalindromicSubstring.java)<br>
 [123. 买卖股票的最佳时机 III](src/main/java/org/rongjoker/dp/stock/BestTimeToBuyAndSellStock3.java)<br>
 
 ### 01/11/2021
-[746. 使用最小花费爬楼梯](src/main/java/org/rongjoker/dp/paths/MinCostClimbingStairs.java)<br>
-[64. 最小路径和](src/main/java/org/rongjoker/dp/paths/MinimumPathSum.java)<br>
+[746. 使用最小花费爬楼梯](src/main/java/org/rongjoker/dp/target/MinCostClimbingStairs.java)<br>
+[64. 最小路径和](src/main/java/org/rongjoker/dp/target/MinimumPathSum.java)<br>
 [322. 零钱兑换(本质是充分+完全背包)](src/main/java/org/rongjoker/dp/coin/CoinChange.java)<br>
-[931. 下降路径最小和(dp+滑动窗口最大值才是最优解,待update)](src/main/java/org/rongjoker/dp/paths/MinimumFallingPathSum.java)<br>
+[931. 下降路径最小和(dp+滑动窗口最大值才是最优解,待update)](src/main/java/org/rongjoker/dp/target/MinimumFallingPathSum.java)<br>
 [983. 最低票价(其实就是完全背包套了一层皮)](src/main/java/org/rongjoker/dp/coin/MinimumCostForTickets.java)<br>
 以上全部是dp，今日结束后开启dp和greedy双刷
 
@@ -44,7 +44,7 @@ Ephemeral codes,permanent thoughts;<br>
 chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/lccn-resources/cn.js](https://assets.leetcode-cn.com/lccn-resources/cn.js) ,即可浏览英文版leetcode<br>
 [多重背包,利用二进制的思路转化为01背包,时间复杂度降低到O(V*sum(logc))](src/main/java/org/rongjoker/dp/pack/PackageMultiple.java)<br>
 [分组背包,理解后较为精彩](src/main/java/org/rongjoker/dp/pack/PackageGroup.java)<br>
-[1155. 掷骰子的N种方法(参考分组背包,最近做的最精彩的dp)](src/main/java/org/rongjoker/dp/ways/NumberOfDiceRollsWithTargetSum.java)<br>
+[1155. 掷骰子的N种方法(参考分组背包,最近做的最精彩的dp)](src/main/java/org/rongjoker/dp/distinct/NumberOfDiceRollsWithTargetSum.java)<br>
 有知乎大佬称leetcode为小学奥数，把一个题目的多种解法比作孔乙己的回字的几种写法。大骇。<br>
 
 ### 01/14/2021
@@ -56,7 +56,7 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 
 ### 01/15/2021
-[494. 目标和(dp+hash;可以用dfs解决)](src/main/java/org/rongjoker/dp/ways/targetSum.java)<br>
+[494. 目标和(dp+hash;可以用dfs解决)](src/main/java/org/rongjoker/dp/distinct/targetSum.java)<br>
 [15. 三数之和(tp经典题目;排序+双指针实现去重和O(n))](src/main/java/org/rongjoker/sw/Sum3.java)<br>
 [3. 无重复字符的最长子串(sw;利用并查集可以进一步优化时空待后续)](src/main/java/org/rongjoker/sw/Sum3.java)<br>
 排序在双指针和贪心算法等问题中往往是预操作；"连续子数组"暗示使用滑动窗口
@@ -97,7 +97,7 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 
 ### 02/05/2021
-[377. 组合总和 Ⅳ (dp题目,本质是完全背包,几分钟bug free)](src/main/java/org/rongjoker/dp/ways/CombinationSum4_377.java)<br>
+[377. 组合总和 Ⅳ (dp题目,本质是完全背包,几分钟bug free)](src/main/java/org/rongjoker/dp/distinct/CombinationSum4_377.java)<br>
 
 
 ### 02/08/2021
@@ -109,13 +109,23 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 
 ### 02/09/2021
-[279. 完全平方数(dp,也可用数学四平方定理)](src/main/java/org/rongjoker/dp/paths/PerfectSquares279.java)<br>
+[279. 完全平方数(dp,完全背包的变形;也可用数学四平方定理)](src/main/java/org/rongjoker/dp/target/PerfectSquares279.java)<br>
+[416. 分割等和子集(dp,01充分背包的变形)](src/main/java/org/rongjoker/dp/distinct/PartitionEqualSubsetSum416.java)<br>
+[1046. 最后一块石头的重量I(greedy,大顶堆)](src/main/java/org/rongjoker/greedy/LastStoneWeight1046.java)<br>
+[1049. 最后一块石头的重量II(dp,01背包的变形)](src/main/java/org/rongjoker/dp/target/LastStoneWeight1049.java)<br>
+[63. 不同路径II(dp;春节前最后一个题目,达成60)](src/main/java/org/rongjoker/dp/distinct/UniquePaths63.java)<br>
 
 
 
+### @todo
+221. 最大正方形
+1240. Tiling a Rectangle with the Fewest Squares Hard
 
+174. Dungeon Game Hard
 
-[650. 只有两个键的键盘](src/main/java/org/rongjoker/dp/paths/MinCostClimbingStairs.java)<br>
+871. Minimum Number of Refueling Stops Hard
+
+[650. 只有两个键的键盘](src/main/java/org/rongjoker/dp/target/MinCostClimbingStairs.java)<br>
 
 
 
@@ -123,7 +133,7 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 399. 除法求值(弗洛伊德)
 1223. 掷骰子模拟
 [142. 环形链表 II(fsp)](src/main/java/org/rongjoker/sw/LinkedListCycle.java)<br>
-[688. “马”在棋盘上的概率(dp)](src/main/java/org/rongjoker/dp/ways/KnightProbabilityInChessboard.java)<br>
+[688. “马”在棋盘上的概率(dp)](src/main/java/org/rongjoker/dp/distinct/KnightProbabilityInChessboard.java)<br>
 [435. 无重叠区间](src/main/java/org/rongjoker/greedy/NonOverlappingIntervals.java)<br>
 [406. 根据身高重建队列](src/main/java/org/rongjoker/greedy/QueueReconstructionByHeight.java)<br>
 
