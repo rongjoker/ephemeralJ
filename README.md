@@ -109,6 +109,12 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 
 ### 02/09/2021
+[279. 完全平方数(dp,也可用数学四平方定理)](src/main/java/org/rongjoker/dp/paths/PerfectSquares279.java)<br>
+
+
+
+
+
 [650. 只有两个键的键盘](src/main/java/org/rongjoker/dp/paths/MinCostClimbingStairs.java)<br>
 
 
