@@ -117,6 +117,12 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 
 
+###
+心得
+我说句题外话，就是何时使用【回溯】，何时使用【动态规划】，用大白话说，就是：
+
+首先看取值范围，递归回溯一维数组，100就是深度的极限了（何况本题是100²） 2.如果是求走迷宫的【路径】，必然是回溯；如果是走迷宫的【路径的条数】，必然是dp--------(这个竟然屡试不爽！！！！)
+
 ### @todo
 221. 最大正方形
 1240. Tiling a Rectangle with the Fewest Squares Hard
