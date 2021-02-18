@@ -13,6 +13,7 @@ Ephemeral codes,permanent thoughts;<br>
 8. bfs:广度优先查找算法
 9. heap:堆
 10. bs:二分查找算法
+11. maths:数学
 
 ### 01/05/2021
 [各种背包](src/main/java/org/rongjoker/dp/pack)
@@ -134,6 +135,13 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 [215. 数组中的第K个最大元素(heap)](src/main/java/org/rongjoker/heap/FindKthLargest215.java)<br>
 [295. 数据流的中位数(双堆)](src/main/java/org/rongjoker/heap/MedianFinder295.java)<br>
 [704. 二分查找(bs)](src/main/java/org/rongjoker/binarysearch/BinarySearch704.java)<br>
+[263. 丑数(maths)](src/main/java/org/rongjoker/maths/UglyNumber263.java)<br>
+
+
+
+
+
+
 
 ###
 心得
