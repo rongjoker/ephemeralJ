@@ -16,12 +16,18 @@ import java.util.PriorityQueue;
 public class LeastNumbers40 {
 
     @Test
-    public void test1046(){
-        int[] nums = {2,7,4,1,8,1};
-        System.out.println(Arrays.toString(getLeastNumbers(nums, 3)));
+    public void test40(){
+        int[] nums = {0,1,1,2,4,4,1,3,3,2};
+        System.out.println(Arrays.toString(getLeastNumbersOptimize(nums, 6)));
 
     }
 
+    /**
+     * 堆的默认用法，这种相当于暴力适用堆,速度达到o(arr.length)
+     * @param arr
+     * @param k
+     * @return
+     */
     public int[] getLeastNumbers(int[] arr, int k) {
 
         int len = arr.length;
@@ -41,4 +47,45 @@ public class LeastNumbers40 {
         return array;
 
     }
+
+
+    /**
+     * 优化版本，速度可以达到o(k)
+     * 每次加入后都需要重新排序
+     * @param arr
+     * @param k
+     * @return
+     */
+    public int[] getLeastNumbersOptimize(int[] arr, int k) {
+
+        if(k==0)
+            return new int[0];
+
+        int len = arr.length;
+        if(len<=k)return arr;
+
+        int[] array = new int[k];
+
+        //与常规方法相反，需要使用大顶堆，这样可以不停的弹出当前最大的数字，最终剩余4个最小的即结果
+        PriorityQueue<Integer> pq = new PriorityQueue<>((i1, i2) -> i2 - i1);//大顶堆,将堆的大小保持在k
+
+        for (int i = 0; i < k; i++) {
+            pq.offer(arr[i]);
+        }
+
+        for (int i = k; i < len; i++) {
+            if(arr[i]<pq.peek()){//比最大的小，就可以把最大的扔掉，放入;比最大的还大，直接扔掉，不进行讨论
+                pq.poll();
+                pq.offer(arr[i]);
+            }
+        }
+
+        for (int i = 0; i < k; i++) {
+            array[i] = pq.poll();
+        }
+
+        return array;
+
+    }
+
 }

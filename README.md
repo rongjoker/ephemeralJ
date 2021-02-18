@@ -118,7 +118,9 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 
 ### 02/18/2021
-[剑指 Offer 40. 最小的k个数(heap,用quick sort应更快)](src/main/java/org/rongjoker/heap/LeastNumbers40.java)<br>
+[剑指 Offer 40. 最小的k个数(heap,堆的变形应用)](src/main/java/org/rongjoker/heap/LeastNumbers40.java)<br>
+[347. 前 K 个高频元素](src/main/java/org/rongjoker/heap/TopKFrequent347.java)<br>
+[215. 数组中的第K个最大元素](src/main/java/org/rongjoker/heap/FindKthLargest215.java)<br>
 
 ###
 心得
