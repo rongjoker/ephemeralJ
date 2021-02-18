@@ -117,6 +117,9 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 
 
+### 02/18/2021
+[剑指 Offer 40. 最小的k个数(heap,用quick sort应更快)](src/main/java/org/rongjoker/heap/LeastNumbers40.java)<br>
+
 ###
 心得
 我说句题外话，就是何时使用【回溯】，何时使用【动态规划】，用大白话说，就是：

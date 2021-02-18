@@ -19,9 +19,6 @@ public class LastStoneWeight1046 {
         int[] nums = {2,7,4,1,8,1};
         System.out.println(lastStoneWeight(nums));
 
-
-
-
     }
 
     public int lastStoneWeight(int[] stones) {
