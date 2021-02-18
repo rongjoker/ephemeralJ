@@ -2,8 +2,6 @@ package org.rongjoker.code;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-
 public class Day4BinaryTree {
 
     //104. 二叉树的最大深度
