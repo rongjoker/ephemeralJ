@@ -141,7 +141,7 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 ### 02/19/2021
 [349. 两个数组的交集(tp)](src/main/java/org/rongjoker/sw/IntersectionOfTwoArrays349.java)<br>
 [518. 零钱兑换 II(dp,反向操作避开顺序重复问题)](src/main/java/org/rongjoker/dp/coin/CoinChange518.java)<br>
-
+[343. 整数拆分(dp,结合数学的题目)](src/main/java/org/rongjoker/dp/target/IntegerBreak343.java)<br>
 
 
 ###
