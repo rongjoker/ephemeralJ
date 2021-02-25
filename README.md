@@ -149,8 +149,12 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 ### 02/25/2021
 [34. 在排序数组中查找元素的第一个和最后一个位置(bs)](src/main/java/org/rongjoker/binarysearch/SearchRange34.java)<br>
+[287. 寻找重复数(bs)](src/main/java/org/rongjoker/binarysearch/FindDuplicate287.java)<br>
 
 
+
+
+41. 缺失的第一个正数
 
 ###
 心得
