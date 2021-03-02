@@ -14,6 +14,7 @@ Ephemeral codes,permanent thoughts;<br>
 9. heap:堆
 10. bs:二分查找算法
 11. maths:数学
+12. ps:前缀和
 
 ### 01/05/2021
 [各种背包](src/main/java/org/rongjoker/dp/pack)
@@ -152,6 +153,9 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 [287. 寻找重复数(bs)](src/main/java/org/rongjoker/binarysearch/FindDuplicate287.java)<br>
 
 
+### 03/02/2021
+[303. 区域和检索 - 数组不可变(ps,前缀和入门题目)](src/main/java/org/rongjoker/ps/NumArray303.java)<br>
+[560. 和为K的子数组(ps,前缀和经典题目)](src/main/java/org/rongjoker/ps/SubArraySum560.java)<br>
 
 
 41. 缺失的第一个正数
