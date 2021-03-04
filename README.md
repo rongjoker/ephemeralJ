@@ -161,6 +161,7 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 ### 03/05/2021
 [46. 全排列(bt,回溯法入门题目)](src/main/java/org/rongjoker/bt/Permutations46.java)<br>
+[47. 全排列 II(bt,回溯法+去重剪枝)](src/main/java/org/rongjoker/bt/permuteUnique47.java)<br>
 
 <br>
 回溯法和动态规划的区别在于，动态规划是用来验证最优解的效率，回溯法是找出最优化的具体解法。
