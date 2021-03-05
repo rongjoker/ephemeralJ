@@ -8,7 +8,6 @@ import java.util.List;
 /**
  * @date 03/03/2021
  * @date 03/04/2021
- * @date 03/05/2021
  * 46. 全排列 https://leetcode-cn.com/problems/permutations/
  * 回溯法的入门题目,每一次指针从左走到右，就相当于一种情况
  */
