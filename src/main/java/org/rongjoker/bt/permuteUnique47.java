@@ -71,7 +71,7 @@ public class permuteUnique47 {
             set.add(nums[i]);
             swap(nums, i, start);
             permute(nums, start + 1);
-            swap(nums, i, start);
+            swap(nums, i, start);//这一行即所谓的[回溯]
 
         }
 

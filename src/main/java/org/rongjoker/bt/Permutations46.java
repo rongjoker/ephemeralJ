@@ -61,7 +61,7 @@ public class Permutations46 {
         for (int i = start; i < len; i++) {
             swap(nums, i, start);
             permute(nums, start + 1);
-            swap(nums, i, start);
+            swap(nums, i, start);//这一行即所谓的[回溯]
         }
 
     }

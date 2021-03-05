@@ -2,8 +2,7 @@ package org.rongjoker.bt;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @date 03/05/2021
@@ -21,8 +20,8 @@ public class CombinationSum39 {
     @Test
     public void test39() {
 
-        int[] nums = {2, 3, 6, 7};
-        int target = 7;
+        int[] nums = {2,3,5};
+        int target = 8;
 
         permute = combinationSum(nums, target);
 
@@ -32,6 +31,7 @@ public class CombinationSum39 {
     }
 
     List<List<Integer>> permute = new ArrayList<>();
+    Deque<Integer> path = new ArrayDeque<>();
 
 
     int len;
@@ -40,40 +40,33 @@ public class CombinationSum39 {
 
         len = candidates.length;
 
-        combination(candidates,target,0,new ArrayList<>());
+        Arrays.sort(candidates);//排序方便剪枝
+
+        combination(candidates, target, 0);
 
         return permute;
 
     }
 
 
-    public void combination(int[] candidates,  int target,int start, List<Integer> integers) {
+    //不停的调整target，即可优化性能
+    public void combination(int[] candidates, int target, int start) {
 
-        if (start == len) {
+        if (target == 0) {
+            permute.add(new ArrayList<>(path));
             return;
-        }
-
-        if(target==0){
-            permute.add(integers);
         }
 
         for (int i = start; i < len; i++) {
 
-            if (candidates[i] == target) {
-                integers.add(candidates[i]);
+            if(candidates[i] >target)break;//剪枝
 
-            } else if (candidates[i] < target) {
+            path.addLast(candidates[i]);
 
-                int s = target / candidates[i];
+            combination(candidates, target - candidates[i], i);//允许重复
 
-                for (int j = 0; j < s; j++) {
-                    integers.add(candidates[i]);
-                    target -= candidates[i];
-                    combination(candidates,  target,start + 1, integers);
-                }
-
-
-            }
+            //这一段即所谓的[回溯]
+            path.removeLast();
 
 
         }
