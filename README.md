@@ -159,16 +159,20 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 [560. 和为K的子数组(ps,前缀和经典题目)](src/main/java/org/rongjoker/ps/SubArraySum560.java)<br>
 
 
-### 03/05/2021
+### 03/04/2021
 [46. 全排列(bt,回溯法入门题目)](src/main/java/org/rongjoker/bt/Permutations46.java)<br>
 [47. 全排列 II(bt,回溯法+去重剪枝)](src/main/java/org/rongjoker/bt/permuteUnique47.java)<br>
+<br>
+回溯法和动态规划的区别在于，动态规划是用来验证最优解的效率，回溯法是找出最优化的具体解法。
+
+
+### 03/05/2021
 [39. 组合总和(bt,回溯法+剪枝)](src/main/java/org/rongjoker/bt/CombinationSum39.java)<br>
 [40. 组合总和 II(bt,回溯法+去重剪枝)](src/main/java/org/rongjoker/bt/CombinationSum40.java)<br>
 [77. 组合(bt,回溯法组合入门)](src/main/java/org/rongjoker/bt/Combinations77.java)<br>
 [93. 复原 IP 地址(bt,回溯法应用题)](src/main/java/org/rongjoker/bt/RestoreIpAddresses93.java)<br>
 
-<br>
-回溯法和动态规划的区别在于，动态规划是用来验证最优解的效率，回溯法是找出最优化的具体解法。
+
 
 
 
@@ -181,7 +185,6 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 221. 最大正方形
 1240. Tiling a Rectangle with the Fewest Squares Hard
 
-174. Dungeon Game Hard
 
 871. Minimum Number of Refueling Stops Hard
 
@@ -189,24 +192,3 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 1213 三个有序数组的交集，需要会员
 
-### @todo
-399. 除法求值(弗洛伊德)
-1223. 掷骰子模拟
-[142. 环形链表 II(fsp)](src/main/java/org/rongjoker/sw/LinkedListCycle.java)<br>
-[688. “马”在棋盘上的概率(dp)](src/main/java/org/rongjoker/dp/distinct/KnightProbabilityInChessboard.java)<br>
-[435. 无重叠区间](src/main/java/org/rongjoker/greedy/NonOverlappingIntervals.java)<br>
-[406. 根据身高重建队列](src/main/java/org/rongjoker/greedy/QueueReconstructionByHeight.java)<br>
-
-
-### 并查集题目
-「力扣」第 547 题：省份数量（中等）；
-「力扣」第 684 题：冗余连接（中等）；
-「力扣」第 1319 题：连通网络的操作次数（中等）；
-「力扣」第 1631 题：最小体力消耗路径（中等）；
-「力扣」第 959 题：由斜杠划分区域（中等）；
-「力扣」第 1202 题：交换字符串中的元素（中等）；
-「力扣」第 947 题：移除最多的同行或同列石头（中等）；
-「力扣」第 721 题：账户合并（中等）；
-「力扣」第 803 题：打砖块（困难）；
-「力扣」第 1579 题：保证图可完全遍历（困难）;
-「力扣」第 778 题：水位上升的泳池中游泳（困难）。
