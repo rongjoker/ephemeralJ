@@ -55,11 +55,9 @@ public class RestoreIpAddresses93 {
 
             StringBuilder stringBuilder = new StringBuilder();
             for (int i = 0; i < path.size(); i++) {
-
                 stringBuilder.append(path.get(i));
                 if (i < path.size() - 1)
                     stringBuilder.append(".");
-
             }
 
             permute.add(stringBuilder.toString());
