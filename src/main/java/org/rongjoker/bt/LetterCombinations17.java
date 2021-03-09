@@ -13,7 +13,7 @@ import java.util.Map;
  * 17. 电话号码的字母组合 https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/
  * 给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。答案可以按 任意顺序 返回。
  * <p>
- * 典型的回溯算法应用题目
+ * 典型的回溯算法应用题目,不需要考虑顺序
  */
 public class LetterCombinations17 {
 
