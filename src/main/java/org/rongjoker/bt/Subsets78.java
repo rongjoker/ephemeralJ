@@ -7,8 +7,9 @@ import java.util.List;
 
 /**
  * @date 03/09/2021
+ * @date 03/10/2021
  * 78. 子集 https://leetcode-cn.com/problems/subsets/
- * 无顺序要求的回溯算法
+ * 无顺序要求的回溯算法:两次递归，实现回溯算法
  *
  */
 public class Subsets78 {
@@ -34,7 +35,6 @@ public class Subsets78 {
         return permute;
     }
 
-
     List<List<Integer>> permute = new ArrayList<>();
     List<Integer> path = new ArrayList<>();
 
@@ -42,13 +42,16 @@ public class Subsets78 {
 
         if(start==len)return;
 
-        for (int i = start; i < len; i++) {
-            List<Integer> path = new ArrayList<>();
-            for (int j = start; j <= i; j++) {
-                path.add(nums[j]);
-            }
-            permute.add(path);
-        }
+        path.add(nums[start]);
+
+        permute.add(new ArrayList<>(path));
+
+        //包含当前点向下递归
+        backtrack(start+1,len,nums);
+
+        //不包含当前点向下递归，即回溯算法
+        path.remove(path.size()-1);
+        backtrack(start+1,len,nums);
 
     }
 
