@@ -190,6 +190,7 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 ### 03/14/2021
 [剑指 Offer 42. 连续子数组的最大和 (dp,同53题)](src/main/java/org/rongjoker/dp/target/MaxSubArray42.java)<br>
+[1213. 三个有序数组的交集 (tp,注意越界)](src/main/java/org/rongjoker/sw/ArraysIntersection1213.java)<br>
 
 
 
