@@ -3,7 +3,6 @@ package org.rongjoker.sw;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -13,7 +12,6 @@ import java.util.List;
  * 给出三个均为 严格递增排列 的整数数组 arr1，arr2 和 arr3。
  */
 public class ArraysIntersection1213 {
-
 
 
     @Test
