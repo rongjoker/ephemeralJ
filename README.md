@@ -16,6 +16,7 @@ Ephemeral codes,permanent thoughts;<br>
 11. maths:数学
 12. ps:前缀和
 13. bt:回溯法
+14. stock:单调栈
 
 ### 01/05/2021
 [各种背包](src/main/java/org/rongjoker/dp/pack)
@@ -192,6 +193,7 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 [剑指 Offer 42. 连续子数组的最大和 (dp,同53题)](src/main/java/org/rongjoker/dp/target/MaxSubArray42.java)<br>
 [1213. 三个有序数组的交集 (tp,注意越界)](src/main/java/org/rongjoker/sw/ArraysIntersection1213.java)<br>
 [213. 打家劫舍 II(dp)](src/main/java/org/rongjoker/dp/target/HouseRobber213.java)<br>
+[84. 柱状图中最大的矩形(stock,单调栈解决蛮力的典型)](src/main/java/org/rongjoker/stock/LargestRectangleArea84.java)<br>
 
 
 ###
