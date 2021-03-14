@@ -188,6 +188,9 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 [90. 子集 II (bt,处理带重复数据回溯)](src/main/java/org/rongjoker/bt/SubsetsWithDup90.java)<br>
 
 
+### 03/14/2021
+[剑指 Offer 42. 连续子数组的最大和 (dp,同53题)](src/main/java/org/rongjoker/dp/target/MaxSubArray42.java)<br>
+
 
 
 ###
