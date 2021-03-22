@@ -197,10 +197,11 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 [85. 最大矩形(stock,84的迭代,抵达90)](src/main/java/org/rongjoker/stock/MaximalRectangle85.java)<br>
 
 
-###
+### 03/22/2021
+[887. 鸡蛋掉落(dp+bs,经典而又困难的dp二分题目)](src/main/java/org/rongjoker/dp/target/SuperEggDrop887.java)<br>
 
 ### @todo
-887. 鸡蛋掉落
+
 474. 一和零
 41. 缺失的第一个正数
 871. 最低加油次数
