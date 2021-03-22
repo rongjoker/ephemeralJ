@@ -200,9 +200,10 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 ### 03/22/2021
 [887. 鸡蛋掉落(dp+bs,经典而又困难的dp二分题目)](src/main/java/org/rongjoker/dp/target/SuperEggDrop887.java)<br>
+[191. 位1的个数(bit,位运算入门题目)](src/main/java/org/rongjoker/bit/HammingWeight191.java)<br>
 
 ### @todo
-191. 位1的个数
+
 112. 路径总和
 101. 对称二叉树
 
