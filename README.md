@@ -203,9 +203,12 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 [191. 位1的个数(bit,位运算入门题目)](src/main/java/org/rongjoker/bit/HammingWeight191.java)<br>
 
 ### @todo
-
+dfs题目
 112. 路径总和
 101. 对称二叉树
+
+stock题目
+224. 基本计算器
 
 多个回文题目
 
