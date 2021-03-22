@@ -17,6 +17,7 @@ Ephemeral codes,permanent thoughts;<br>
 12. ps:前缀和
 13. bt:回溯法
 14. stock:单调栈
+15. bit:位运算
 
 ### 01/05/2021
 [各种背包](src/main/java/org/rongjoker/dp/pack)
@@ -201,6 +202,10 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 [887. 鸡蛋掉落(dp+bs,经典而又困难的dp二分题目)](src/main/java/org/rongjoker/dp/target/SuperEggDrop887.java)<br>
 
 ### @todo
+191. 位1的个数
+112. 路径总和
+101. 对称二叉树
+
 
 474. 一和零
 41. 缺失的第一个正数
