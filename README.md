@@ -206,6 +206,10 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 [112. 路径总和(dfs,dfs入门题目)](src/main/java/org/rongjoker/ds/pathSum112.java)<br>
 [113. 路径总和 II(dfs/bt)](src/main/java/org/rongjoker/ds/pathSum113.java)<br>
 
+
+### 03/24/2021
+[9. 回文数(math,数学的解法更快)](src/main/java/org/rongjoker/maths/PalindromeNumber9.java)<br>
+
 ### @todo
 dfs题目
 
