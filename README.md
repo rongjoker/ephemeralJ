@@ -216,8 +216,6 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 ### @todo
 dfs题目
 
-101. 对称二叉树
-
 stock题目
 224. 基本计算器
 
