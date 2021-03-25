@@ -49,7 +49,7 @@ public class HouseRobber213 {
 
 
         while (start<end){
-            int dp = Math.max(dp1 +nums[start],dp2);
+            int dp = Math.max(dp1 +nums[start],dp2);//打劫(当前房子和前前个房子)和不打劫（前一个房子）的收益比较
             dp1 = dp2;dp2 = dp;//互相滚动
             ++start;
         }
