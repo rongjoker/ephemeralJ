@@ -217,6 +217,7 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 ### 03/25/2021
 [337. 打家劫舍 III(dfs+dp;树的动态规划;抵达100题)](src/main/java/org/rongjoker/ds/HouseRobber337.java)<br>
+[51. N 皇后(bt;回溯算法最经典+最难的题目)](src/main/java/org/rongjoker/bt/Nqueens51.java)<br>
 
 
 
