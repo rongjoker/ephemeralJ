@@ -7,4 +7,18 @@ public class ListNode {
     public ListNode() {}
     public ListNode(int val) { this.val = val; }
     public ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+
+    @Override
+    public String toString() {
+
+        StringBuilder sb = new StringBuilder();
+
+        ListNode temp = this;
+        while (temp!=null){
+            sb.append(temp.val).append(" ");
+            temp = temp.next;
+        }
+
+        return sb.toString();
+    }
 }
