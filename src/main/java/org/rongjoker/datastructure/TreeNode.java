@@ -1,4 +1,4 @@
-package org.rongjoker.binarytree;
+package org.rongjoker.datastructure;
 
 public class TreeNode {
 

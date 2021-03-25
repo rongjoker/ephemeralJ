@@ -2,7 +2,7 @@ package org.rongjoker.ds;
 
 
 import org.junit.Test;
-import org.rongjoker.binarytree.TreeNode;
+import org.rongjoker.datastructure.TreeNode;
 
 /**
  * @date 03/24/2021

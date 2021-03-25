@@ -1,6 +1,7 @@
 package org.rongjoker.list;
 
 import org.junit.Test;
+import org.rongjoker.datastructure.ListNode;
 
 import java.util.ArrayList;
 import java.util.List;

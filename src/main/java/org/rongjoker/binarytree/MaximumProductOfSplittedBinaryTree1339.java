@@ -1,6 +1,7 @@
 package org.rongjoker.binarytree;
 
 import org.junit.Test;
+import org.rongjoker.datastructure.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
