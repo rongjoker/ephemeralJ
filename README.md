@@ -46,7 +46,7 @@ Ephemeral codes,permanent thoughts;<br>
 ### 01/11/2021
 [746. 使用最小花费爬楼梯](src/main/java/org/rongjoker/dp/target/MinCostClimbingStairs.java)<br>
 [64. 最小路径和](src/main/java/org/rongjoker/dp/target/MinimumPathSum.java)<br>
-[322. 零钱兑换(本质是充分+完全背包)](src/main/java/org/rongjoker/dp/coin/CoinChange.java)<br>
+[322. 零钱兑换(本质是充分+完全背包)](src/main/java/org/rongjoker/dp/coin/CoinChange322.java)<br>
 [931. 下降路径最小和(dp+滑动窗口最大值才是最优解,待update)](src/main/java/org/rongjoker/dp/target/MinimumFallingPathSum.java)<br>
 [983. 最低票价(其实就是完全背包套了一层皮)](src/main/java/org/rongjoker/dp/coin/MinimumCostForTickets.java)<br>
 以上全部是dp，今日结束后开启dp和greedy双刷
@@ -221,18 +221,55 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 
 
+14. 最长公共前缀
+79. 单词搜索
+69. x 的平方根
+
+
 ### @todo
 dfs题目
 
 stock题目
+20. 有效的括号
+剑指 Offer 09. 用两个栈实现队列
+232. 用栈实现队列
+901. 股票价格跨度
+
+dp题目
+139. 单词拆分
+309. 最佳买卖股票时机含冷冻期
+32. 最长有效括号
+42. 接雨水
+91. 解码方法
+72. 编辑距离
+10. 正则表达式匹配
+516. 最长回文子序列
+
+滑动窗口
+239. 滑动窗口最大值
+485. 最大连续 1 的个数 系列
+978. 最长湍流子数组
+76. 最小覆盖子串
+
+
 224. 基本计算器
 
-多个回文题目
+dfs
+394. 字符串解码
 
+
+位运算
+136. 只出现一次的数字
+
+
+拓扑排序
 207. 课程表
+
+贪心
+134. 加油站
+     
+
 474. 一和零
-41. 缺失的第一个正数
-871. 最低加油次数
 
 [650. 只有两个键的键盘](src/main/java/org/rongjoker/dp/target/MinCostClimbingStairs.java)<br>
 
