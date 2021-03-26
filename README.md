@@ -228,10 +228,11 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 [2. 两数相加(list;递归经典题目)](src/main/java/org/rongjoker/list/AddTwoNumbers2.java)<br>
 [14. 最长公共前缀(str;字符串经典题目)](src/main/java/org/rongjoker/str/LongestCommonPrefix14.java)<br>
 [139. 单词拆分(dp;字符串切割为充分背包题目)](src/main/java/org/rongjoker/dp/decide/WordBreak139.java)<br>
+[718. 最长重复子数组(dp;01充分背包题目)](src/main/java/org/rongjoker/dp/target/MaximumLengthOfRepeatedSubarray718.java)<br>
 
 
 
-14. 最长公共前缀
+
 79. 单词搜索
 69. x 的平方根
 
@@ -246,7 +247,6 @@ stock题目
 901. 股票价格跨度
 
 dp题目
-139. 单词拆分
 309. 最佳买卖股票时机含冷冻期
 32. 最长有效括号
 42. 接雨水
