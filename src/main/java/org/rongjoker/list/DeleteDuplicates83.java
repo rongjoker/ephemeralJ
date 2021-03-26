@@ -5,7 +5,7 @@ import org.rongjoker.datastructure.ListNode;
 
 /**
  * @date 03/26/2021
- *  83. 删除排序链表中的重复元素
+ *  83. 删除排序链表中的重复元素 https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/
  *
  *  3月26每日一题
  *
@@ -15,7 +15,7 @@ public class DeleteDuplicates83 {
 
 
     @Test
-    public void test82(){
+    public void test83(){
 
         ListNode head = new ListNode(1);
         head.next = new ListNode(2);
