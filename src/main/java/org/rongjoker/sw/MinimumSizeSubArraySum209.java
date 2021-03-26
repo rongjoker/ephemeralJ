@@ -7,7 +7,7 @@ import org.junit.Test;
  * 209. 长度最小的子数组 https://leetcode-cn.com/problems/minimum-size-subarray-sum/
  * 双指针
  */
-public class MinimumSizeSubArraySum {
+public class MinimumSizeSubArraySum209 {
 
 
     @Test
