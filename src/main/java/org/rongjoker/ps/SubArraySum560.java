@@ -11,13 +11,15 @@ import java.util.Map;
  * 560. 和为K的子数组 https://leetcode-cn.com/problems/subarray-sum-equals-k/
  * <p>
  * 给定一个整数数组和一个整数 k，你需要找到该数组中和为 k 的连续的子数组的个数。
+ *
+ * 前缀和，结合hash表来优化
  */
 public class SubArraySum560 {
 
     @Test
     public void test560() {
         int[] nums = {1, 1, 1};
-        System.out.println(subarraySum(nums, 2));
+        System.out.println(subarraySumOptimize(nums, 2));
 
 
     }
@@ -68,8 +70,8 @@ public class SubArraySum560 {
 
         for (int i = 0; i < len; i++) {
             pre += nums[i];
-            total += hash.getOrDefault(pre - k, 0);
-            hash.put(pre, hash.getOrDefault(pre, 0) + 1);
+            total += hash.getOrDefault(pre - k, 0);//到hash里找需要减去的前缀
+            hash.put(pre, hash.getOrDefault(pre, 0) + 1);//保存前缀
 
         }
 

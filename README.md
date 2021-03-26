@@ -159,7 +159,7 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 ### 03/02/2021
 [303. 区域和检索 - 数组不可变(ps,前缀和入门题目)](src/main/java/org/rongjoker/ps/NumArray303.java)<br>
-[560. 和为K的子数组(ps,前缀和经典题目)](src/main/java/org/rongjoker/ps/SubArraySum560.java)<br>
+[560. 和为K的子数组(ps+hash,前缀和经典题目)](src/main/java/org/rongjoker/ps/SubArraySum560.java)<br>
 
 
 ### 03/04/2021
@@ -229,6 +229,7 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 [14. 最长公共前缀(str;字符串经典题目)](src/main/java/org/rongjoker/str/LongestCommonPrefix14.java)<br>
 [139. 单词拆分(dp;字符串切割为充分背包题目)](src/main/java/org/rongjoker/dp/decide/WordBreak139.java)<br>
 [718. 最长重复子数组(dp;01充分背包题目)](src/main/java/org/rongjoker/dp/target/MaximumLengthOfRepeatedSubarray718.java)<br>
+[325. 和等于 k 的最长子数组长度(ps+hash;前缀和560题进阶题目)](src/main/java/org/rongjoker/ps/MaxSubArrayLen325.java)<br>
 
 
 
