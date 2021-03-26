@@ -18,6 +18,7 @@ Ephemeral codes,permanent thoughts;<br>
 13. bt:回溯法
 14. stock:单调栈
 15. bit:位运算
+16. str:字符串
 
 ### 01/05/2021
 [各种背包](src/main/java/org/rongjoker/dp/pack)
@@ -218,6 +219,14 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 ### 03/25/2021
 [337. 打家劫舍 III(dfs+dp;树的动态规划;抵达100题)](src/main/java/org/rongjoker/ds/HouseRobber337.java)<br>
 [51. N 皇后(bt;回溯算法最经典+最难的题目)](src/main/java/org/rongjoker/bt/Nqueens51.java)<br>
+
+
+### 03/26/2021
+[83. 删除排序链表中的重复元素(list;经典递归题目)](src/main/java/org/rongjoker/list/DeleteDuplicates83.java)<br>
+[203. 移除链表元素(list;链表递归入门题目)](src/main/java/org/rongjoker/list/RemoveLinkedListElements203.java)<br>
+[82. 删除排序链表中的重复元素 II(list;83+203的结合)](src/main/java/org/rongjoker/list/DeleteDuplicates82.java)<br>
+[2. 两数相加(list;递归经典题目)](src/main/java/org/rongjoker/list/AddTwoNumbers2.java)<br>
+[14. 最长公共前缀(str;字符串经典题目)](src/main/java/org/rongjoker/str/LongestCommonPrefix14.java)<br>
 
 
 

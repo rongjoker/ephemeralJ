@@ -12,8 +12,6 @@ import org.rongjoker.datastructure.ListNode;
  */
 public class DeleteDuplicates83 {
 
-
-
     @Test
     public void test83(){
 
@@ -35,10 +33,18 @@ public class DeleteDuplicates83 {
     }
 
     public ListNode deleteDuplicates(ListNode head) {
+        if(head==null)
+            return null;
+        if(head.next==null)
+            return head;
+
+        //以下为递归的精髓，本质是从后向前不停的替换，以致回到最初,这种递归是最快的
+        head.next = deleteDuplicates(head.next);
+        if(head.next.val == head.val)
+            head = head.next;
 
 
-        return null;
-
+        return head;
     }
 
 

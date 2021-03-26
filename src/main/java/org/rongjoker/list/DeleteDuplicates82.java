@@ -35,10 +35,23 @@ public class DeleteDuplicates82 {
     }
 
     public ListNode deleteDuplicates(ListNode head) {
+        if(null==head) return null;
+        if(null==head.next) return head;
 
+        ListNode next = head.next;//取一个中间变量来移动指针
 
-        return null;
+        if(next.val == head.val){//head重复
+            while(next!=null && head.val==next.val)
+                next = next.next;
 
+            //循环的情况下就是head = next;也就是连head本身也丢弃，递归情况下加上deleteDuplicates，也就是把next后面的也处理掉
+            head = deleteDuplicates(next);
+
+        }else{//head不重复，处理head后面的重复的
+            head.next = deleteDuplicates(next);
+        }
+
+        return head;
     }
 
 
