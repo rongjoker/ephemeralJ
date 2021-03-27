@@ -19,6 +19,7 @@ Ephemeral codes,permanent thoughts;<br>
 14. stock:单调栈
 15. bit:位运算
 16. str:字符串
+17. array:数组
 
 ### 01/05/2021
 [各种背包](src/main/java/org/rongjoker/dp/pack)
@@ -234,6 +235,8 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 ### 03/27/2021
 [19. 删除链表的倒数第 N 个结点(list;双指针实现按下标操作链表)](src/main/java/org/rongjoker/list/RemoveNthFromEnd19.java)<br>
+[61. 旋转链表(list;双指针实现按下标操作链表)](src/main/java/org/rongjoker/list/RotateList61.java)<br>
+[189. 旋转数组(array;数组就地反转计算)](src/main/java/org/rongjoker/list/RotateArray189.java)<br>
 
 
 79. 单词搜索
