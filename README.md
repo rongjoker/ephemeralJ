@@ -232,6 +232,8 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 [325. 和等于 k 的最长子数组长度(ps+hash;前缀和560题进阶题目)](src/main/java/org/rongjoker/ps/MaxSubArrayLen325.java)<br>
 
 
+### 03/27/2021
+[19. 删除链表的倒数第 N 个结点(list;双指针实现按下标操作链表)](src/main/java/org/rongjoker/list/RemoveNthFromEnd19.java)<br>
 
 
 79. 单词搜索
