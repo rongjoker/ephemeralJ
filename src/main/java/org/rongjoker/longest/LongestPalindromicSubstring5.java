@@ -1,4 +1,4 @@
-package org.rongjoker.dp.longest;
+package org.rongjoker.longest;
 
 import org.junit.Test;
 
@@ -9,7 +9,7 @@ import org.junit.Test;
  *
  * 给你一个字符串 s，找到 s 中最长的回文子串。
  */
-public class LongestPalindromicSubstring {
+public class LongestPalindromicSubstring5 {
 
     @Test
     public void test5(){

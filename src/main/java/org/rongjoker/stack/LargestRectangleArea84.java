@@ -1,4 +1,4 @@
-package org.rongjoker.stock;
+package org.rongjoker.stack;
 
 import org.junit.Test;
 

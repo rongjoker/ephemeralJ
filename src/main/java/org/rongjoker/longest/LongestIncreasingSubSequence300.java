@@ -1,10 +1,11 @@
-package org.rongjoker.dp.longest;
+package org.rongjoker.longest;
 
 
 import org.junit.Test;
 
 /**
  * @date 01/10/2021
+ * @date 03/28/2021
  * 300. 最长递增子序列 https://leetcode-cn.com/problems/longest-increasing-subsequence/
  * <p>
  * 给你一个整数数组 nums ，找到其中最长严格递增子序列的长度。
@@ -14,8 +15,14 @@ import org.junit.Test;
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/longest-increasing-subsequence
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+ *
+ * 一个数组如果要检查0-4位的最长递增子序列，则依次检查0-1；0-2；0-3；中最长递增子序列，
+ * 如果nums[4]>nums[1],则max[4]=max[1]+1;
+ * 如果nums[4]>nums[3],则max[4]=max[3]+1;
+ * 依次类推n^2次可以算完
+ *
  */
-public class LongestIncreasingSubSequence {
+public class LongestIncreasingSubSequence300 {
 
     @Test
     public void test300() {
@@ -36,25 +43,19 @@ public class LongestIncreasingSubSequence {
      */
     public int lengthOfLIS(int[] nums) {
 
-        int max = 1;
-        int n = nums.length;
-        int[] dp = new int[n];
-
-        int temp = 0;
-        for (int i = 0; i < n; i++) {
-            temp = 1;
-
-            for (int j = 0; j < i && j >= 0; j++) {
-                if (nums[i] > nums[j]) {
-                    temp = Math.max(dp[j] + 1, temp);
+        if(nums.length==1) return 1;
+        int len = nums.length,max=0,temp;
+        int[] dp = new int[len];
+        for(int i=0;i<len;++i){
+            temp=1;
+            for(int j=0;j<i;++j){
+                if(nums[i]>nums[j]){
+                    temp = Math.max(temp,dp[j]+1);
                 }
             }
             dp[i] = temp;
-
-            max = Math.max(max, temp);
-
+            max = Math.max(temp,max);
         }
-
         return max;
     }
 

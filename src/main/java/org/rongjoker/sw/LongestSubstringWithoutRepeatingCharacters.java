@@ -10,6 +10,7 @@ import java.util.Map;
  * @date 01/15/2021
  *
  * 3. 无重复字符的最长子串 https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/
+ * 用hashmap维护滑动窗口
  *
  *
  */
@@ -18,7 +19,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
     @Test
     public void test3(){
 
-        String s = "pwwkea";
+        String s = "aab";
 
         System.out.println(lengthOfLongestSubstring(s));
 

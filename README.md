@@ -16,7 +16,7 @@ Ephemeral codes,permanent thoughts;<br>
 11. maths:数学
 12. ps:前缀和
 13. bt:回溯法
-14. stock:单调栈
+14. stack:单调栈
 15. bit:位运算
 16. str:字符串
 17. array:数组
@@ -36,13 +36,13 @@ Ephemeral codes,permanent thoughts;<br>
 [122. 买卖股票的最佳时机 II](src/main/java/org/rongjoker/dp/stock/BestTimeToBuyAndSellStock2.java)<br>
 
 ### 01/09/2021
-[1143. 最长公共子序列](src/main/java/org/rongjoker/dp/longest/LongestCommonSubSequence.java)<br>
+[1143. 最长公共子序列](src/main/java/org/rongjoker/longest/LongestCommonSubSequence1143.java)<br>
 
 
 ### 01/10/2021
 [62. 不同路径](src/main/java/org/rongjoker/dp/distinct/UniquePaths.java)<br>
-[300. 最长递增子序列](src/main/java/org/rongjoker/dp/longest/LongestIncreasingSubSequence.java)<br>
-[5. 最长回文子串](src/main/java/org/rongjoker/dp/longest/LongestPalindromicSubstring.java)<br>
+[300. 最长递增子序列](src/main/java/org/rongjoker/longest/LongestIncreasingSubSequence300.java)<br>
+[5. 最长回文子串](src/main/java/org/rongjoker/longest/LongestPalindromicSubstring5.java)<br>
 [123. 买卖股票的最佳时机 III](src/main/java/org/rongjoker/dp/stock/BestTimeToBuyAndSellStock3.java)<br>
 
 ### 01/11/2021
@@ -76,7 +76,7 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 ### 01/15/2021
 [494. 目标和(dp+hash;可以用dfs解决)](src/main/java/org/rongjoker/dp/distinct/targetSum.java)<br>
 [15. 三数之和(tp经典题目;排序+双指针实现去重和O(n))](src/main/java/org/rongjoker/sw/Sum3.java)<br>
-[3. 无重复字符的最长子串(sw;利用并查集可以进一步优化时空待后续)](src/main/java/org/rongjoker/sw/Sum3.java)<br>
+[3. 无重复字符的最长子串(sw;利用并查集可以进一步优化时空待后续)](src/main/java/org/rongjoker/sw/LongestSubstringWithoutRepeatingCharacters.java)<br>
 排序在双指针和贪心算法等问题中往往是预操作；"连续子数组"暗示使用滑动窗口
 
 
@@ -196,8 +196,8 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 [剑指 Offer 42. 连续子数组的最大和 (dp,同53题)](src/main/java/org/rongjoker/dp/target/MaxSubArray42.java)<br>
 [1213. 三个有序数组的交集 (tp,注意越界)](src/main/java/org/rongjoker/sw/ArraysIntersection1213.java)<br>
 [213. 打家劫舍 II(dp)](src/main/java/org/rongjoker/dp/target/HouseRobber213.java)<br>
-[84. 柱状图中最大的矩形(stock,单调栈解决蛮力的典型)](src/main/java/org/rongjoker/stock/LargestRectangleArea84.java)<br>
-[85. 最大矩形(stock,84的迭代,抵达90)](src/main/java/org/rongjoker/stock/MaximalRectangle85.java)<br>
+[84. 柱状图中最大的矩形(stack,单调栈解决蛮力的典型)](src/main/java/org/rongjoker/stack/LargestRectangleArea84.java)<br>
+[85. 最大矩形(stack,84的迭代,抵达90)](src/main/java/org/rongjoker/stack/MaximalRectangle85.java)<br>
 
 
 ### 03/22/2021
@@ -229,7 +229,7 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 [2. 两数相加(list;递归经典题目)](src/main/java/org/rongjoker/list/AddTwoNumbers2.java)<br>
 [14. 最长公共前缀(str;字符串经典题目)](src/main/java/org/rongjoker/str/LongestCommonPrefix14.java)<br>
 [139. 单词拆分(dp;字符串切割为充分背包题目)](src/main/java/org/rongjoker/dp/decide/WordBreak139.java)<br>
-[718. 最长重复子数组(dp;01充分背包题目)](src/main/java/org/rongjoker/dp/target/MaximumLengthOfRepeatedSubarray718.java)<br>
+[718. 最长重复子数组(dp;01充分背包题目)](src/main/java/org/rongjoker/longest/MaximumLengthOfRepeatedSubarray718.java)<br>
 [325. 和等于 k 的最长子数组长度(ps+hash;前缀和560题进阶题目)](src/main/java/org/rongjoker/ps/MaxSubArrayLen325.java)<br>
 
 
@@ -237,6 +237,22 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 [19. 删除链表的倒数第 N 个结点(list;双指针实现按下标操作链表)](src/main/java/org/rongjoker/list/RemoveNthFromEnd19.java)<br>
 [61. 旋转链表(list;双指针实现按下标操作链表)](src/main/java/org/rongjoker/list/RotateList61.java)<br>
 [189. 旋转数组(array;数组就地反转计算)](src/main/java/org/rongjoker/list/RotateArray189.java)<br>
+[516. 最长回文子序列(dp;区间dp的入门+经典题目)](src/main/java/org/rongjoker/longest/LongestPalindromeSubseq516.java)<br>
+
+### 03/27/2021
+[173. 二叉搜索树迭代器(创建迭代器)](src/main/java/org/rongjoker/binarytree/BSTIterator.java)<br>
+[剑指 Offer 48. 最长不含重复字符的子字符串(sw;和3是同题)](src/main/java/org/rongjoker/longest/LengthOfLongestSubstring48.java)<br>
+[20. 有效的括号(str;stack经典题目;push和pop以及empty的用法)](src/main/java/org/rongjoker/str/ValidParentheses20.java)<br>
+[91. 解码方法(dp)](src/main/java/org/rongjoker/dp/distinct/DecodeWays91.java)<br>
+[639. 解码方法 II(dp;91的进阶,long->int防止溢出)](src/main/java/org/rongjoker/dp/distinct/DecodeWays639.java)<br>
+
+
+
+
+516的
+等价版: #1143
+简单版: #718
+进阶版: #10
 
 
 79. 单词搜索
@@ -244,22 +260,17 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 
 ### @todo
-dfs题目
 
-stock题目
-20. 有效的括号
-剑指 Offer 09. 用两个栈实现队列
+stack题目
 232. 用栈实现队列
 901. 股票价格跨度
 
 dp题目
 309. 最佳买卖股票时机含冷冻期
-32. 最长有效括号
+32. 最长有效括号(最长系列，困难)
 42. 接雨水
-91. 解码方法
 72. 编辑距离
 10. 正则表达式匹配
-516. 最长回文子序列
 
 滑动窗口
 239. 滑动窗口最大值

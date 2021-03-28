@@ -1,4 +1,4 @@
-package org.rongjoker.dp.longest;
+package org.rongjoker.longest;
 
 import org.junit.Test;
 
@@ -18,10 +18,11 @@ import org.junit.Test;
  * 链接：https://leetcode-cn.com/problems/longest-common-subsequence
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  * 很像01背包
+ * 比最长回文子序列类似，属于区间dp
  *
  *
  */
-public class LongestCommonSubSequence {
+public class LongestCommonSubSequence1143 {
 
     @Test
     public void test1143(){
