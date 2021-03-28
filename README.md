@@ -239,13 +239,18 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 [189. 旋转数组(array;数组就地反转计算)](src/main/java/org/rongjoker/list/RotateArray189.java)<br>
 [516. 最长回文子序列(dp;区间dp的入门+经典题目)](src/main/java/org/rongjoker/longest/LongestPalindromeSubseq516.java)<br>
 
-### 03/27/2021
+### 03/28/2021
 [173. 二叉搜索树迭代器(创建迭代器)](src/main/java/org/rongjoker/binarytree/BSTIterator.java)<br>
 [剑指 Offer 48. 最长不含重复字符的子字符串(sw;和3是同题)](src/main/java/org/rongjoker/longest/LengthOfLongestSubstring48.java)<br>
-[20. 有效的括号(str;stack经典题目;push和pop以及empty的用法)](src/main/java/org/rongjoker/str/ValidParentheses20.java)<br>
+[20. 有效的括号(str;stack经典题目;抵达120题)](src/main/java/org/rongjoker/str/ValidParentheses20.java)<br>
 [91. 解码方法(dp)](src/main/java/org/rongjoker/dp/distinct/DecodeWays91.java)<br>
 [639. 解码方法 II(dp;91的进阶,long->int防止溢出)](src/main/java/org/rongjoker/dp/distinct/DecodeWays639.java)<br>
+[225. 用队列实现栈(stack;设计题目)](src/main/java/org/rongjoker/stack/MyStack.java)<br>
 
+
+### 03/29/2021
+[232. 用栈实现队列(stack;设计题目)](src/main/java/org/rongjoker/stack/MyQueue.java)<br>
+[146. LRU 缓存机制(stack;设计题目)](src/main/java/org/rongjoker/stack/LRUCache.java)<br>
 
 
 
