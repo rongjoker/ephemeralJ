@@ -249,8 +249,8 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 
 ### 03/29/2021
-[232. 用栈实现队列(stack;设计题目)](src/main/java/org/rongjoker/stack/MyQueue.java)<br>
-[146. LRU 缓存机制(stack;设计题目)](src/main/java/org/rongjoker/stack/LRUCache.java)<br>
+[232. 用栈实现队列(stack;设计题目;设计题目;较巧妙)](src/main/java/org/rongjoker/stack/MyQueue.java)<br>
+[146. LRU 缓存机制(list;手写双向链表)](src/main/java/org/rongjoker/stack/LRUCache.java)<br>
 
 
 

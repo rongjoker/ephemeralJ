@@ -10,6 +10,7 @@ import java.util.Queue;
  * 225. 用队列实现栈 https://leetcode-cn.com/problems/implement-stack-using-queues/
  * 两个队列，交替使用，每次主队列只保留1个数字
  * 取数据时候，将次队列数据只保留一个，其余放入主队列，然后拿出主队列第一个，并将主次队列交换（即次队列变成主队列）
+ * 这个写法比较复杂，也有简单的办法，用一个队列即可，每次取数据就把n-1个数据全部拿出，重新入队
  *
  */
 public class MyStack {
