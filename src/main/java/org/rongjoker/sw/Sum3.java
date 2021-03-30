@@ -21,65 +21,6 @@ public class Sum3 {
 
     }
 
-
-    /**
-     * 双指针
-     * 去重复
-     * 超时了
-     *
-     * @param nums
-     * @return
-     */
-    public List<List<Integer>> threeSum(int[] nums) {
-        Map<Integer, Set<Integer>> key = new HashMap<>();
-
-        List<List<Integer>> lists = new ArrayList<>();
-        if (nums.length < 3) return lists;
-        Arrays.sort(nums);
-        if (nums[0] > 0) return lists;//最小值肯定要小于等于=0
-        int n = nums.length, m = n - 2, sum = 0;
-        Set<Integer> objects;
-        boolean flag = false;
-        for (int i = 0; i < m; i++) {
-
-            for (int j = i + 1; j < n - 1; j++) {
-                sum = nums[j] * 2;
-                for (int k = j + 1; k < n; k++) {
-                    sum += (nums[k] - nums[k - 1]);
-                    if (sum == -nums[i]) {
-                        if (key.get(nums[i]) == null) {
-                            objects = new HashSet<>();
-                            objects.add(nums[j]);
-                            key.put(nums[i], objects);
-                            flag = true;
-                        } else {
-                            objects = key.get(nums[i]);
-                            if (!objects.contains(nums[j])) {
-                                objects.add(nums[j]);
-                                flag = true;
-                            }
-
-                        }
-                        if (flag) {
-                            List<Integer> integers = new ArrayList<>();
-                            integers.add(nums[i]);
-                            integers.add(nums[j]);
-                            integers.add(nums[k]);
-                            lists.add(integers);
-                            flag = false;
-                        }
-
-                    }
-                }
-            }
-        }
-
-        return lists;
-
-
-    }
-
-
     /**
      * 双指针
      * 去重复 利用首位元素和前一位比较来去重复（很巧妙的操作，节省时空）
