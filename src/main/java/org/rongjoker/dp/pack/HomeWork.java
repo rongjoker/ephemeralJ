@@ -104,21 +104,22 @@ public class HomeWork {
 
     }
 
+    //类似53题的最大和，记录当前的数字和前面最大和最小相乘的积，然后和当前的数字比较，保留三者中最大和最小区别是要记录最大和最小（可能负负得正）
     public int maximumProductSubArray(int[] nums) {
 
         int max = nums[0];
 
         int[] dp = new int[2];
 
-        dp[0] = nums[0];
-        dp[1] = nums[0];
+        dp[0] = nums[0];//最大值
+        dp[1] = nums[0];//最小值
 
         for (int i = 1; i < nums.length; i++) {
             int addTemp = nums[i] * dp[0];
             int minusTemp = nums[i] * dp[1];
 
-            dp[0] = Math.max(minusTemp, Math.max(addTemp, nums[i]));
-            dp[1] = Math.min(minusTemp, Math.min(addTemp, nums[i]));
+            dp[0] = Math.max(minusTemp, Math.max(addTemp, nums[i]));//取三者的最大值
+            dp[1] = Math.min(minusTemp, Math.min(addTemp, nums[i]));//取三者的最小值
 
             max = Math.max(max, Math.max(dp[0], dp[1]));
 
