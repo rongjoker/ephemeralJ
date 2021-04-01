@@ -80,11 +80,13 @@ public class targetSum {
         Map<Integer, Integer> previous = new HashMap<>();
         Map<Integer, Integer> current = null;
 
+        //所有这些数字能组成的最大值和最小值
         for (int k = -sum; k <= sum; k++) {
             previous.put(k, 0);
         }
         previous.put(0, 1);
 
+        //交替使用两个hashmap（其实就是压缩dp空间到2个）
         for (int i = 0; i < n; i++) {
             current = new HashMap<>();
             Set<Integer> integers = previous.keySet();

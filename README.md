@@ -74,7 +74,7 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 
 ### 01/15/2021
-[494. 目标和(dp+hash;可以用dfs解决)](src/main/java/org/rongjoker/dp/distinct/targetSum.java)<br>
+[494. 目标和(dp+hash;分组背包;可以用dfs解决)](src/main/java/org/rongjoker/dp/distinct/targetSum.java)<br>
 [15. 三数之和(tp经典题目;排序+双指针实现去重和O(n))](src/main/java/org/rongjoker/sw/Sum3.java)<br>
 [3. 无重复字符的最长子串(sw;利用并查集可以进一步优化时空待后续)](src/main/java/org/rongjoker/sw/LongestSubstringWithoutRepeatingCharacters.java)<br>
 排序在双指针和贪心算法等问题中往往是预操作；"连续子数组"暗示使用滑动窗口
@@ -259,6 +259,8 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 ### 04/01/2021
 [1006. 笨阶乘(maths)](src/main/java/org/rongjoker/maths/ClumsyFactorial1006.java)<br>
+[剑指 Offer 22. 链表中倒数第k个节点(list+tp;链表+双指针)](src/main/java/org/rongjoker/offer/GetKthFromEnd22.java)<br>
+
 
 
 516的
