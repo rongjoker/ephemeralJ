@@ -257,6 +257,10 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 ### 03/30/2021
 [74. 搜索二维矩阵(bs;二分查找在矩阵的应用,包含二分的所有注意事项)](src/main/java/org/rongjoker/binarysearch/SearchMatrix74.java)<br>
 
+### 04/01/2021
+[1006. 笨阶乘(maths)](src/main/java/org/rongjoker/maths/ClumsyFactorial1006.java)<br>
+
+
 516的
 等价版: #1143
 简单版: #718
