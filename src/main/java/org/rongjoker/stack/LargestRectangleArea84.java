@@ -53,7 +53,9 @@ public class LargestRectangleArea84 {
         for (int i = 1; i < len; i++) {
             while (cs[path.peekLast()]>cs[i]){
                 //i点为右侧,取出最高点后，path.getLast()为左侧
-                max=Math.max(max,cs[path.pollLast()]*(i-path.peekLast()-1));//(左右都比当前点要小，所以以当前点为高度的面积的宽度为右侧-左侧)
+                //(左右都比当前点要小，所以以当前点为高度的面积的宽度为右侧-左侧)
+                max=Math.max(max,cs[path.pollLast()]*(i-path.peekLast()-1));
+
             }
             path.addLast(i);
 
