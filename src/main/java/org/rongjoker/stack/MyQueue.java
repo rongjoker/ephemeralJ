@@ -45,7 +45,6 @@ public class MyQueue {
 
     }
 
-    int temp;
 
     /** Removes the element from in front of queue and returns that element. */
     public int pop() {
