@@ -37,4 +37,29 @@ public class SearchMatrix240 {
         return false;
 
     }
+
+    /**
+     * 官方第四种解法
+     * @param matrix
+     * @param target
+     * @return
+     */
+    public boolean searchMatrix4(int[][] matrix, int target) {
+        // start our "pointer" in the bottom-left
+        int row = matrix.length-1;
+        int col = 0;
+
+        while (row >= 0 && col < matrix[0].length) {
+            if (matrix[row][col] > target) {
+                row--;
+            } else if (matrix[row][col] < target) {
+                col++;
+            } else { // found it
+                return true;
+            }
+        }
+
+        return false;
+    }
+
 }

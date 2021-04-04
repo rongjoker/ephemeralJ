@@ -20,6 +20,7 @@ Ephemeral codes,permanent thoughts;<br>
 15. bit:位运算
 16. str:字符串
 17. array:数组
+18. hash:哈希
 
 ### 01/05/2021
 [各种背包](src/main/java/org/rongjoker/dp/pack)
@@ -237,7 +238,7 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 [19. 删除链表的倒数第 N 个结点(list;双指针实现按下标操作链表)](src/main/java/org/rongjoker/list/RemoveNthFromEnd19.java)<br>
 [61. 旋转链表(list;双指针实现按下标操作链表)](src/main/java/org/rongjoker/list/RotateList61.java)<br>
 [189. 旋转数组(array;数组就地反转计算)](src/main/java/org/rongjoker/list/RotateArray189.java)<br>
-[409. 最长回文串(hash)](src/main/java/org/rongjoker/str/RotateArray189.java)<br>
+[409. 最长回文串(hash)](src/main/java/org/rongjoker/str/LongestPalindrome409.java)<br>
 [516. 最长回文子序列(dp;区间dp的入门+经典题目)](src/main/java/org/rongjoker/longest/LongestPalindromeSubseq516.java)<br>
 
 ### 03/28/2021
@@ -269,7 +270,11 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 
 ### 04/03/2021
-[240. 搜索二维矩阵 II(bs;二分查找在矩阵的应用;@todo 做完未提交)](src/main/java/org/rongjoker/binarysearch/SearchMatrix240.java)<br>
+[240. 搜索二维矩阵 II(bs;二分查找在矩阵的应用;官方解法方法四更巧妙)](src/main/java/org/rongjoker/binarysearch/SearchMatrix240.java)<br>
+
+### 04/04/2021
+[781. 森林中的兔子(hash;greedy+hash)](src/main/java/org/rongjoker/array/RabbitsInForest781.java)<br>
+
 
 516的
 等价版: #1143
