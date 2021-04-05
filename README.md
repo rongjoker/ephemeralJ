@@ -287,7 +287,7 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 
 ### 04/05/2021
-[26. 删除有序数组中的重复项 (tp)](src/main/java/org/rongjoker/sw/RemoveDuplicatesFromSortedArray26.java)<br>
+[26. 删除有序数组中的重复项 (tp;快慢指针,官解优雅)](src/main/java/org/rongjoker/sw/RemoveDuplicatesFromSortedArray26.java)<br>
 [80. 删除有序数组中的重复项 II (tp)](src/main/java/org/rongjoker/sw/RemoveDuplicatesFromSortedArrayIi80.java)<br>
 
 
