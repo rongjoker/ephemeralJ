@@ -274,6 +274,21 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 ### 04/04/2021
 [781. 森林中的兔子(hash;greedy+hash)](src/main/java/org/rongjoker/array/RabbitsInForest781.java)<br>
+[153. 寻找旋转排序数组中的最小值(bs;二分查找，注意左边界和右边界的边界条件)](src/main/java/org/rongjoker/binarysearch/FindMin153.java)<br>
+
+
+### 04/05/2021
+[33. 搜索旋转排序数组(bs;官解更优)](src/main/java/org/rongjoker/binarysearch/SearchInRotatedSortedArray33.java)<br>
+[88. 合并两个有序数组](src/main/java/org/rongjoker/merge/MergeSortedArray88.java)<br>
+[154. 寻找旋转排序数组中的最小值 II(bs;153进阶)](src/main/java/org/rongjoker/binarysearch/FindMin154.java)<br>
+[剑指 Offer 11. 旋转数组的最小数字;同154](src/main/java/org/rongjoker/offer/MinArray11.java)<br>
+[357. 计算各个位数不同的数字个数(dp)](src/main/java/org/rongjoker/dp/target/CountNumbersWithUniqueDigits357.java)<br>
+[309. 最佳买卖股票时机含冷冻期(dp;极为经典)](src/main/java/org/rongjoker/dp/stock/BestTimeToBuyAndSellStock309.java)<br>
+
+
+### 04/05/2021
+[26. 删除有序数组中的重复项 (tp)](src/main/java/org/rongjoker/sw/RemoveDuplicatesFromSortedArray26.java)<br>
+[80. 删除有序数组中的重复项 II (tp)](src/main/java/org/rongjoker/sw/RemoveDuplicatesFromSortedArrayIi80.java)<br>
 
 
 516的
