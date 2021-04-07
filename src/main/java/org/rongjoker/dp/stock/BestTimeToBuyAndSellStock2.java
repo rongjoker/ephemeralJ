@@ -40,7 +40,7 @@ public class BestTimeToBuyAndSellStock2 {
         int max = 0,temp;
 
         for (int i = 1; i < prices.length; i++) {
-            temp = prices[i] - prices[i-1];
+            temp = prices[i] - prices[i-1];//差分为正即可保存
             if(temp>0)
                 max+=temp;
         }

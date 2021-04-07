@@ -297,6 +297,8 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 [81. 搜索旋转排序数组 II(bs;33进阶)](src/main/java/org/rongjoker/binarysearch/SearchInRotatedSortedArray81.java)<br>
 [79. 单词搜索(bt,回溯算法热门应用题;小米)](src/main/java/org/rongjoker/bt/WordSearch79.java)<br>
 [69. x 的平方根(bs;二分查找与牛顿迭代法;热门)](src/main/java/org/rongjoker/binarysearch/Sqrt69.java)<br>
+[188. 买卖股票的最佳时机 IV(dp;123渐进)](src/main/java/org/rongjoker/dp/stock/BestTimeToBuyAndSellStock188.java)<br>
+[714. 买卖股票的最佳时机含手续费(dp;309的变型和简化)](src/main/java/org/rongjoker/dp/stock/BestTimeToBuyAndSellStockWithTransactionFee714.java)<br>
 
 
 516的
@@ -305,18 +307,13 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 进阶版: #10
 
 
-79. 单词搜索
-69. x 的平方根
-
 
 ### @todo
 
 stack题目
-232. 用栈实现队列
 901. 股票价格跨度
 
 dp题目
-309. 最佳买卖股票时机含冷冻期
 32. 最长有效括号(最长系列，困难)
 42. 接雨水
 72. 编辑距离
