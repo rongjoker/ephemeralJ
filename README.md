@@ -295,6 +295,7 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 ### 04/07/2021
 [81. 搜索旋转排序数组 II(bs;33进阶)](src/main/java/org/rongjoker/binarysearch/SearchInRotatedSortedArray81.java)<br>
+[79. 单词搜索(bt,回溯算法热门应用题;小米)](src/main/java/org/rongjoker/bt/WordSearch79.java)<br>
 
 
 516的
