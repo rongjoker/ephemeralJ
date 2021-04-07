@@ -37,8 +37,7 @@ public class BestTimeToBuyAndSellStock2 {
         if (prices.length<2)
             return 0;
 
-        int max = 0;
-        int temp = 0;
+        int max = 0,temp;
 
         for (int i = 1; i < prices.length; i++) {
             temp = prices[i] - prices[i-1];

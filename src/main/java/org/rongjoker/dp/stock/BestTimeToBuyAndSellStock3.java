@@ -8,6 +8,9 @@ import org.junit.Test;
  * @date 01/08/2021
  * 123. 买卖股票的最佳时机 III  https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iii/
  * @date 01/10/2021 解决
+ * 较难
+ *
+ *
  */
 public class BestTimeToBuyAndSellStock3 {
 
@@ -35,6 +38,33 @@ public class BestTimeToBuyAndSellStock3 {
 
 
     }
+
+    /**
+     * 方法一，切分成2个分块进行dp
+     * @param prices
+     * @return
+     */
+    public int maxProfit(int[] prices){
+        int len = prices.length;
+        if (len<2)
+            return 0;
+
+        int max = 0,temp;
+        int[] dp_left = new int[len],dp_right = new int[len];
+
+        for (int i = 1; i <len; i++) {
+            dp_left[i] = Math.max(dp_left[i-1],dp_left[i-1] + (prices[i] - prices[i-1]));
+
+
+        }
+
+        return max;
+
+
+    }
+
+
+
 
 
     /**
