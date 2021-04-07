@@ -278,7 +278,7 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 
 ### 04/05/2021
-[33. 搜索旋转排序数组(bs;官解更优)](src/main/java/org/rongjoker/binarysearch/SearchInRotatedSortedArray33.java)<br>
+[33. 搜索旋转排序数组(bs;官解更优;153的高阶应用题)](src/main/java/org/rongjoker/binarysearch/SearchInRotatedSortedArray33.java)<br>
 [88. 合并两个有序数组](src/main/java/org/rongjoker/merge/MergeSortedArray88.java)<br>
 [154. 寻找旋转排序数组中的最小值 II(bs;153进阶)](src/main/java/org/rongjoker/binarysearch/FindMin154.java)<br>
 [剑指 Offer 11. 旋转数组的最小数字;同154](src/main/java/org/rongjoker/offer/MinArray11.java)<br>
@@ -291,6 +291,10 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 [26. 删除有序数组中的重复项 (tp;快慢指针,官解优雅)](src/main/java/org/rongjoker/sw/RemoveDuplicatesFromSortedArray26.java)<br>
 [27. 移除元素 (tp;快慢指针入门)](src/main/java/org/rongjoker/sw/RemoveElement27.java)<br>
 [80. 删除有序数组中的重复项 II (tp;26题进阶,快慢指针有难度的题目)](src/main/java/org/rongjoker/sw/RemoveDuplicatesFromSortedArrayIi80.java)<br>
+
+
+### 04/07/2021
+[81. 搜索旋转排序数组 II(bs;33进阶)](src/main/java/org/rongjoker/binarysearch/SearchInRotatedSortedArray81.java)<br>
 
 
 516的
