@@ -274,7 +274,7 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 ### 04/04/2021
 [781. 森林中的兔子(hash;greedy+hash)](src/main/java/org/rongjoker/array/RabbitsInForest781.java)<br>
-[153. 寻找旋转排序数组中的最小值(bs;二分查找，注意左边界和右边界的边界条件)](src/main/java/org/rongjoker/binarysearch/FindMin153.java)<br>
+[153. 寻找旋转排序数组中的最小值(bs;二分查找，新解法;热门)](src/main/java/org/rongjoker/binarysearch/FindMin153.java)<br>
 
 
 ### 04/05/2021

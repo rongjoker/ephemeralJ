@@ -20,7 +20,7 @@ public class BestTimeToBuyAndSellStock188 {
 
         int[] array = {3, 2, 6, 5, 0, 3};
 
-        System.out.println(maxProfit(5, array));
+        System.out.println(maxProfit(0, array));
 
 
     }
@@ -30,6 +30,10 @@ public class BestTimeToBuyAndSellStock188 {
         int len = prices.length;
         if (len < 2)
             return 0;
+
+        if(k==0) return 0;
+
+        k = Math.min(k, len>>1);//最多不会超过一半的次数
 
         int[][][] dp = new int[len][k][2];
         for (int i = 0; i < k; i++) {
