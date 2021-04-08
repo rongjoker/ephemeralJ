@@ -299,6 +299,7 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 [69. x 的平方根(bs;二分查找与牛顿迭代法;热门)](src/main/java/org/rongjoker/binarysearch/Sqrt69.java)<br>
 [188. 买卖股票的最佳时机 IV(dp;123渐进)](src/main/java/org/rongjoker/dp/stock/BestTimeToBuyAndSellStock188.java)<br>
 [714. 买卖股票的最佳时机含手续费(dp;309的变型和简化)](src/main/java/org/rongjoker/dp/stock/BestTimeToBuyAndSellStockWithTransactionFee714.java)<br>
+[72. 编辑距离(dp;tx,热门难题;递归和dp两种解法)](src/main/java/org/rongjoker/dp/target/EditDistance72.java)<br>
 
 
 516的
@@ -316,7 +317,7 @@ stack题目
 dp题目
 32. 最长有效括号(最长系列，困难)
 42. 接雨水
-72. 编辑距离
+
 10. 正则表达式匹配
 
 滑动窗口
@@ -345,6 +346,6 @@ dfs
 
 474. 一和零
 
-[650. 只有两个键的键盘](src/main/java/org/rongjoker/dp/target/MinCostClimbingStairs.java)<br>
+
 
 

@@ -27,7 +27,7 @@ public class LongestCommonSubSequence1143 {
     @Test
     public void test1143(){
 
-        String text1 = "bl", text2 = "yby";
+        String text1 = "intention", text2 = "execution";
 
         System.out.println(longestCommonSubsequence(text1,text2));
 
