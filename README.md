@@ -302,9 +302,12 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 
 
-### 04/07/2021
+### 04/08/2021
 [72. 编辑距离(dp;tx,热门难题;递归和dp两种解法)](src/main/java/org/rongjoker/dp/target/EditDistance72.java)<br>
 [583. 两个字符串的删除操作(dp;72题简化版本)](src/main/java/org/rongjoker/dp/target/DeleteOperationForTwoStrings583.java)<br>
+
+### 04/09/2021
+[901. 股票价格跨度(stack;可以不用栈解决)](src/main/java/org/rongjoker/stack/StockSpanner.java)<br>
 
 
 516的
@@ -321,7 +324,7 @@ stack题目
 
 dp题目
 32. 最长有效括号(最长系列，困难)
-42. 接雨水
+42. 接雨水(类似直方图的水量)
 
 10. 正则表达式匹配
 
