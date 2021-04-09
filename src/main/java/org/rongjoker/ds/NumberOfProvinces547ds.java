@@ -7,6 +7,8 @@ import org.junit.Test;
  * <p>
  * 547. 省份数量 https://leetcode-cn.com/problems/number-of-provinces/
  * 并查集和dfs都可以解决
+ * 这个题目也就是 【朋友圈】,也就是找有多少个独立的朋友圈，利用并查集来说，就是没有父亲（父亲是自己）的那些节点的数量
+ * [1,1,0]指的是某个1和下标0、1关联和2不关联
  */
 public class NumberOfProvinces547ds {
 

@@ -94,7 +94,7 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 ### 01/26/2021
 [200. 岛屿数量(ds)](src/main/java/org/rongjoker/ds/NumberOfIslands200ds.java)<br>
-[547. 省份数量(ds入门)](src/main/java/org/rongjoker/ds/NumberOfProvinces547ds.java)<br>
+[547. 省份数量(ds入门;热门朋友圈题目)](src/main/java/org/rongjoker/ds/NumberOfProvinces547ds.java)<br>
 
 ### 01/27/2021
 [56. 合并区间](src/main/java/org/rongjoker/merge/MergeIntervals.java)<br>
@@ -318,12 +318,10 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 
 ### @todo
-
+25. K 个一组翻转链表
 
 dp题目
 32. 最长有效括号(最长系列，困难)
-42. 接雨水(类似直方图的水量)
-
 10. 正则表达式匹配
 
 滑动窗口
