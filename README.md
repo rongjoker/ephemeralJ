@@ -308,7 +308,7 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 ### 04/09/2021
 [901. 股票价格跨度(stack;可以不用栈解决)](src/main/java/org/rongjoker/stack/StockSpanner.java)<br>
-
+[42. 接雨水(sw;栈和双指针,热门双指针题目)](src/main/java/org/rongjoker/sw/TrappingRainWater42.java)<br>
 
 516的
 等价版: #1143
@@ -319,8 +319,6 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 ### @todo
 
-stack题目
-901. 股票价格跨度
 
 dp题目
 32. 最长有效括号(最长系列，困难)
