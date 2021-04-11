@@ -310,6 +310,16 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 [901. 股票价格跨度(stack;可以不用栈解决)](src/main/java/org/rongjoker/stack/StockSpanner.java)<br>
 [42. 接雨水(sw;栈和双指针,热门双指针题目)](src/main/java/org/rongjoker/sw/TrappingRainWater42.java)<br>
 
+
+### 04/10/2021
+[136. 只出现一次的数字(hash;可以用位运算优化)](src/main/java/org/rongjoker/array/SingleNumber136.java)<br>
+
+
+### 04/11/2021
+[474. 一和零(dp;二维背包;经典题目)](src/main/java/org/rongjoker/dp/target/OnesAndZeroes474.java)<br>
+[4. 寻找两个正序数组的中位数(bs;官方二分查找更好)](src/main/java/org/rongjoker/binarysearch/FindMedianSortedArrays4.java)<br>
+
+
 516的
 等价版: #1143
 简单版: #718
@@ -318,7 +328,6 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 
 ### @todo
-25. K 个一组翻转链表
 
 dp题目
 32. 最长有效括号(最长系列，困难)
@@ -337,18 +346,41 @@ dfs
 394. 字符串解码
 
 
-位运算
-136. 只出现一次的数字
-
-
 拓扑排序
 207. 课程表
 
 贪心
 134. 加油站
-     
 
-474. 一和零
+链表：
+206. 反转链表
+876. 链表的中间结点
+143. 重排链表
+     24
+     两两交换链表中的节点
+     K 个一组翻转链表
+     剑指 Offer 06
+     从尾到头打印链表
+     160
+     相交链表
+    25. K 个一组翻转链表
+
+设计：
+355. 设计推特
+     622
+     设计循环队列  
+     641
+     设计循环双端队列  
+     703
+     数据流中的第 K 大元素
+     1603
+     设计停车系统  
+     297
+     二叉树的序列化与反序列化  
+     208
+     实现 Trie (前缀树)  
+
+
 
 
 

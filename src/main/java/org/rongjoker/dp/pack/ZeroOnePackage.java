@@ -44,7 +44,7 @@ public class ZeroOnePackage {
             for (int j = 1; j < W + 1; j++) {
 
                 if (j >= w[i]) {
-                    dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][j - w[i]] + v[i]);
+                    dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][j - w[i]] + v[i]);//从上一行延续
                 } else {
                     dp[i][j] = dp[i - 1][j];
                 }
