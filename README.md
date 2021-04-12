@@ -323,6 +323,8 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 
 ### 04/12/2021
 [876. 链表的中间结点(list;快慢指针)](src/main/java/org/rongjoker/list/MiddleOfTheLinkedList876.java)<br>
+[21. 合并两个有序链表(list;指针)](src/main/java/org/rongjoker/list/MergeTwoSortedLists21.java)<br>
+[143. 重排链表(list;876+206+21;字节阿里热门题目)](src/main/java/org/rongjoker/list/ReorderList143.java)<br>
 
 
 516的
@@ -358,17 +360,14 @@ dfs
 134. 加油站
 
 链表：
-206. 反转链表
-876. 链表的中间结点
-143. 重排链表
-     24
-     两两交换链表中的节点
-     K 个一组翻转链表
      剑指 Offer 06
      从尾到头打印链表
      160
      相交链表
+     24. 两两交换链表中的节点
     25. K 个一组翻转链表
+    415. 字符串相加（大数相关）
+    23. 合并K个升序链表
 
 设计：
 355. 设计推特
