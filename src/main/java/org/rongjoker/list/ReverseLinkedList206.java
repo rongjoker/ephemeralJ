@@ -10,6 +10,12 @@ import org.rongjoker.datastructure.ListNode;
  * 206. 反转链表 https://leetcode-cn.com/problems/reverse-linked-list/
  *
  * 多种方法
+ * 迭代的方法，用一个节点current一直向右，一直到null为止，用previous保存左边的节点，每次向右，都把current的箭头修改为指向previous，也就是反转；
+ * 同时保留一个temp为current的下一个节点，以便替换current，使得current可以一直向右，而不受到反转的影响，迭代结束current为空，最后一个节点就是previous也就是新的首节点
+ * 迭代的过程就是三个节点一直交换的过程
+ *
+ * 递归的方法,将链表看作只有2个节点，互相替换
+ *
  *
  */
 public class ReverseLinkedList206 {
@@ -40,6 +46,8 @@ public class ReverseLinkedList206 {
 
     /**
      * 迭代，2个节点依次向前移动，向右的箭头依次转变为向左,有点类似挨着的双指针，依次向前迭代
+     *  迭代的方法，用一个节点current一直向右，一直到null为止，用previous保存左边的节点，每次向右，都把current的箭头修改为指向previous，也就是反转；
+     *  同时保留一个temp为current的下一个节点，以便替换current，使得current可以一直向右，而不受到反转的影响，迭代结束current为空，最后一个节点就是previous也就是新的首节点
      * @param head
      * @return
      */
@@ -61,6 +69,7 @@ public class ReverseLinkedList206 {
 
     /**
      * 递归，找到递归基
+     * 将链表看作只有2个节点，互相替换
      * @param head
      * @return
      */
