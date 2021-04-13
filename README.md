@@ -106,7 +106,7 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 [1414. 和为 K 的最少斐波那契数字数目(greedy)](src/main/java/org/rongjoker/greedy/FindMinFibonacciNumbers1414.java)<br>
 
 ### 02/04/2021
-[剑指 Offer 62. 圆圈中最后剩下的数字(约瑟夫换:线性表+链表)](src/main/java/org/rongjoker/list/LastRemainingNumber.java)<br>
+[剑指 Offer 62. 圆圈中最后剩下的数字(约瑟夫环:线性表解决,热门)](src/main/java/org/rongjoker/list/LastRemainingNumber.java)<br>
 [637. 二叉树的层平均值(优化后的方法天秀)](src/main/java/org/rongjoker/binarytree/AverageOfLevels637.java)<br>
 [102. 二叉树的层序遍历](src/main/java/org/rongjoker/binarytree/LevelOrder102.java)<br>
 [94. 二叉树的中序遍历(递归和栈)](src/main/java/org/rongjoker/binarytree/InorderTraversal94.java)<br>
@@ -327,7 +327,9 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 [143. 重排链表(list;876+206+21;字节阿里热门题目)](src/main/java/org/rongjoker/list/ReorderList143.java)<br>
 
 ### 04/13/2021
-[23. 合并K个升序链表(list/bs;链表与分治)](src/main/java/org/rongjoker/list/MergeKsortedLists23.java)<br>
+[23. 合并K个升序链表(list/bs;链表与分治;待优化)](src/main/java/org/rongjoker/list/MergeKsortedLists23.java)<br>
+[weekly-contest-236](src/main/java/org/rongjoker/contest/week236)<br>
+
 
 
 516的
