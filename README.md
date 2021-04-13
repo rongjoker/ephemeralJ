@@ -326,6 +326,9 @@ chrome的ublock origin 插件添加一个filter:[https://assets.leetcode-cn.com/
 [21. 合并两个有序链表(list;指针)](src/main/java/org/rongjoker/list/MergeTwoSortedLists21.java)<br>
 [143. 重排链表(list;876+206+21;字节阿里热门题目)](src/main/java/org/rongjoker/list/ReorderList143.java)<br>
 
+### 04/13/2021
+[23. 合并K个升序链表(list/bs;链表与分治)](src/main/java/org/rongjoker/list/MergeKsortedLists23.java)<br>
+
 
 516的
 等价版: #1143
@@ -359,6 +362,9 @@ dfs
 贪心
 134. 加油站
 
+树：
+783. 二叉搜索树节点最小距离
+
 链表：
      剑指 Offer 06
      从尾到头打印链表
@@ -367,7 +373,7 @@ dfs
      24. 两两交换链表中的节点
     25. K 个一组翻转链表
     415. 字符串相加（大数相关）
-    23. 合并K个升序链表
+    23. 合并K个升序链表（合并链表难题目）
 
 设计：
 355. 设计推特
