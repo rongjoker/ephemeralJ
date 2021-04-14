@@ -7,6 +7,8 @@ package org.rongjoker.binarytree;
  *
  * 本质是一种树，不过这种树比较特殊，有26个子节点，同时附带一个是否结束的标识，如果有则说明能搜索到结果，否则仅仅是前缀
  *
+ * 每日一题
+ *
  */
 public class Trie {
 
