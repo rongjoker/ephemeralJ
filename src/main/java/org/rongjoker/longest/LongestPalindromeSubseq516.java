@@ -71,6 +71,7 @@ public class LongestPalindromeSubseq516 {
             dp[i][i]=1;
         }
 
+        //i-j的区间内部
         for (int i = len - 1; i >= 0; i--) {
             for (int j = i + 1; j < len; j++) {
                 // 状态转移方程
@@ -81,7 +82,7 @@ public class LongestPalindromeSubseq516 {
             }
         }
 
-        return max;
+        return dp[0][len-1];//从0到len-1整个范围
     }
 
 }
