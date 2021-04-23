@@ -10,12 +10,13 @@ import java.util.LinkedList;
 /**
  * @date 04/23/2021
  *
- * 滑动窗口的最大值 https://leetcode-cn.com/problems/sliding-window-maximum/
+ * 239.滑动窗口的最大值 https://leetcode-cn.com/problems/sliding-window-maximum/
  *
  * 虽然是滑动窗口，但是提高效率主要靠单调队列
  * 左侧保留最大值，从左到右单调递减，遇到违反单调性，则直接删掉前面的数据，保持单调性，这样队列头就是最大值，如果队列头的下标位于滑动窗口第一位，用完就可以删掉
  * deque.peekFirst()比get更快
  * 双向队列，记得用removeLast而不是pop
+ *
  *
  *
  */
