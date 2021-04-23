@@ -1,4 +1,4 @@
-package org.rongjoker.ps;
+package org.rongjoker.queue;
 
 import java.util.Deque;
 import java.util.LinkedList;
