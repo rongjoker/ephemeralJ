@@ -8,11 +8,12 @@
 3. 微服务拆分设计
 4. mysql索引设计
 5. spring本地事务失效的场景
+6. 常见的leader选举方式
 
 
 aws 采用ELB实现负载均衡
 redis 采用simple dynamic string实现字符串
-
-
+dubbo+zk 微服务与spring-cloud的区别
+网格化
 
 
