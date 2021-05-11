@@ -5,7 +5,7 @@ import org.junit.Test;
 import java.util.Arrays;
 
 /**
- * @date 05/01/2021
+ * @date 05/06/2021
  * 1720. 解码异或后的数组 https://leetcode-cn.com/problems/decode-xored-array/
  * 异或运算满足交换律
  *
