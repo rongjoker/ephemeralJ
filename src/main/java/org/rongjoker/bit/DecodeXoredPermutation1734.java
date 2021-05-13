@@ -23,16 +23,16 @@ public class DecodeXoredPermutation1734 {
     public int[] decode(int[] encoded) {
         int n = encoded.length + 1;
         int[] ans = new int[n];
-        // 求得除了 ans[n - 1] 的所有异或结果
+        // 求得除了 ans[0] 的所有异或结果
         int less1 = 0;
-        for (int i = 0; i < n - 1; i += 2) less1 ^= encoded[i];
+        for (int i = 1; i < n; i += 2) less1 ^= encoded[i];
         // 求得 ans 的所有异或结果(它是前 n 个正整数的排列)
         int all = 0;
         for (int i = 1; i <= n; i++) all ^= i;
-        // 求得 ans[n - 1] 后，从后往前做
-        ans[n - 1] = less1 ^ all;
-        for (int i = n - 2; i >= 0; i--) {
-            ans[i] = encoded[i] ^ ans[i + 1];
+        ans[0] = less1 ^ all;//相异或运算，求得第一个数值
+
+        for (int i = 0; i < n-1; i++) {
+            ans[i+1] = encoded[i] ^ ans[i];
         }
         return ans;
     }
