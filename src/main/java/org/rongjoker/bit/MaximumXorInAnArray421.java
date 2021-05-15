@@ -14,7 +14,9 @@ public class MaximumXorInAnArray421 {
     @Test
     public void test421(){
 
-        System.out.println(findMaximumXOR(new int[]{3,10,5,25,2,8}));
+//        System.out.println(findMaximumXOR(new int[]{3,10,5,25,2,8}));
+        System.out.println(findMaximumXOR(new int[]{2,4}));
+        System.out.println(findMaximumXOR(new int[]{14,70,53,83,49,91,36,80,92,51,66,70}));
     }
 
     /**
@@ -26,10 +28,11 @@ public class MaximumXorInAnArray421 {
         int max = Integer.MIN_VALUE;
         for(int n :nums)
             max = Math.max(max,n);
-        int length = Integer.toBinaryString(max).length();
-        int mask = 1 << length;
-        String[] num2Str = new String[length];
-        for (int i = 0; i < length; i++) {
+        int len = nums.length;
+        int max_length = Integer.toBinaryString(max).length();
+        int mask = 1 << max_length;
+        String[] num2Str = new String[len];
+        for (int i = 0; i < len; i++) {
             num2Str[i] = Integer.toBinaryString(nums[i] ^ mask).substring(1);
         }
 
@@ -42,8 +45,8 @@ public class MaximumXorInAnArray421 {
             cur_node = root;
             xorNode = root;
             cur_max = 0;
-            for (int i = 0; i < length; i++) {
-                temp = str.charAt(i) - '0';
+            for (int i = 0; i < max_length; i++) {
+                temp = str.charAt(i) - '0';//只会有0和1，故用这种方式转换int和char，巧妙
                 if(cur_node.children[temp]==null)
                     cur_node.children[temp] = new TrieNode();
 
