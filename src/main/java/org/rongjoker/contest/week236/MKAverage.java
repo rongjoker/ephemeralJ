@@ -1,22 +1,17 @@
 package org.rongjoker.contest.week236;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.PriorityQueue;
+import java.util.*;
 
 /**
  * @date 04/13/2021
+ *
+ * @date 05/19/2021
+ *
+ * 1825. 求出 MK 平均值 https://leetcode-cn.com/problems/finding-mk-average/
+ *
+ *
  */
 public class MKAverage {
-
-    List<Integer> list = new ArrayList<>();
-
-    int  space, del, mother;
-    long sum = 0;
-
-    PriorityQueue<Integer> minHeap = new PriorityQueue<>();
-    PriorityQueue<Integer> maxHeap = new PriorityQueue<>((o1, o2) -> o2 - o1);//大顶堆
-
 
     public static void main(String[] args) {
         MKAverage mkAverage = new MKAverage(3, 1);
@@ -33,57 +28,98 @@ public class MKAverage {
 
     }
 
+    int  space, del, mother;
+    long sum = 0;
+
+    PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+    PriorityQueue<Integer> maxHeap = new PriorityQueue<>((o1, o2) -> o2 - o1);//大顶堆
+
+    PriorityQueue<Integer> queue = new PriorityQueue<>();//中间的数据
+
 
     public MKAverage(int m, int k) {
         del = k;
-        mother = -k * 2;
-        space = m + mother;
+        mother = m - k * 2;
+        space = m;
+        maxs = new int[del];mins = new int[del];
     }
-
-    long sumMin = 0,sumMax = 0,sumA = 0;
 
     public void addElement(int num) {
-        list.add(num);
-        sum+=num;
-        ++mother;
 
-        //小顶堆放最大的三个数字
-        if (minHeap.size() < del) {
-            minHeap.add(num);
-            sumMin += num;
-        } else {
-            if (num > minHeap.peek()) {
-                sumMin -= minHeap.poll();
-                sumMin += num;
-                minHeap.add(num);
-            }
-        }
+        Integer temp = null;
 
-        //大顶堆放最小的三个数字
-        if (maxHeap.size() < del) {
-            sumMax += num;
-            maxHeap.add(num);
-        } else {
-            if (num < maxHeap.peek()) {
-                sumMax -=maxHeap.poll();
-                sumMin += num;
+        if(maxHeap.size()<del || minHeap.size()<del){
+            if(maxHeap.size()<del)maxHeap.add(num);
+            if(minHeap.size()<del)minHeap.add(num);
+        }else {
+
+            if(num < maxHeap.peek()){
+                maxHeap.poll();
                 maxHeap.add(num);
+            }else if(num > minHeap.peek()){
+                minHeap.poll();
+                minHeap.add(num);
+            }else {
+                if(queue.size()<mother)
+                    queue.add(num);
+                else queue.add(num);
+
             }
+
 
         }
 
 
-        sumA =  sum - sumMax - sumMin;
-        System.out.println("sum:"+sumA);
+
+        if( minHeap.size() + maxHeap.size() +queue.size() < space){//直接添加
+            if(maxHeap.size()<del)maxHeap.add(num);
+            else {
+                if(num < maxHeap.peek()){
+                    maxHeap.poll();
+                    maxHeap.add(num);
+                }
+
+            }
+
+            if(minHeap.size()<del)minHeap.add(num);
+            else {
+                if(num > minHeap.peek()){
+                    minHeap.poll();
+                    minHeap.add(num);
+                }
+
+            }
+
+
+        }
+
+
+        sum+=num;
+
+
 
 
     }
 
+    int [] maxs ,mins;
+
     public int calculateMKAverage() {
-        if (mother < space) return -1;
+        long tempS = sum;
+        if (queue.size() < space) return -1;
+        for (int i = 0; i < del; i++) {
+            maxs[i] = maxHeap.poll();
+            mins[i] = minHeap.poll();
+            tempS -= maxs[i];
+            tempS -= mins[i];
+        }
 
-        return (int) (sumA / mother);
+        for (int i = del - 1 ; i >=0; --i) {
+            maxHeap.offer(maxs[i]);
+            minHeap.offer(mins[i]);
+        }
 
+
+        return (int) (tempS / mother);
 
     }
 }
