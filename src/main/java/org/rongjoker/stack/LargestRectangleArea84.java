@@ -42,9 +42,7 @@ public class LargestRectangleArea84 {
         int[] cs = new int[len+2];//添加哨兵
         cs[0]=-1;
         cs[len+1]=-1;
-        for (int i = 0; i < len; i++) {
-            cs[i+1]=heights[i];
-        }
+        System.arraycopy(heights, 0, cs, 1, len);
         len = cs.length;
 
         Deque<Integer> path = new ArrayDeque<>();
