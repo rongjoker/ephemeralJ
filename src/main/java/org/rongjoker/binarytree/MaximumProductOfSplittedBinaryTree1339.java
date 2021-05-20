@@ -3,9 +3,6 @@ package org.rongjoker.binarytree;
 import org.junit.Test;
 import org.rongjoker.datastructure.TreeNode;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * @date 02/04/2021
@@ -34,33 +31,30 @@ public class MaximumProductOfSplittedBinaryTree1339 {
 
     }
 
-    List<Long> list = new ArrayList<>();
+    Long maxs = 0L;
 
+    public int maxProduct(TreeNode root) {
+        int mode = (int)(Math.pow(10,9)+7);
+        //long s = sum(root);
+        max(root,sum(root));
 
-    public long sum(TreeNode root){
+        return (int)(maxs%mode);
 
-        if(null!=root){
-            long sum = root.val+sum(root.left)+sum(root.right);
-            list.add(sum);
-            return sum;
-        }else return 0;
 
     }
 
-    public int maxProduct(TreeNode root) {
+    public long max(TreeNode root,long total){
+        if(root==null)return 0;
+        long temp = root.val +max(root.left,total) +max(root.right,total);
+        maxs = Math.max(maxs,(total - temp)*temp);
+        return temp;
+    }
 
-        long sum = sum(root);
-        long max = 0;
-        long temp;
-        int len=list.size();
-        for (int i = 0; i < len; i++) {
-            temp = list.get(i)*(sum - list.get(i));
-            max=Math.max(max,temp);
-        }
-        max%=(Math.pow(10, 9) + 7);
 
-        return (int)max;
 
+    public long sum(TreeNode root){
+        if(root==null)return 0;
+        return root.val +sum(root.left) +sum(root.right);
     }
 
 }
