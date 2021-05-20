@@ -179,18 +179,19 @@ public class TopKFrequent347 {
 
         return array;
     }
-}
 
-/**
- * 记录频率的类
- */
-class NumberNode {
+    /**
+     * 记录频率的类
+     */
+    static class NumberNode {
 
-    public NumberNode(int val, int frequent) {
-        this.val = val;
-        this.frequent = frequent;
+        public NumberNode(int val, int frequent) {
+            this.val = val;
+            this.frequent = frequent;
+        }
+
+        int val;
+        int frequent;
     }
-
-    int val;
-    int frequent;
 }
+
