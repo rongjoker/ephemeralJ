@@ -3,7 +3,7 @@ package org.rongjoker.maths;
 import org.junit.Test;
 
 /**
- * @date 01/01/2021
+ * @date 01/04/2021
  * 1006. 笨阶乘 https://leetcode-cn.com/problems/clumsy-factorial/
  * 我们以一个固定顺序的操作符序列来依次替换原有的乘法操作符：乘法(*)，除法(/)，加法(+)和减法(-)
  * 4月1日的每日一题
