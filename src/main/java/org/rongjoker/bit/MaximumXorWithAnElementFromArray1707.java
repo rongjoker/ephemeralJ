@@ -108,7 +108,7 @@ public class MaximumXorWithAnElementFromArray1707 {
             tempX = xor >> i & 1;
             int cur = tempX ^ 1;
             //这里有严重的bug，可能找到的合适的值，实际上最终比upper大
-            if (xNode.children[cur] != null && xNode.children[cur].min <= upper) {
+            if (xNode.children[cur] != null && xNode.children[cur].min <= upper) {//这一步的比较不可遗漏，必须满足2个条件才向下推进
                 //优先选大的
                 max += 1;
             } else {
