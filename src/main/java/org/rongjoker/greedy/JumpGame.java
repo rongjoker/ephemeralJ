@@ -51,4 +51,24 @@ public class JumpGame {
 
     }
 
+    public boolean canJump2(int[] nums) {
+        int len = nums.length,cur_index = 0,cur=nums[cur_index];
+        while(cur_index + cur < len-1){
+            int temp_space = 0;
+            int next_index = cur_index;
+            for(int i = 1;i<=cur;++i){//等于很关键
+                if(nums[cur_index+i] +i>= temp_space ){//等于很关键，让index尽量走快
+                    next_index = cur_index+i;
+                    temp_space = nums[next_index] +i;
+                }
+            }
+            if(temp_space==0)break;
+            cur_index = next_index;
+            cur=nums[cur_index];
+        }
+        return cur_index+ cur>= len -1;
+
+
+    }
+
 }
