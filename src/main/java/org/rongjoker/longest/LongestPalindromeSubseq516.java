@@ -5,7 +5,9 @@ import org.junit.Test;
 /**
  * @date 03/27/2021
  * 516. 最长回文子序列 https://leetcode-cn.com/problems/longest-palindromic-subsequence/
- * 区间dp的经典题目
+ * 区间dp的经典板子题目
+ * i-j的区间内部；从后向前，这样才能保证无后效性和重叠子问题;从前向后会漏掉
+ * 区间dp的复杂度一般在n^3
  *
  *
  */
@@ -71,7 +73,9 @@ public class LongestPalindromeSubseq516 {
             dp[i][i]=1;
         }
 
-        //i-j的区间内部
+        //i-j的区间内部；从后向前，这样才能保证无后效性和重叠子问题;从前向后会漏掉
+        //从后向前，区域一直很小，慢慢扩大
+        //从前向后，起初j就可以从0直接计算到len-1，大量未计算的过程存在
         for (int i = len - 1; i >= 0; i--) {
             for (int j = i + 1; j < len; j++) {
                 // 状态转移方程
