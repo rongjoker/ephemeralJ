@@ -1,4 +1,4 @@
-package org.rongjoker.heap;
+package org.rongjoker.stack;
 
 import org.junit.Test;
 

@@ -11,6 +11,7 @@ import java.util.Map;
  *
  * 滑动窗口
  * 滑动窗口往往用hash来维护
+ * char[] chars = s.toCharArray(); 更快一点点
  *
  */
 public class LengthOfLongestSubstring48 {
@@ -18,10 +19,49 @@ public class LengthOfLongestSubstring48 {
 
     @Test
     public void test48(){
-        System.out.println(lengthOfLongestSubstring("aab"));
+        System.out.println(lengthOfLongestSubstring3("aab"));
+        System.out.println(lengthOfLongestSubstring3("pwwkew"));
+        System.out.println(lengthOfLongestSubstring3("dvdf"));
+        System.out.println(lengthOfLongestSubstring3("cdd"));
+    }
+
+    public int lengthOfLongestSubstring3(String s) {
+        int len = s.length();
+        if(len<=1)return len;
+        int ans = 0,index = 0,start = 0;
+        Map<Character,Integer> hash = new HashMap<>();
+        char[] chars = s.toCharArray();
+        for(int i=0;i<len;++i){
+            char temp = chars[i];
+            if(hash.containsKey(temp)){
+                index = hash.get(temp);
+                ans = Math.max(ans,i - start);
+                for(int j = start;j<=index;++j)hash.remove(chars[j]);
+                start = index + 1;
+            }
+            hash.put(temp,i);
+        }
+        return Math.max(ans,len - start);
     }
 
 
+    public int lengthOfLongestSubstring2(String s) {
+        int len = s.length();
+        if(len<=1)return len;
+        int ans = 0,index = 0,start = 0;
+        Map<Character,Integer> hash = new HashMap<>();
+        for(int i=0;i<len;++i){
+            char temp = s.charAt(i);
+            if(hash.containsKey(temp)){
+                index = hash.get(temp);
+                ans = Math.max(ans,i - start);
+                for(int j = start;j<=index;++j)hash.remove(s.charAt(j));
+                start = index + 1;
+            }
+            hash.put(temp,i);
+        }
+        return Math.max(ans,len - start);
+    }
 
     public int lengthOfLongestSubstring(String s) {
         int max = 0,len=s.length(),left=0;

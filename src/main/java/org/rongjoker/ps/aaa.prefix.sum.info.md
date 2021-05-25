@@ -5,5 +5,5 @@
 
 
 ####经典题目
-560. 和为K的子数组
-303. 区域和检索 - 数组不可变
+239.滑动窗口的最大值(板子题) https://leetcode-cn.com/problems/sliding-window-maximum/
+862. 和至少为 K 的最短子数组(前缀和+单调队列) https://leetcode-cn.com/problems/shortest-subarray-with-sum-at-least-k/

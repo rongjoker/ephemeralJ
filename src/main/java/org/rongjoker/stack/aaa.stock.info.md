@@ -4,12 +4,8 @@
 
 
 ####经典题目
-1	42. 接雨水（困难）	暴力解法、优化、双指针、单调栈
-2	739. 每日温度（中等）	暴力解法 + 单调栈
-3	496. 下一个更大元素 I（简单）	暴力解法、单调栈
-4	316. 去除重复字母（困难）	栈 + 哨兵技巧（Java、C++、Python）
-5	901. 股票价格跨度（中等）	「力扣」第 901 题：股票价格跨度（单调栈）
-6	402. 移掉K位数字
-7	581. 最短无序连续子数组
-
-84. 柱状图中最大的矩形
+295. 数据流的中位数 https://leetcode-cn.com/problems/find-median-from-data-stream/
+84. 柱状图中最大的矩形(板子题) https://leetcode-cn.com/problems/largest-rectangle-in-histogram/
+1856. 子数组最小乘积的最大值 https://leetcode-cn.com/problems/maximum-subarray-min-product/
+232. 用栈实现队列 https://leetcode-cn.com/problems/implement-queue-using-stacks/
+225. 用队列实现栈 https://leetcode-cn.com/problems/implement-stack-using-queues/
