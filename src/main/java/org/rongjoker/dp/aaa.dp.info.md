@@ -8,7 +8,6 @@
 139. 单词拆分 https://leetcode-cn.com/problems/word-break/
 377. 组合总和 Ⅳ https://leetcode-cn.com/problems/combination-sum-iv/
 91. 解码方法 https://leetcode-cn.com/problems/decode-ways/
-1155. 掷骰子的N种方法(分组背包)  https://leetcode-cn.com/problems/number-of-dice-rolls-with-target-sum/
 416. 分割等和子集 https://leetcode-cn.com/problems/partition-equal-subset-sum/
 494. 目标和 https://leetcode-cn.com/problems/target-sum/
 664. 奇怪的打印机 https://leetcode-cn.com/problems/strange-printer/
@@ -22,3 +21,4 @@
 1269. 停在原地的方案数 https://leetcode-cn.com/problems/number-of-ways-to-stay-in-the-same-place-after-some-steps/
 1866. 恰有 K 根木棍可以看到的排列数目 https://leetcode-cn.com/problems/number-of-ways-to-rearrange-sticks-with-k-sticks-visible/
 887. 鸡蛋掉落 https://leetcode-cn.com/problems/super-egg-drop/
+474. 一和零(二维背包)  https://leetcode-cn.com/problems/ones-and-zeroes/
