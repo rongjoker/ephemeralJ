@@ -16,8 +16,40 @@ public class RemoveKdigits402 {
     @Test
     public void test402() {
         System.out.println(removeKdigits("1432219", 3));
+        System.out.println(removeKdigits2("1432219", 3));
         System.out.println(removeKdigits("10200", 1));
+        System.out.println(removeKdigits2("10200", 1));
         System.out.println(removeKdigits("10", 1));
+        System.out.println(removeKdigits2("10", 1));
+    }
+
+    public String removeKdigits2(String num, int k) {
+        int len = num.length();
+        if (len <= k) return "0";
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < len; i++) {
+            char temp = num.charAt(i);
+            while (sb.length()>0 && sb.charAt(sb.length()-1) > temp && k > 0) {
+                sb.setLength(sb.length()-1);
+                --k;
+            }
+            sb.append(temp);
+        }
+
+        sb.setLength(sb.length()-k);
+
+
+        int start = 0;
+        while (start <sb.length()) {
+            if (sb.charAt(start) == '0') start++;
+            else break;
+
+        }
+
+        return sb.length() == start ? "0" : sb.substring(start);
+
+
     }
 
     public String removeKdigits(String num, int k) {
@@ -40,14 +72,14 @@ public class RemoveKdigits402 {
         }
 
         StringBuilder sb = new StringBuilder();
-        while (!stack.isEmpty()){
-            if(stack.peekFirst() == '0')stack.pollFirst();
+        while (!stack.isEmpty()) {
+            if (stack.peekFirst() == '0') stack.pollFirst();
             else break;
 
         }
-            while (!stack.isEmpty()) sb.append(stack.pollFirst());
+        while (!stack.isEmpty()) sb.append(stack.pollFirst());
 
-        return sb.length()==0?"0":sb.toString();
+        return sb.length() == 0 ? "0" : sb.toString();
 
 
     }
