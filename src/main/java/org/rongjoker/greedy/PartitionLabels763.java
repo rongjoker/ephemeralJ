@@ -6,7 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
+ * @date 05/31/2021
+ * 763. 划分字母区间 https://leetcode-cn.com/problems/partition-labels/
+ * 贪心算法，效率更高
  *
  *
  */
