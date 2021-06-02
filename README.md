@@ -22,7 +22,7 @@ Ephemeral codes,permanent thoughts;<br>
 17. array:数组
 18. hash:哈希
 
-### 刷题合集
+### 题目合集
 [一月合集](src/main/resources/document/202101.md)
 <br>
 [二月合集](src/main/resources/document/202102.md)
@@ -32,5 +32,6 @@ Ephemeral codes,permanent thoughts;<br>
 [四月合集](src/main/resources/document/202104.md)
 <br>
 [五月合集](src/main/resources/document/202105.md)
-
+<br>
+[六月合集](src/main/resources/document/202106.md)
 
