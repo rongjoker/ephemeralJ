@@ -19,6 +19,35 @@ public class ContinuousSubarraySum523 {
     }
 
 
+    /**
+     * 合并到一个循环里来做
+     * @param nums
+     * @param k
+     * @return
+     */
+    public boolean checkSubarraySum2(int[] nums, int k) {
+        int len = nums.length;
+        if (len < 2) return false;
+        int[] prex = new int[len + 1];
+
+        for (int i = 0; i < len; ++i) {
+            if (i < len - 1 && nums[i] == 0 && nums[i + 1] == 0) return true;
+            prex[i + 1] = prex[i] + nums[i];
+            int cur = i+1;
+            if(prex[cur]>=k){
+                for (int j = 0; j < cur - 1; ++j) {
+                    int temp = prex[cur] - prex[j];
+                    if (temp < k) break;
+                    if (temp % k == 0) return true;
+                }
+            }
+        }
+
+        return false;
+
+    }
+
+
     public boolean checkSubarraySum(int[] nums, int k) {
         int len = nums.length;
         if (len < 2) return false;
