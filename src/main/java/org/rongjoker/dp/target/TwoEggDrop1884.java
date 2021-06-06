@@ -2,6 +2,11 @@ package org.rongjoker.dp.target;
 
 import org.junit.Test;
 
+/**
+ * 1884. 鸡蛋掉落-两枚鸡蛋 https://leetcode-cn.com/problems/egg-drop-with-2-eggs-and-n-floors/
+ *
+ *
+ */
 public class TwoEggDrop1884 {
 
     @Test
@@ -13,9 +18,11 @@ public class TwoEggDrop1884 {
 
     public int twoEggDrop(int n) {
 
-        dp = new int[n+1][n+1];
+        return (int) Math.ceil((Math.sqrt(2 * n) - 1) / 2);
 
-        return drop(0,n);
+//        dp = new int[n+1][n+1];
+//
+//        return drop(0,n);
 
 
     }
