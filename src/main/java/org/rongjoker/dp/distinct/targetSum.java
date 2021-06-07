@@ -21,8 +21,10 @@ public class targetSum {
 //        2
 
         int[] nums = {9,7,0,3,9,8,6,5,7,6};
+//        nums = new int[]{1};
         int S = 2;
         System.out.println(findTargetSumWaysOptimize(nums, S));
+        System.out.println(findTargetSumWays2(nums, S));
 
     }
 
@@ -99,6 +101,33 @@ public class targetSum {
         }
 
         return current != null ? current.get(S) : 0;
+
+    }
+
+    public int findTargetSumWays2(int[] nums, int target) {
+        int sum = 0;
+        for (int num : nums) sum+=num;
+        if(sum<Math.abs(target))return 0;
+
+        //这一步费解
+        if((sum + target) % 2 == 1) {
+            return 0;
+        }
+
+        Map<Integer,Integer> dp = new HashMap<>();
+        dp.put(0,1);
+        Map<Integer,Integer> dp2;
+        for(int num:nums){
+            dp2 = new HashMap<>();
+            for(Integer k:dp.keySet()){
+                dp2.put(k-num,dp.getOrDefault(k,0)+dp2.getOrDefault(k-num,0));
+                dp2.put(k+num,dp.getOrDefault(k,0)+dp2.getOrDefault(k+num,0));
+            }
+            dp = dp2;
+
+        }
+
+        return dp.getOrDefault(target,0);
 
     }
 
