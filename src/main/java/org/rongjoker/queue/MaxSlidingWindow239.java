@@ -25,10 +25,36 @@ public class MaxSlidingWindow239 {
     @Test
     public void test239(){
 
-        int[] x = maxSlidingWindow(new int[]{1,3,1,2,0,5},3);
+        System.out.println(Arrays.toString(maxSlidingWindow(new int[]{9}, 1)));
+        System.out.println(Arrays.toString(maxSlidingWindow2(new int[]{9}, 1)));
 
-        System.out.println(Arrays.toString(x));
+    }
 
+
+    public int[] maxSlidingWindow2(int[] nums, int k) {
+        int len = nums.length;
+        if(len==1 || k==1)return nums;
+        int[] ans = new int[len-k+1];
+        Deque<Integer> queue = new LinkedList<>();
+        for(int i=0;i<k-1;++i){
+            while(!queue.isEmpty() && nums[queue.peekLast()]<nums[i]){
+                queue.pollLast();
+            }
+            queue.offerLast(i);
+        }
+        for(int i=k-1;i<len;++i){
+
+            while(!queue.isEmpty() && nums[queue.peekLast()]<nums[i]){
+                queue.pollLast();
+            }
+            queue.offerLast(i);
+            if(i - queue.peekFirst() >k-1)queue.pollFirst();
+
+            ans[i-k+1] = nums[queue.peekFirst()];
+
+        }
+
+        return ans;
     }
 
 

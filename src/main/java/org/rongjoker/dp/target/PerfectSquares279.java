@@ -22,8 +22,27 @@ public class PerfectSquares279 {
     @Test
     public void test279() {
 
-        System.out.println(numSquares(48));
+        System.out.println(numSquares(9998));
+        System.out.println(numSquares2(9998));
 
+
+    }
+
+
+    public int numSquares2(int n) {
+
+        int k = (int)Math.floor(Math.sqrt(n));
+
+        int[] dp = new int[n+1];
+        for (int i = 1; i <= n; i++) dp[i]=i;
+        for(int i=2;i<=k;i++){
+            int temp = i*i;
+            for(int j=temp;j<=n;++j){
+                dp[j] = Math.min(dp[j],dp[j-temp]+1);
+            }
+        }
+
+        return dp[n];
 
     }
 
