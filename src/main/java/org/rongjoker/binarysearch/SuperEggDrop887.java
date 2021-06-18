@@ -39,10 +39,41 @@ public class SuperEggDrop887 {
 
     public int superEggDrop(int k, int n) {
 
+        dp = new int[k+1][n+1];
+        for (int i = 0; i <= k; i++) {
+            for (int j = 0; j <= n; j++) {
+                dp[i][j] = Integer.MAX_VALUE;
 
-        return 0;
+            }
+        }
+
+        return drop(n,k);
 
     }
+
+
+    int[][] dp;
+
+    //这种会超时
+    public int drop(int f,int egg){
+        if(egg==1)return f;
+        if(f==0) return 0;
+
+        if(dp[f][egg]!=Integer.MAX_VALUE)return dp[f][egg];
+
+        int ans = Integer.MAX_VALUE;
+        for(int x=1;x<=f;x++){
+            ans = Math.min(ans,Math.max(drop(x-1,egg-1),drop(f-x,egg)) + 1);
+        }
+
+        dp[f][egg] = ans;
+        return ans;
+        //在第x层，有2种可能，碎了，那么鸡蛋少一个，并且答案肯定在x层下面，即x-1
+        //鸡蛋没碎，则答案在x层上面，即f-x，鸡蛋数量不变
+
+    }
+
+
 
 
 

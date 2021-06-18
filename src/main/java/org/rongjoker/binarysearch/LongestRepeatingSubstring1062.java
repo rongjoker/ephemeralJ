@@ -34,6 +34,7 @@ package org.rongjoker.binarysearch;
  * 原文链接：https://blog.csdn.net/qq_21201267/article/details/107543705
  *
  * 会员题目
+ * https://blog.csdn.net/qq_21201267/article/details/107543705
  *
  */
 public class LongestRepeatingSubstring1062 {
