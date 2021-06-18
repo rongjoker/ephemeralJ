@@ -6,7 +6,7 @@ import org.junit.Test;
 import java.util.Arrays;
 
 /**
- * @date 06/16/2021
+ * @date 06/18/2021
  *  1760. 袋子里最少数目的球 https://leetcode-cn.com/problems/minimum-limit-of-balls-in-a-bag/
  *
  *给你一个整数数组 nums ，其中 nums[i] 表示第 i 个袋子里球的数目。同时给你一个整数 maxOperations 。
@@ -51,8 +51,7 @@ public class MinimumSize1760 {
 
         Arrays.sort(nums);
 
-        int max =0;
-        for (int num : nums) max = Math.max(max,num);
+        int max =nums[nums.length-1];
         int left = 1,right = max,ans = max;
         while(left<=right){
             int mid = left + ((right - left)>>1);

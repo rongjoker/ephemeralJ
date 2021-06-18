@@ -8,7 +8,7 @@ import java.util.Deque;
 import java.util.List;
 
 /**
- * @date 06/16/2021
+ * @date 06/17/2021
  * 410. 分割数组的最大值  https://leetcode-cn.com/problems/split-array-largest-sum/
  *
  * 给定一个非负整数数组 nums 和一个整数 m ，你需要将这个数组分成 m 个非空的连续子数组。
