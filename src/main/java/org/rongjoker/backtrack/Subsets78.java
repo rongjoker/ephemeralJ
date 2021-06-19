@@ -40,18 +40,15 @@ public class Subsets78 {
 
     public void backtrack(int start,int len,int[] nums){
 
-        if(start==len)return;
+        if(start==len){
+            return;
+        }
 
         path.add(nums[start]);
-
         permute.add(new ArrayList<>(path));
-
-        //包含当前点向下递归
         backtrack(start+1,len,nums);
-
-        //不包含当前点向下递归，即回溯算法
         path.remove(path.size()-1);
-        backtrack(start+1,len,nums);
+        backtrack(start+1,len,nums);//这一步很关键，与普通的回溯法不同
 
     }
 
