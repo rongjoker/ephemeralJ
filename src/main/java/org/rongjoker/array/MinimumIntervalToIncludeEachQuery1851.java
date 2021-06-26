@@ -46,7 +46,7 @@ public class MinimumIntervalToIncludeEachQuery1851 {
         int sw;
 
         for (int[] r : ready) {
-            if (r[0] == 0) {//开始事件
+            if (r[0] == 0) {//开始事件-开始的时候就把长度记录下来，查询的时候不需要知道具体是哪个窗口，只要知道最短的窗口的大小即可
                 sw = r[2] - r[1] + 1;
                 map.put(sw, map.getOrDefault(sw, 0) + 1);//这个宽度有几个区间
             } else if (r[0] == 2) {//结束事件,删除对应长度

@@ -10,4 +10,8 @@ public class Test4 {
     }
 
 
+//    public int[] minDifference(int[] nums, int[][] queries) {
+//
+//    }
+
 }

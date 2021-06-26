@@ -1,4 +1,4 @@
-package org.rongjoker.backtrack;
+package org.rongjoker.dp.longest;
 
 import org.junit.Test;
 
@@ -8,17 +8,50 @@ import java.util.Deque;
 /**
  *
  * @date 06/18/2021
+ * @date 06/25/2021
  *673. 最长递增子序列的个数  https://leetcode-cn.com/problems/number-of-longest-increasing-subsequence/
+ * 最长递增子序列的进阶问题，难度高很多
  *
  */
 public class FindNumberOfLIS673 {
 
     @Test
     public void test673(){
-//        System.out.println(findNumberOfLIS(new int[]{1,3,5,4,7}));
-        System.out.println(findNumberOfLIS(new int[]{2,2,2,2,2}));
+        System.out.println(findNumberOfLIS(new int[]{1,3,5,4,7}));
+        System.out.println(findNumberOfLIS2(new int[]{2,2,2,2,2}));
+        System.out.println(findNumberOfLIS2(new int[]{1,2,4,3,5,4,7,2}));
     }
 
+
+    public int findNumberOfLIS2(int[] nums) {
+        if(nums.length==0)return 0;
+        int max = 1,len = nums.length;
+        int[][] dp = new int[len][2];
+        dp[0][0] = 1;
+        dp[0][1] = 1;
+        int count = 1;
+        for(int i = 1;i<len;++i){
+            int t = 1,cur_count = 1;
+            for(int j = 0;j<i;j++){
+                if(nums[i]>nums[j]) {
+                    if(dp[j][0]+1>t){
+                        t = dp[j][0]+1;//最长的子序列
+                        cur_count = dp[j][1];
+
+                    }else if (dp[j][0]+1==t) cur_count+=dp[j][1];
+                }
+            }
+            dp[i][0] = t;
+            dp[i][1] = cur_count;
+
+            if(t>max){
+                count = cur_count;
+                max = t;
+            }else if(t==max) count +=cur_count;
+        }
+        return count;
+
+    }
 
     /**
      * dfs回溯法会超时

@@ -35,11 +35,11 @@ public class LeastMinutes {
     public int halfQuestions(int[] questions) {
         int len = questions.length;
         int size = len / 2;
-        int[] cache = new int[1000];
+        int[] cache = new int[1001];
         for (int question : questions) cache[question]++;
         Arrays.sort(cache);
         int ans = 0;
-        for (int i = 999; i >= 0; i--) {
+        for (int i = 1000; i >= 0; i--) {
             size -= cache[i];
             ans++;
             if (size <= 0) {
