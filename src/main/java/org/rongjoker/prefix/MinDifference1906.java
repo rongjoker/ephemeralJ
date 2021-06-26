@@ -1,19 +1,15 @@
-package org.rongjoker.contest.week246;
+package org.rongjoker.prefix;
 
-import org.junit.Test;
-
-import java.util.Arrays;
-
-public class Test4 {
-
-    @Test
-    public void test4(){
-
-        System.out.println(Arrays.toString(minDifference(new int[]{1, 3, 4, 8}, new int[][]{{0, 1}, {1, 2}, {2, 3}, {0, 3}})));
-        System.out.println(Arrays.toString(minDifference(new int[]{4,5,2,2,7,10}, new int[][]{{0, 1}, {1, 2}, {2, 3}, {0, 3}})));
-
-    }
-
+/**
+ *
+ *  @date 06/26/2021
+ *  1906. 查询差绝对值的最小值 https://leetcode-cn.com/problems/minimum-absolute-difference-queries/
+ *  前缀个数和
+ *
+ *
+ *
+ */
+public class MinDifference1906 {
 
     public int[] minDifference(int[] nums, int[][] queries) {
         int len = nums.length,len2 = queries.length;
@@ -45,5 +41,4 @@ public class Test4 {
 
 
     }
-
 }
