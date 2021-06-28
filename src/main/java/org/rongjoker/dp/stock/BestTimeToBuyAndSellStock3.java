@@ -19,19 +19,6 @@ import org.junit.Test;
 public class BestTimeToBuyAndSellStock3 {
 
 
-    /**
-     * 123. 买卖股票的最佳时机 III   https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iii/
-     * <p>
-     * 给定一个数组，它的第 i 个元素是一支给定的股票在第 i 天的价格。
-     * <p>
-     * 设计一个算法来计算你所能获取的最大利润。你最多可以完成 两笔 交易。
-     * <p>
-     * 注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。
-     * <p>
-     * 来源：力扣（LeetCode）
-     * 链接：https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iii
-     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
-     */
     @Test
     public void test123() {
 
@@ -87,7 +74,7 @@ public class BestTimeToBuyAndSellStock3 {
 
         int[][] dp = new int[len][4];
         dp[0][0] = -prices[0];
-        dp[0][2] = -prices[0];
+        dp[0][2] = -prices[0];//收益从前面顺延过来，并不是购买了第二笔股票
 
 
         //记录前缀状态
