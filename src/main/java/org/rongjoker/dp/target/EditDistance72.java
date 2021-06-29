@@ -52,6 +52,7 @@ public class EditDistance72 {
                     dp[i+1][j+1] = dp[i][j];
                 else{
                     dp[i+1][j+1] = 1 + Math.min(Math.min(dp[i+1][j],dp[i][j+1]),dp[i][j]);
+                    //删除、插入、替换三种情况，因为n*n，所以插入后顺序向前的情况也会被考虑到。类似递归
                 }
             }
         }

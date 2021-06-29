@@ -33,10 +33,11 @@ public class BestTimeToBuyAndSellStock309 {
     @Test
     public void test309() {
 
-        int[] array = {1,1,1,1,2,1};//[3,2,6,5,0,3]
-//        int[] array = {3,3,5,0,0,3,1,4};//[3,2,6,5,0,3]
+//        int[] array = {1,1,1,1,2,1};//[3,2,6,5,0,3]
+        int[] array = {3,3,5,0,0,3,1,4};//[3,2,6,5,0,3]
 
         System.out.println(maxProfit(array));
+        System.out.println(maxProfit2(array));
 
 
     }
@@ -63,6 +64,23 @@ public class BestTimeToBuyAndSellStock309 {
         return Math.max(dp[len-1][1],0);
 
     }
+
+    public int maxProfit2(int[] prices) {
+        int len = prices.length;
+        int[][] dp = new int[len][3];
+        dp[0][0] = -prices[0];
+        for(int i=1;i<len;i++){
+            dp[i][0] =Math.max( dp[i-1][0], dp[i-1][2]-prices[i]);
+            dp[i][1] =Math.max( dp[i-1][1], dp[i-1][0]+prices[i]);
+            dp[i][2] =Math.max( dp[i-1][2], dp[i-1][1]);
+        }
+
+        return Math.max(dp[len-1][1],dp[len-1][2]);
+
+    }
+
+
+
 
 
 }
