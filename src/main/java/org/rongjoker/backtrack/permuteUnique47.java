@@ -64,7 +64,6 @@ public class permuteUnique47 {
         Set<Integer> set = new HashSet<>();
 
         for (int i = start; i < len; i++) {
-//            System.out.println("start:"+start+";i:"+i);
             if(set.contains(nums[i])){
                 continue;
             }
