@@ -30,11 +30,8 @@ public class LetterCasePermutation784 {
 
         ans = new ArrayList<>();
         backtrack(s.toLowerCase().toCharArray(),s.length(),0);
-
         return ans;
-
     }
-
 
     List<String> ans;
 
