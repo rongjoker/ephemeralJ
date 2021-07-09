@@ -17,13 +17,51 @@ public class JumpGame {
     @Test
     public void test55(){
 
-
-
 //        int [] nums = {2,0,1,1,2,1,0,0,0};
-        int [] nums = {2};
+//        int [] nums = {2};
 
-        System.out.println(canJump(nums));
+//        System.out.println(canJump(nums));
+        //[5,9,3,2,1,0,2,3,3,1,0,0]
 
+        System.out.println(canJump4(new int[]{3,2,1,0,4}));
+        System.out.println(canJump(new int[]{3,2,1,0,4}));
+        System.out.println("-----");
+        System.out.println(canJump4(new int[]{2,0,1,1,2,1,0,0,0}));
+        System.out.println(canJump(new int[]{2,0,1,1,2,1,0,0,0}));
+        System.out.println("-----");
+        System.out.println(canJump4(new int[]{5,9,3,2,1,0,2,3,3,1,0,0}));
+        System.out.println(canJump(new int[]{5,9,3,2,1,0,2,3,3,1,0,0}));
+        System.out.println("-----");
+        System.out.println(canJump4(new int[]{2,0,0,0,1,1,1}));
+        System.out.println(canJump(new int[]{2,0,0,0,1,1,1}));
+
+
+
+    }
+
+
+    public boolean canJump4(int[] nums) {
+        int len = nums.length,index=nums[0],cur;
+        for(int i=0;i<len;i++){
+            cur = nums[i] + i;
+            index = Math.max(index,cur);
+            if(i>=index && i<len-1)return false;
+        }
+
+        return true;
+    }
+
+    public boolean canJump3(int[] nums) {
+        int len = nums.length,index=nums[0];
+        int[] step = new int[len];
+        for(int i=0;i<len;i++)step[i] = nums[i] + i;
+
+        for(int i=0;i<len;i++){
+            index = Math.max(index,step[i]);
+            if(i>=index && i<len-1)return false;
+        }
+
+        return true;
     }
 
 
