@@ -2,9 +2,7 @@ package org.rongjoker.backtrack;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * @date 03/10/2021
@@ -16,6 +14,9 @@ public class SubsetsWithDup90 {
 
     @Test
     public void test90() {
+
+        Set<Integer> set = new HashSet<>();
+        List<Integer> integers = new ArrayList<>(set);
 
         subsetsWithDup(new int[]{1, 1, 2, 2});
 
