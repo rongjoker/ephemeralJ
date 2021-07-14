@@ -22,8 +22,6 @@ public class IntersectionOfTwoLinkedLists160 {
             else temp2 = headA;
         }
         return temp1;
-
-
     }
 
 }
