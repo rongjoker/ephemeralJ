@@ -6,6 +6,7 @@ public class Test3 {
 
     public int maxCompatibilitySum2(int[][] students, int[][] mentors) {
         int m = students.length,n = students[0].length;
+        visited = new int[m];
         int[][] dp = new int[m][m];
         for(int i=0;i<m;++i){
             for(int j=0;j<m;++j){
@@ -25,6 +26,7 @@ public class Test3 {
     }
 
     int ans = 0;
+    int[] visited;
 
 
     public void  track(int[][] dp,int l,int r,int m,int cur){
