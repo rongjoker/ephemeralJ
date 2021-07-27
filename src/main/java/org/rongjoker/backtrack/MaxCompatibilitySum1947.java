@@ -44,6 +44,12 @@ public class MaxCompatibilitySum1947 {
     }
 
 
+    /**
+     * 优化解法的回溯
+     * @param students
+     * @param mentors
+     * @return
+     */
     public int maxCompatibilitySum(int[][] students, int[][] mentors) {
         int m = students.length, n = students[0].length;
         visited = new boolean[m];
@@ -60,7 +66,7 @@ public class MaxCompatibilitySum1947 {
             }
         }
 
-        track(dp, 0, 0, m, 0);
+        track(dp, 0, m, 0);
 
         return ans;
     }
@@ -69,21 +75,18 @@ public class MaxCompatibilitySum1947 {
     boolean[] visited;
 
 
-    public void track(int[][] dp, int l, int r, int m, int cur) {
-        if (l == m) {
+    public void track(int[][] dp, int i, int m, int cur) {
+        if (i == m) {
             ans = Math.max(cur, ans);
             return;
         }
-
-        for (int i = l; i < m; ++i) {
-            for (int j = r; j < m; ++j) {
-                if (visited[j]) continue;
-                cur += dp[i][j];
-                visited[j] = true;
-                track(dp, i + 1, 0, m, cur);
-                cur -= dp[i][j];
-                visited[j] = false;
-            }
+        for (int j = 0; j < m; ++j) {
+            if (visited[j]) continue;
+            cur += dp[i][j];
+            visited[j] = true;
+            track(dp, i + 1, m, cur);//这里进行了回溯的优化
+            cur -= dp[i][j];
+            visited[j] = false;
         }
     }
 
