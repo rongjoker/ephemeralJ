@@ -16,9 +16,33 @@ public class TopKFrequent347 {
 
     @Test
     public void test347() {
-        int[] nums = {1};
-        System.out.println(Arrays.toString(topKFrequentOptimize2(nums, 1)));
+        int[] nums = {3,0,1,0};
+        System.out.println(Arrays.toString(topKFrequent3(nums, 1)));
 
+
+    }
+
+    public int[] topKFrequent3(int[] nums, int k) {
+
+        Map<Integer,Integer> dict = new HashMap<>();
+        PriorityQueue<Integer> heap = new PriorityQueue<>(((o1, o2) -> dict.get(o2) - dict.get(o1)));
+
+        for(int i:nums){
+            if(!dict.containsKey(i)){
+                dict.put(i,1);
+            }else dict.put(i,dict.get(i)+1);
+        }
+
+        Set<Integer> set = dict.keySet();
+
+        heap.addAll(set);
+
+        int[] ans = new int[k];
+        for(int i=0;i<k;++i){
+            ans[i] = heap.poll();
+        }
+
+        return ans;
 
     }
 
