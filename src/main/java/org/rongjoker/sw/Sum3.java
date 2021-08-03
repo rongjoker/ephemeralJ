@@ -16,8 +16,60 @@ public class Sum3 {
     public void test15() {
 
 
-        int[] nums = {-1, 0, 1, 2, -1, -4};
+        //[-2,0,1,1,2]
+        int[] nums = {-2,0,1,1,2};
+        System.out.println(threeSum(nums));
         System.out.println(threeSumsOptimize(nums));
+
+    }
+
+
+    /**
+     * 中轴会出错
+     * @param nums
+     * @return
+     */
+    public List<List<Integer>> threeSum(int[] nums) {
+
+        List<List<Integer>> ans = new ArrayList<>();
+        int len = nums.length;
+        if(len<3)return ans;
+        Arrays.sort(nums);
+        if(nums[0]>0)return ans;
+        for(int p =0;p<len-1;p++){
+            if(nums[p]>0)break;
+            if(p>0 && nums[p] == nums[p-1])continue;
+            int left = p+1,right = len-1;
+            while(left<right){
+                if( nums[right]<0)break;
+
+                int sum = nums[left] + nums[right] +nums[p];
+                if(sum==0){
+                    List<Integer> a = new ArrayList<>();
+                    a.add(nums[left]);
+                    a.add(nums[p]);
+                    a.add(nums[right]);
+                    ans.add(a);
+
+                    while(right > left && nums[left]==nums[left+1]){
+                        left++;
+                    }
+                    while(right > left && nums[right]==nums[right-1]){
+                        right--;
+                    }
+
+
+                    left++;
+                    right--;
+                }else if (sum<0)left++;
+                else right--;
+
+
+            }
+
+        }
+
+        return ans;
 
     }
 
