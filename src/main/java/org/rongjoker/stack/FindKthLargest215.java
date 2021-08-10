@@ -25,6 +25,47 @@ public class FindKthLargest215 {
     }
 
 
+    /**
+     *
+     * 快速排序版本
+     * @param nums
+     * @param k
+     * @return
+     */
+    public int findKthLargest2(int[] nums, int k) {
+
+        int len = nums.length;
+
+        PriorityQueue<Integer> queue = new PriorityQueue<>();
+
+        for (int i = 0; i < k; i++) {
+            queue.offer(nums[i]);
+        }
+
+        for (int i = k; i < len; i++) {
+            if(nums[i]> queue.peek()){
+                queue.poll();
+                queue.offer(nums[i]);
+            }
+
+        }
+
+        return queue.peek();
+
+    }
+
+//    public int quickSort(int[] nums, int left,int right,int l0,int r0) {
+//
+//        while(left<right){
+//
+//
+//        }
+//
+//
+//    }
+
+
+
     public int findKthLargest(int[] nums, int k) {
 
         int len = nums.length;

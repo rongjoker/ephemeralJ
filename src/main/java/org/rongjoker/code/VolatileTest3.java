@@ -1,7 +1,5 @@
 package org.rongjoker.code;
 
-import jdk.internal.vm.annotation.Contended;
-
 public class VolatileTest3 {
 
 
@@ -10,7 +8,7 @@ public class VolatileTest3 {
 
     //消除缓存行的影响
     // c不使用volatile修饰
-    @Contended
+//    @Contended
     public static long c = 0;
 
     public static void main(String[] args) throws InterruptedException {
