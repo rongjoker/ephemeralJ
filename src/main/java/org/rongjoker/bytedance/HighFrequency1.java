@@ -367,7 +367,7 @@ public class HighFrequency1 {
         int len = s.length();
         char[] charArray = s.toCharArray();
 
-        // 记录每个数字出现的最后一次出现的下标
+        // 记录每个数字出现的最后一次出现的下标，避免重复，重复的话，交换后面更有利
         int[] last = new int[10];
         for (int i = 0; i < len; i++) {
             last[charArray[i] - '0'] = i;
@@ -376,9 +376,11 @@ public class HighFrequency1 {
         // 从左向右扫描，找到当前位置右边的最大的数字并交换
         for (int i = 0; i < len - 1; i++) {
             // 找最大，所以倒着找
-            for (int d = 9; d > charArray[i] - '0'; d--) {
-                if (last[d] > i) {
-                    swap(charArray, i, last[d]);
+            for (int d = 9; d > charArray[i] - '0'; d--) {//找比当前值大的最大值(防止重复、最后一个)
+                if (last[d] > i) {//肯定在当前值后面
+                    char temp = charArray[i];
+                    charArray[i] = charArray[last[d]];
+                    charArray[last[d]] = temp;
                     // 只允许交换一次，因此直接返回
                     return Integer.parseInt(new String(charArray));
                 }
@@ -387,10 +389,75 @@ public class HighFrequency1 {
         return num;
     }
 
-    private void swap(char[] charArray, int index1, int index2) {
-        char temp = charArray[index1];
-        charArray[index1] = charArray[index2];
-        charArray[index2] = temp;
+
+    @Test
+    public void test456(){
+
+        System.out.println(find132pattern(new int[]{1,2,3,4}));
+        System.out.println(find132pattern(new int[]{3,1,4,2}));
+        System.out.println(find132pattern(new int[]{-1,3,2,0}));
+
+
+    }
+
+
+    /**
+     *
+     * 456. 132 模式 https://leetcode-cn.com/problems/132-pattern/
+     *
+     * 132 模式的子序列 由三个整数 nums[i]、nums[j] 和 nums[k] 组成，并同时满足：i < j < k 和 nums[i] < nums[k] < nums[j] 。
+     *
+     * 来源：力扣（LeetCode）
+     * 链接：https://leetcode-cn.com/problems/132-pattern
+     * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+     *
+     * @param nums
+     * @return
+     */
+    public boolean find132pattern(int[] nums) {
+        int n = nums.length;
+        Deque<Integer> candidateK = new ArrayDeque<>();
+        candidateK.push(nums[n - 1]);
+        int maxK = Integer.MIN_VALUE;
+
+        for (int i = n - 2; i >= 0; --i) {
+            if (nums[i] < maxK) {//找到i
+                return true;
+            }
+            while (!candidateK.isEmpty() && nums[i]> candidateK.peekLast())maxK = candidateK.pollLast();//这一步的nums[i]相当于j
+
+            if(nums[i]>maxK)candidateK.addLast(nums[i]);//j进入k的备选，如果下次遇到比j更大的数字，则此处的j就可以当k来使用，也就是说，在找到j的情况下，k越大越好
+        }
+
+        return false;
+    }
+
+
+    /**
+     * 152. 乘积最大子数组 https://leetcode-cn.com/problems/maximum-product-subarray/
+     *
+     *
+     * @param nums
+     * @return
+     */
+    public int maxProduct(int[] nums) {
+        int ans = nums[0];
+
+        int max = nums[0],min = nums[0];
+
+        for (int i = 1; i < nums.length; i++) {
+            int addTemp = nums[i] * max;
+            int minusTemp = nums[i] * min;
+
+            max = Math.max(minusTemp,Math.max(addTemp,nums[i]));//三者最大值
+            min = Math.min(minusTemp,Math.min(addTemp,nums[i]));//三者最小值
+
+            ans = Math.max(ans,Math.max(max,min));
+
+        }
+
+        return ans;
+
     }
 
 
