@@ -196,4 +196,60 @@ public class HighFrequency2 {
     }
 
 
+    /**
+     *
+     * 83. 删除排序链表中的重复元素 https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/
+     *
+     *
+     * @param head
+     * @return
+     */
+    public ListNode deleteDuplicates(ListNode head) {
+        if(head==null)
+            return null;
+        if(head.next==null)
+            return head;
+
+        head.next = deleteDuplicates(head.next);
+        if(head.next.val == head.val){
+            head = head.next;
+
+        }
+        return head;
+    }
+
+
+    /**
+     *
+     * 221. 最大正方形 https://leetcode-cn.com/problems/maximal-square/
+     * 只要周边有1个不为1，就无法形成正方形
+     * @param matrix
+     * @return
+     */
+    public int maximalSquare(char[][] matrix) {
+
+        int m = matrix.length, n = matrix[0].length, max = 0;
+
+        int [][] dp = new int[m][n];
+
+        for (int i = 0; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+
+                if(matrix[i][j] == '1'){
+                    dp[i][j] = 1;
+
+                    if (i > 0 && j > 0 && matrix[i-1][j] == '1' && matrix[i-1][j-1] == '1' && matrix[i][j-1] == '1') {
+                        dp[i][j] = Math.min(Math.min(dp[i - 1][j], dp[i][j - 1]), dp[i - 1][j - 1]) + 1;
+                    }
+
+                    max = Math.max(max,dp[i][j]);
+                }
+
+            }
+        }
+
+        return max*max;
+
+    }
+
 }
