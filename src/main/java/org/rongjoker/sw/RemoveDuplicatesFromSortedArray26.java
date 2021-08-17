@@ -28,7 +28,8 @@ public class RemoveDuplicatesFromSortedArray26 {
 
         int len = nums.length;
         if(len<2)return len;
-        int left=0,right=1;
+        int left=0;
+        int right=1;
         while (right<len){
 
             if(nums[right]!=nums[left]){//两个指针一起增加，否则只增加快指针
