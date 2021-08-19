@@ -252,4 +252,30 @@ public class HighFrequency2 {
 
     }
 
+
+    //24. 两两交换链表中的节点 https://leetcode-cn.com/problems/swap-nodes-in-pairs/
+    //递归
+    public ListNode swapPairs(ListNode head) {
+        if(head == null || head.next == null)   return head;
+        ListNode newHead = head.next;
+        head.next = swapPairs(newHead.next);
+        newHead.next = head;
+        return newHead;
+    }
+    //迭代
+    public ListNode swapPairs2(ListNode head) {
+        ListNode newHead = new ListNode(0);
+        ListNode cur = newHead;
+        newHead.next = head;
+        while(cur.next != null && cur.next.next != null){
+            ListNode a = cur.next;
+            ListNode b = a.next;
+            cur.next = b;
+            a.next = b.next;
+            b.next = a;
+            cur = a;
+        }
+        return newHead.next;
+    }
+
 }
