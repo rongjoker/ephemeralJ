@@ -1,7 +1,8 @@
 package org.rongjoker.dp.target;
 
+import org.junit.Test;
+
 /**
- *
  * @date 09/01/2021
  * 97. 交错字符串
  *
@@ -24,6 +25,17 @@ package org.rongjoker.dp.target;
  */
 public class IsInterleave97 {
 
+
+    @Test
+    public void test97() {
+        System.out.println(isInterleave("aabcc", "dbbca", "aadbbcbcac"));
+        System.out.println(isInterleave("aabcc", "dbbca", "aadbbbaccc"));
+
+    }
+
+    /**
+     * 典型的dp题目，每一步取决于前一步 + 当前步任何一个满足
+     */
     public boolean isInterleave(String s1, String s2, String s3) {
         int len1 = s1.length(), len2 = s2.length(), len3 = s3.length();
         if (len1 + len2 != len3) {
@@ -33,44 +45,23 @@ public class IsInterleave97 {
         boolean[][] dp = new boolean[len1 + 1][len2 + 1];
         dp[0][0] = true;
 
-        for (int i = 0; i < len1; i++) {
-            for (int j = 0; j < len2; j++) {
-
-
-
-
-            }
-        }
-
-        return false;
-
-
-    }
-
-
-    public boolean isInterleave2(String s1, String s2, String s3) {
-        int n = s1.length(), m = s2.length(), t = s3.length();
-
-        if (n + m != t) {
-            return false;
-        }
-
-        boolean[][] f = new boolean[n + 1][m + 1];
-
-        f[0][0] = true;
-        for (int i = 0; i <= n; ++i) {
-            for (int j = 0; j <= m; ++j) {
-                int p = i + j - 1;
+        for (int i = 0; i <= len1; i++) {
+            for (int j = 0; j <= len2; j++) {
+                int point = i + j - 1;
                 if (i > 0) {
-                    f[i][j] = f[i][j] || (f[i - 1][j] && s1.charAt(i - 1) == s3.charAt(p));
+                    dp[i][j] = dp[i][j] || dp[i - 1][j] && ss1[i - 1] == ss3[point];
                 }
                 if (j > 0) {
-                    f[i][j] = f[i][j] || (f[i][j - 1] && s2.charAt(j - 1) == s3.charAt(p));
+                    dp[i][j] = dp[i][j] || dp[i][j - 1] && ss2[j - 1] == ss3[point];
                 }
+
             }
+
         }
 
-        return f[n][m];
+        return dp[len1][len2];
+
     }
+
 
 }

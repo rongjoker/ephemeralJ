@@ -1,6 +1,7 @@
 package org.rongjoker.dp.target;
 
 import java.util.Arrays;
+import org.junit.Test;
 
 /**
  * @date 08/30/2021
@@ -11,6 +12,9 @@ import java.util.Arrays;
  *
  * 题目数据保证答案符合 32 位带符号整数范围。
  *
+ * 输入：s = "rabbbit", t = "rabbit"
+ * 输出：3
+ *
  * 来源：力扣（LeetCode）
  * 链接：https://leetcode-cn.com/problems/distinct-subsequences
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
@@ -18,46 +22,22 @@ import java.util.Arrays;
 public class NumDistinct115 {
 
 
-    public int numDistinct(String s, String t) {
-        int len_s = s.length(), len_t = t.length();
-        if (len_s < len_t) {
-            return 0;
-        }
-        if (len_s == len_t) {
-            if (s.equals(t)) {
-                return 1;
-            } else {
-                return 0;
-            }
-        }
-        char[] ss = s.toCharArray(), tt = t.toCharArray();
-        int[][] dp = new int[len_t + 1][len_s + 1];
-        Arrays.fill(dp[0], 1);
-        for (int i = 0; i < len_t; i++) {
-            for (int j = 0; j < len_s; j++) {
-                if (ss[j] == tt[i]) {
-                    dp[i + 1][j + 1] = dp[i][j];
-                }else dp[i + 1][j + 1] = Math.max(dp[i+1][j],dp[i][j+1]);
-            }
-
-        }
-
-
-        return -1;
-
-
+    @Test
+    public void test115() {
+        System.out.println(numDistinct("rabbbit", "rabbit"));
     }
 
 
-    public int numDistinct2(String s, String t) {
+    public int numDistinct(String s, String t) {
         int m = s.length(), n = t.length();
         if (m < n) {
             return 0;
         }
         int[][] dp = new int[m + 1][n + 1];
-        for (int i = 0; i <= m; i++) {
+        for (int i = 0; i <= m; i++) {//t为""的情况，所有都是1
             dp[i][n] = 1;
         }
+        //用大的去找小的，小的相当于是目标
         for (int i = m - 1; i >= 0; i--) {
             char sChar = s.charAt(i);
             for (int j = n - 1; j >= 0; j--) {
@@ -65,11 +45,12 @@ public class NumDistinct115 {
                 if (sChar == tChar) {
                     dp[i][j] = dp[i + 1][j + 1] + dp[i + 1][j];
                 } else {
-                    dp[i][j] = dp[i + 1][j];
+                    dp[i][j] = dp[i + 1][j];//从前面顺延
                 }
             }
         }
         return dp[0][0];
     }
+
 
 }
