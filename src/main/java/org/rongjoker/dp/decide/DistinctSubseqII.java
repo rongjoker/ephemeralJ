@@ -1,4 +1,4 @@
-package org.rongjoker.dp.target;
+package org.rongjoker.dp.decide;
 
 import java.util.Arrays;
 import org.junit.Test;
