@@ -4,7 +4,6 @@ import java.util.Arrays;
 import org.junit.Test;
 
 /**
- *
  * @date 09/01/2021
  * 940. 不同的子序列 II
  *
@@ -41,13 +40,14 @@ public class DistinctSubseqII {
         //        System.out.println(distinctSubseqII("aba"));
         //        System.out.println(distinctSubseqII("aaa"));
         System.out.println(distinctSubseqII("lee"));
+        System.out.println(distinctSubseqII2("lee"));
 
     }
 
     public int distinctSubseqII(String S) {
         int MOD = 1_000_000_007;
         int N = S.length();
-        int[] dp = new int[N+1];
+        int[] dp = new int[N + 1];
         dp[0] = 1;
 
         int[] last = new int[26];
@@ -55,16 +55,62 @@ public class DistinctSubseqII {
 
         for (int i = 0; i < N; ++i) {
             int x = S.charAt(i) - 'a';
-            dp[i+1] = dp[i] * 2 % MOD;
-            if (last[x] >= 0)
-                dp[i+1] -= dp[last[x]];
-            dp[i+1] %= MOD;
+            dp[i + 1] = dp[i] * 2 % MOD;
+            if (last[x] >= 0) {
+                dp[i + 1] -= dp[last[x]];
+            }
+            dp[i + 1] %= MOD;
             last[x] = i;
         }
 
         dp[N]--;
-        if (dp[N] < 0) dp[N] += MOD;
+        if (dp[N] < 0) {
+            dp[N] += MOD;
+        }
         return dp[N];
     }
+
+
+    /**
+     * o(n^2)的朴素解法
+     *
+     *
+     * // dp[i]表示前i个元素中以第i个元素结尾时, 且和前面的i - 1个状态都没有重复子序列时的个数(不含空串, 注意和方法二的区别)
+     * // 所以最后的答案是所有加起来
+     * // 难点及关键点: if (S[k] == S[i]) break; 为什么这里要break, 如果不break行不行.
+     * // 回到dp数组的定义, 仔细思考一下, 因为不能和前面的重复, 这样做是为了避免重复计数.
+     */
+    public int distinctSubseqII2(String s) {
+
+        int MOD = 1000000007;
+        char[] cs = s.toCharArray();
+
+        int n = s.length();
+        int[] dp = new int[n + 1];
+        dp[0] = 1;
+        for (int i = 1; i < n; ++i) {
+            // 考虑自己单独成段时,此处可优化
+            dp[i] = 1;
+            for (int k = i - 1; k >= 0; --k) {
+                if (cs[k] == cs[i]) {
+                    dp[i] = 0;
+                    break;
+                }
+            }
+            // 考虑拼接在前面段的后面时
+            for (int k = i - 1; k >= 0; --k) {
+                dp[i] = (dp[i] + dp[k]) % MOD;
+                if (cs[k] == cs[i]) {
+                    break;
+                }
+            }
+        }
+        int ans = 0;
+        for (int i = 0; i < n; ++i) {
+            ans = (ans + dp[i]) % MOD;
+        }
+        return ans;
+    }
+
 
 }
