@@ -21,15 +21,15 @@
  
  - 功能: 门店智慧画像、智能路线规划、业绩目标预测、poi网格化管理、定时任务等
  - 角色: 服务端负责人+主程
- - 技术栈: Spring-boot、Mysql、Redis、ElasticSearch、AWS SQS、AWS S3等
- - 难点: 处理北京、上海、烟台、青岛等地大量数据的标准化;数据高效、完整地同步至多个平台
+ - 技术栈: Spring-boot、Mysql、Redis、AWS SQS、AWS S3等
+ - 难点: 处理北京、上海、烟台、青岛等地大量数据的标准化;
 
 #### SFA
 >  SFA项目组是欣和食品公为新零售领域拓展业务&互联网转型而成立的开发团队
  
  - 功能: 门店地推、订单管理、绩效管理、业务员智能派单等
- - 角色: 主程+服务端负责人
- - 技术栈: Spring-boot、Mysql、Redis、ElasticSearch、AWS ELB、AWS EC2、AWS S3等
+ - 角色: 服务端负责人+主程
+ - 技术栈: Spring-boot、Mysql、Redis、ElasticSearch、AWS ELB、AWS EC2、Apollo
  - 难点: 采用整套AWS云服务实现项目微服务化和持续集成;上海与公司全国其他分部的每日80w-130w条数据对接;网络不稳定情况下业务员离线处理任务;网格化管理门店与地推新门店
  
 #### xy苹果手机助手搜索模块
