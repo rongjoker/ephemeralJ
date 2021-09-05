@@ -1,10 +1,13 @@
 package org.rongjoker.dp.decide;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 import org.junit.Test;
 
 /**
  * @date 09/01/2021
+ * @date 09/05/2021
  * 940. 不同的子序列 II
  *
  * 给定一个字符串 s，计算 s 的 不同非空子序列 的个数。因为结果可能很大，所以返回答案需要对 10^9 + 7 取余 。
@@ -88,27 +91,25 @@ public class DistinctSubseqII {
         int n = s.length();
         int[] dp = new int[n + 1];
         dp[0] = 1;
+        Set<Character> dict = new HashSet<>();
+        dict.add(cs[0]);
+        int ans = 1;
         for (int i = 1; i < n; ++i) {
             // 考虑自己单独成段时,此处可优化
-            dp[i] = 1;
-            for (int k = i - 1; k >= 0; --k) {
-                if (cs[k] == cs[i]) {
-                    dp[i] = 0;
-                    break;
-                }
-            }
+            dp[i] = dict.contains(cs[i])?0:1;
+            dict.add(cs[i]);
             // 考虑拼接在前面段的后面时
             for (int k = i - 1; k >= 0; --k) {
                 dp[i] = (dp[i] + dp[k]) % MOD;
-                if (cs[k] == cs[i]) {
+                if (cs[k] == cs[i]) {//从后向前加，重复的话，说明前面已经加过了，直接跳过就可以，也可以保证bb这样可以被加上
                     break;
                 }
             }
-        }
-        int ans = 0;
-        for (int i = 0; i < n; ++i) {
+
             ans = (ans + dp[i]) % MOD;
+
         }
+
         return ans;
     }
 
