@@ -1,6 +1,8 @@
 package org.rongjoker.stack;
 
+import java.util.HashSet;
 import java.util.PriorityQueue;
+import java.util.Set;
 import org.junit.Test;
 
 /**
@@ -35,6 +37,13 @@ public class MagicTower {
     public void testMagicTower() {
         System.out.println(magicTower(new int[]{100, 100, 100, -250, -60, -140, -50, -50, 100, 150}));
         System.out.println(magicTower(new int[]{-200, -300, 400, 0}));
+
+        Set<String > set = new HashSet<>();
+        set.add(null);
+        set.add("123");
+        System.out.println(set.size());
+        System.out.println(set);
+        System.out.println(set.contains(null));
 
     }
 

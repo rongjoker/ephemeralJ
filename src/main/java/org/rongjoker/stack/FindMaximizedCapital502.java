@@ -1,4 +1,4 @@
-package org.rongjoker.array;
+package org.rongjoker.stack;
 
 import java.util.Arrays;
 

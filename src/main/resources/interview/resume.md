@@ -1,10 +1,10 @@
 
 # 张士鹏-Java工程师-10年工作经验
 
- - 男/1990/17769367389/magic_of_java@foxmail.com
+ - 男/1990/17769367389/spzhang21@m.fudan.edu.cn
  
 ### 技术栈
- - Java/Spring全家桶/Solr/Javascript/Vue.js/Python/Golang
+ - Java/Spring全家桶/Solr/Vue.js/Python/Golang
 
 ### 工作经历
 
