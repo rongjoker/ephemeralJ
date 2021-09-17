@@ -89,7 +89,7 @@ public class Day12 {
 
         int i = lo, j = hi;
 
-        while (i < j) {//while是关键，只要i<j，循环就会走下去，知道i和j相遇，相遇点即数据中点，左边小右边大，相当于停留在正确的位置，随后左右各自继续重复操作，但是待排序总数递减了一
+        while (i < j) {//while是关键，只要i<j，循环就会走下去，直到i和j相遇，相遇点即数据中点，左边小右边大，相当于停留在正确的位置，随后左右各自继续重复操作，但是待排序总数递减了一
 
             while (array[j] >= temp && i < j)
                 j--;
@@ -198,6 +198,46 @@ public class Day12 {
     }
 
 
+    public void quickSort2021(int[] nums, int left, int right) {
+        if (left >= right) {
+            return;
+        }
+        int l = left, r = right;
+        int temp = nums[l];
+        while (l < r) {
+
+            while (l < r && nums[r] >= temp) {
+                r--;
+            }
+            if (l < r) {
+                nums[l] = nums[r];//1
+                l++;
+            }
+
+            while (l < r && nums[l] <= temp) {
+                l++;
+            }
+            if (l < r) {
+                nums[r] = nums[l];//1
+                r--;
+            }
+        }
+        //通过1和2，完成置换
+
+        nums[l] = temp;
+
+        quickSort2021(nums, left, l - 1);
+        quickSort2021(nums, l + 1, right);
+
+    }
+
+    @Test
+    public void testQuickSort2021(){
+        int[] nums = new int[]{2,7,1,3,6,9,4};
+        quickSort2021(nums,0,nums.length-1);
+        System.out.println(Arrays.toString(nums));
+
+    }
 
 
 
