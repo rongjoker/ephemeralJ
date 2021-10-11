@@ -4,12 +4,138 @@
 
 
 ### 2 MySQL开发过程中的优化技巧（MRR、删除数据的方式）
-
+1. 利用判断数据是否是数字，来将参数拆分城多个查询参数，避免or查询
+2. 将验证的代码块放放在事务外面，减少事务锁表的时间和范围
+3. in 查询用exists优化
+4. 字段默认是“”来避免null操作(索引不会包含有NULL值的列,只要列中包含有NULL值都将不会被包含在索引中)
+5. 用rename表来清空表数据，而不是delete from 或者 truncate(对于AUTO_INCREMENT的列来说，当在truncate之后，改列的第一个值仍从1开始，但是delete不释放空间，仍然顺序使用删除之前的值；delete属于DML，truncate是DDL语言， 操作立即生效，自动提交，原数据不放到rollback segment中，不能回滚)
+6. total 查询不精确，类似 es total 10000以上不准确
+7. order by field() 函数使用 :
+```
+ORDER BY FIELD(status,
+   'In Process',
+   'On Hold',
+   'Cancelled',
+   'Resolved',
+   'Disputed',
+   'Shipped');
+```
 
 ### binlog为什么还需要redo log
 
 
 ### 通过binlog同步数据到es
+[使用Kafka订阅数据库的实时Binlog](https://cloud.tencent.com/developer/article/1748294) <br>
+类似方案有  Alibaba Cannal, Zendesk Maxwell, Yelp mysql_streamer，不会影响主进程，但是会有不定时长的延迟<br>
+1. PartitionSubListener 监听 bin log的kafka分片:
+```
+public void onPartitionsAssigned(Collection<TopicPartition> partitions) {
+for (TopicPartition p : partitions) {
+log.info("add TopicPartition:{}", p);
+TopicPartitionMsgConsumer.getTopicPartitionMsgConsumerMap()
+.computeIfAbsent(p, k -> new TopicPartitionMsgConsumer(p, binlogSyncHandlerMap));
+}
+}
+
+```
+
+
+核心0:消费日志  TopicPartitionMsgConsumer#consume:
+
+```
+
+SubscribeDataProto.Entries entries = SubscribeDataProto.Entries.parseFrom(completeMsg.toByteArray());
+// 此处消费信息
+for (SubscribeDataProto.Entry entry : entries.getItemsList()) {
+//获取event类型
+if(!entry.getEvent().hasDmlEvent()){
+continue;
+}
+//获取数据库
+String binlogSchema = entry.getHeader().getSchemaName().toLowerCase();
+//获取表名
+String binlogTableName = entry.getHeader().getTableName().toLowerCase();
+BinlogSyncHandler<?> binlogSyncHandler = binlogSyncHandlerMap.get(Pair.of(binlogSchema, binlogTableName));
+
+    if(Objects.isNull(binlogSyncHandler)){
+        log.info("skip data {}.{}",binlogSchema,binlogTableName);
+        continue;
+    }
+    LocalDateTime happenAt = LocalDateTime
+        .ofInstant(Instant.ofEpochSecond(entry.getHeader().getTimestamp()), TimeZone.getDefault().toZoneId());
+    List tableData = BinlogHelper.getTableData(entry, binlogSyncHandler.getEntityType());
+    LocalDateTime now = LocalDateTime.now();
+    log.info("data happen at:{}, receive at:{}, latency:{}, content is {}",
+        happenAt.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME),
+        now.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME), Duration.between(happenAt, now).toNanos(), JSON
+            .toJSONString(tableData));
+    binlogSyncHandler.handle(entry.getEvent().getDmlEvent().getDmlEventType(), tableData);
+
+}
+
+// commit at checkpoint message
+if (entries.getItemsCount() > 0
+&& entries.getItems(0).getHeader().getMessageType() == SubscribeDataProto.MessageType.CHECKPOINT) {
+
+    consumer.commitAsync(Collections.singletonMap(tp, new OffsetAndMetadata(consumerRecord.offset() + 1)), null);
+}
+
+```
+
+
+核心1: 获取日志 VendorBinlogSyncHandler:
+```
+@Override
+public void handle(DMLType dmlType, List<VendorDsl> dataList) {
+if (CollectionUtils.isEmpty(dataList)) {
+return;
+}
+// 增删改
+log.info("handle dmlType={}, dataList={}", dmlType, JsonUtil.toJson(dataList));
+Map<String, VendorDsl> dataFromDb = dataList.stream().map(data -> {
+Optional<VendorDetailVO> optional = Optional.of(vendorService.getVendorById(data.getVendorId()));
+if (optional.isPresent()) {
+return generalConverter.toVendorDsl(optional.get());
+} else {
+return data;
+}
+}
+).collect(Collectors.toMap(k -> k.getVendorId().toString(), v -> v, (a, b) -> a));
+vendorService.writeVendorToEsData(dataFromDb);
+}
+
+```
+
+
+核心2: 写入es VendorServiceImpl#writeVendorToEsData -> ElasticSearchServiceImpl#createBatch
+
+```
+public <T> BulkResponse createBatch(String idxName, Map<String, T> dataMap) {
+if (MapUtils.isEmpty(dataMap)) {
+BulkItemResponse[] responses = new BulkItemResponse[0];
+return new BulkResponse(responses, 1);
+}
+//创建BulkRequest
+BulkRequest bulkRequest = new BulkRequest();
+dataMap.forEach((id, data) -> {
+IndexRequest indexRequest = new IndexRequest(idxName)
+.id(id)
+.source(JsonUtil.toJson(data), XContentType.JSON);
+bulkRequest.add(indexRequest);
+});
+try {
+//执行插入请求操作
+log.info("es bulk idxName:{}, dsl:{}", idxName, bulkRequest.getDescription());
+return restHighLevelClient.bulk(bulkRequest, RequestOptions.DEFAULT);
+} catch (IOException e) {
+throw new QueryBusinessException("restClient.createBatch.error:", e);
+}
+}
+
+```
+
+
+
 
 
 ### mysql的锁
@@ -30,10 +156,18 @@
 ### 慢sql的排查经验
 
 
-### mysql-redis事务一致性
+### mysql-redis数据一致性
 
 
 ### 3 redis 热key与大key与雪崩、穿透等问题
+google-guava 本地cache:
+```
+public static final Cache<String, Map<String, String>> CATEGORY_GROUP_CACHE = CacheBuilder
+        .newBuilder()
+        .maximumSize(1)
+        .expireAfterWrite(10, TimeUnit.MINUTES)
+        .build();
+```
 
 
 ### redis与zk 以及其他分布式锁
