@@ -418,10 +418,10 @@ QUIC 协议有一个非常独特的特性，称为前向纠错（Forward Error C
 9. 客户端接收请求并解码，用浏览器渲染引擎将文档进行解析，构建DOM树
 10. 浏览器使用CPU、GPU完成网页渲染
 
-### 32 netty的架构
+### 32 HTTPS 对称与非对称加密
 
 
-### 33 netty与kafka的零拷贝
+### 33 netty的架构 & netty与kafka的零拷贝
 
 kafka优势：<br>
 kafka吞吐量更高：
