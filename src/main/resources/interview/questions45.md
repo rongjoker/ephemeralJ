@@ -3,10 +3,15 @@
 ### 1 MySQL如何实现事务（MVCC等、幻读）
 这是一个很大的问题。可以从事务的ACID特性的四个角度来分析。
 <br>
-1. 原子性：由undo保证 
-2. 持久性：由redo保证
-3. 隔离性：由undo+事务ID+mvcc保证
-4. 一致性：**由程序保障+AID，一致性是我们最终的目的。**
+<br>isolation 隔离由 锁 实现
+<br> consistency 一致性 由 undo log来保证,帮助事务回滚+MVCC
+<br> atomicity durable 由 redo log来实现 每次都将重做日志缓存 写入重做日志文件，再调用一次fsync操作,顺序写入
+<br> Durability（持久性）：事务处理结束后，对数据的修改就是永久的，即便系统故障也不会丢失。
+<br> 额外还有一个binlog，跟redo log很像，但是redo log是在innodb引擎层面产生，而binlog是在数据库上层，任何修改都会产生binlog，binlog是一种逻辑日志，记录的是sql语句；redo log是物理格式日志，记录的是对于每一页的修改。
+<br>binlog只要由事务提交完成就会进行写入；redo log是并发的，不是在事务提交时候写入，记录的顺序并不是事务开始的顺序。
+<br> 事务执行失败或者接收到rollback命令进行回滚，可以利用undo log回滚到修改之前的样子。undo log也是 逻辑日志。
+<br> mvcc也是用undo log实现，用户读取一行记录，如果该记录已经被其他事务占用，当前事务可以通过undo读取之前的行版本信息，实现非锁定读取
+<br> undo log 也会产生redo log，因为undo log也需要持久性的保护
 <br>
    [![hpWHHA.md.png](https://z3.ax1x.com/2021/08/22/hpWHHA.md.png)](https://imgtu.com/i/hpWHHA)
 <br>
@@ -52,7 +57,7 @@ ORDER BY FIELD(status,
    1. 根据索引 a，定位到满足条件的记录，将 id 值放入 read_rnd_buffer 中
    2. 将 read_rnd_buffer 中的 id 进行递增排序；
    3. 排序后的 id 数组，依次到主键 id 索引中查记录，并作为结果返回。
-10. 索引下沉
+10. Index Condition Pushdown 索引下推 解决 `组合索引满足最左匹配，但是遇到非等值判断时匹配停止` 问题
 11. 使用 hash 字段 & 倒序存储 & hash 字段 等方法优化索引大小
 
 ### 3 binlog为什么还需要redo log
@@ -171,7 +176,8 @@ throw new QueryBusinessException("restClient.createBatch.error:", e);
 }
 
 ```
-
+不需要考虑的问题：
+partition 导致的无序问题 可以一个表指定到一个partition
 
 
 
@@ -214,6 +220,62 @@ commit;
 使用场景：
 
 ### 9 synchronized transaction
+
+spring 事务内如果保证事务提交后再执行其他操作(可能是热门题目)
+
+解法：利用 事务同步管理器 `TransactionalEventListener` 解决
+org.springframework.transaction.support.TransactionSynchronizationManager
+
+示例：
+```
+@Transactional(rollbackFor = Exception.class)
+    public Boolean inviteUser(..) {
+        userService.add(..);
+        TransactionSynchronizationManager.registerSynchronization(new TransactionSynchronizationAdapter() {
+            @Override
+            public void afterCommit() {
+                integralService.addIntegration(..,20)
+            }
+        });
+
+
+```
+
+注解方式:
+```
+@TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
+    public void addIntegration(..){
+        integralService.addIntegration(..,20)
+    }
+
+```
+
+核心源码:
+
+```
+
+@Override
+	public void onApplicationEvent(ApplicationEvent event) {
+		if (TransactionSynchronizationManager.isSynchronizationActive()) {
+			TransactionSynchronization transactionSynchronization = createTransactionSynchronization(event);
+			TransactionSynchronizationManager.registerSynchronization(transactionSynchronization);
+		}
+		else if (this.annotation.fallbackExecution()) {
+			if (this.annotation.phase() == TransactionPhase.AFTER_ROLLBACK && logger.isWarnEnabled()) {
+				logger.warn("Processing " + event + " as a fallback execution on AFTER_ROLLBACK phase");
+			}
+			processEvent(event);
+		}
+		else {
+			// No transactional event execution at all
+			if (logger.isDebugEnabled()) {
+				logger.debug("No transaction is active - skipping " + event);
+			}
+		}
+	}
+
+```
+本质上还是使用了TransactionSynchronizationManager，只是对他再一次进行封装
 
 
 ### 10 慢sql的排查经验
@@ -294,6 +356,26 @@ GET location/_search
   ]
 }
 
+# 空间聚合
+# geo_hash算法, 网格聚合grid
+# 两次聚合
+def aggs_geohash_grid():
+    body = {
+        "aggs": {
+            "new_york": {
+                "geohash_grid": {
+                    "field":     "point",
+                    "precision": 5
+                }
+            },
+            "map_zoom": {
+                "geo_bounds": {
+                    "field": "point"
+              }
+            }
+          }
+    }
+
 ```
 4. rehash
 不同的是，Redis的字典只能是字符串，另外他们rehash的方式不一样，因为Java的HashMap的字典很大时，rehash是个耗时的操作，需要一次全部rehash。Redis为了追求高性能，不能堵塞服务，所以采用了渐进式rehash策略。<br>
@@ -316,32 +398,206 @@ es做了大量的缓存，性能更快。
 
 ### 18 jdk自带的设计模式
 
+JDK源码对应的设计模式 迭代器:迭代器模式 runnable 命令模式
+
+适配器模式 （可通过创建方法识别采用不同抽象/接口类型的实例，并返回自己/另一个抽象/接口类型的实现，其装饰/覆盖给定实例）
+java.util.Arrays#asList()
+
+装饰器模式 （通过创作方法识别采用相同抽象/接口类型的实例，添加额外的行为）
+所有子类java.io.InputStream，OutputStream，Reader并Writer有一个构造函数取相同类型的实例。
+
+责任链模式 （通过行为方法识别（间接地）在队列中的相同抽象/接口类型的另一个实现中调用相同的方法）
+javax.servlet.Filter#doFilter()
+
+观察者模式（或发布/订阅） （可以通过行为方法识别，根据自己的状态调用另一个抽象/接口类型的实例上的方法）
+所有实现java.util.EventListener（因此实际上各地的Swing）
+
 
 ### 19 volatile cas synchronize 
 
+CPU有缓存一致性协议：MESI，这不错。但MESI并非是无条件生效的！
+java虚拟机在实现volatile关键字的时候，是写入了一条lock 前缀的汇编指令。
+lock 前缀的汇编指令会强制写入主存，也可避免前后指令的CPU重排序，并及时让其他核中的相应缓存行失效，从而利用MESI达到符合预期的效果。
+非lock前缀的汇编指令在执行写操作的时候，可能是是不生效的。比如前面所说的Store Buffer的存在，lock前缀的指令在功能上可以等价于内存屏障，可以让其立即刷入主存。
+是volatile的底层实现，满足了MESI的触发条件，才让变量有了缓存一致性。
+
+
+
+servlet 是否线程安全
+由于servlet在Tomcat中是以单例模式存在的，所有的线程共享实例变量。多个线程对共享资源的访问就造成了线程不安全问题
+synchronized同步快对同一条线程来说是可重入的，不会出现自己把自己锁死的问题；
+Mutex Lock
+监视器锁（Monitor）本质是依赖于底层的操作系统的Mutex Lock（互斥锁）来实现的。每个对象都对应于一个可称为" 互斥锁" 的标记，这个标记用来保证在任一时刻，只能有一个线程访问该对象。
+
+互斥锁：用于保护临界区，确保同一时间只有一个线程访问数据。对共享资源的访问，先对互斥量进行加锁，如果互斥量已经上锁，调用线程会阻塞，直到互斥量被解锁。在完成了对共享资源的访问后，要对互斥量进行解锁。
+在运行期间，Java对象头Mark Word里存储的数据会随着锁标志位的变化而变化
+
+
+java可以利用Syschronized、ReentrantLock、AtomicInteger类实现线程安全，AtomicInteger封装了一个【private volatile int value;】属性，它可以对这个属性进行许多原子性操作，这些原子性操作大多是基于cas原理，而在cas中，AtomicInteger使用的是一个叫Unsafe的类中的方法，Unsafe可以提供一些底层操作，也就是CPU特定的指令集，进而避免了并发问题（Unsafe是一个很危险的类，它可以做一些和内存相关的操作）
+
+<br>
+gas
+
+```
+  public final int getAndSet(int newValue) {
+        return U.getAndSetInt(this, VALUE, newValue);
+    }
+
+```
+<br>
+cas:
+
+```
+
+    public final boolean compareAndSet(int expectedValue, int newValue) {
+        return U.compareAndSetInt(this, VALUE, expectedValue, newValue);
+    }
+
+```
 
 ### 20 aqs ThreadPoolExecutor
 
+线程2会将自己放入AQS中的一个等待队列，因为自己尝试加锁失败了，此时就要将自己放入队列中来等待，等待线程1释放锁之后，自己就可以重新尝试加锁了。
+所以大家可以看到，AQS是如此的核心！AQS内部还有一个等待队列，专门放那些加锁失败的线程！
+<br>
+接着，线程1在执行完自己的业务逻辑代码之后，就会释放锁！他释放锁的过程非常的简单，就是将AQS内的state变量的值递减1，如果state值为0，则彻底释放锁，会将“加锁线程”变量也设置为null！
+<br>
+接下来，会从等待队列的队头唤醒线程2重新尝试加锁。好！线程2现在就重新尝试加锁，这时还是用CAS操作将state从0变为1，此时就会成功，成功之后代表加锁成功，就会将state设置为1。此外，还要把“加锁线程”设置为线程2自己，同时线程2自己就从等待队列中出队了。
+<br>
 
-### 21 threadLocal 与内存泄露与内存溢出的案例
+ThreadPoolExecutor的拒绝策略RejectedExecutionHandler
+自定义拒绝策略：
+```
+class MyRejectedExecutionHandler implements RejectedExecutionHandler {
+    @Override
+    public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
+        new Thread(r,"新线程"+new Random().nextInt(10)).start();
+    }
+}
+
+```
+
+
+### 21 threadLocal 与内存泄露与内存溢出的案例 ConcurrentHashMap
+
+threadLocalMap使用ThreadLocal的弱引用作为key，如果一个ThreadLocal不存在外部强引用时，Key(ThreadLocal)势必会被GC回收，这样就会导致ThreadLocalMap中key为null， 而value还存在着强引用，只有thead线程退出以后,value的强引用链条才会断掉。
+
+但如果当前线程再迟迟不结束的话，这些key为null的Entry的value就会一直存在一条强引用链：
+
+Thread Ref -> Thread -> ThreaLocalMap -> Entry -> value
+永远无法回收，造成内存泄漏。
+
+由于ThreadLocalMap中的key是ThreadLocal的弱引用，一旦发生GC便会回收ThreadLocal，那么此时的ThreadLocalMap存储的key便是null。如果不通过手动remove()那么ThreadLocalMap的Entry便伴随线程的整个生命周期造成内存泄漏，大致就是一个thread ref -> thread -> threadLocals -> entry -> value的强引用关系。因此Java其实是有对于内存泄漏的一些预防机制的，每次调用ThreadLocal的set()、get()、remove()方法时都会回收key为空的Entry的value。
+
+那么为什么ThreadLocalMap的key要设计成弱引用呢？其实很简单，如果key设计成强引用且没有手动remove()，那么key会和value一样伴随线程的整个生命周期，如果key是弱引用，被GC后至少ThreadLocal被回收了，在下一次的set()、get()、remove()还会回收key为null的Entry的value。
 
 
 ### 22 jdk8-11默认gc与cms的几个问题
 
 
 ### 23 双亲委派与打破双亲委派
+在Launcher指定了Bootstrap ClassLoader的加载文件夹System.getProperty("sun.boot.class.path");这个主要就是JDK指定的\lib\rt包在ExtClassLoader中指定了加载文件夹：String var0 = System.getProperty("java.ext.dirs");这个主要就是JDK指定的\lib\ext包在AppClassLoader中指定了加载文件夹：String var1 = System.getProperty("java.class.path");都是环境变量，自行可配。这个主要指的是开发中的类路径
+
+<br>
+通过委派的方式，可以避免类的重复加载，当父加载器已经加载过某一个类时，子加载器就不会再重新加载这个类
+<br>
+通过双亲委派的方式，还保证了安全性。因为Bootstrap ClassLoader在加载的时候，只会加载JAVA_HOME中的jar包里面的类，如java.lang.Integer，那么这个类是不会被随意替换的，除非有人跑到你的机器上， 破坏你的JDK
+<br>
+打破的场景：
+热部署
+
+<br>
+为什么JNDI、JDBC等需要破坏双亲委派？
+
+ServiceLoader<Driver> loadedDrivers = ServiceLoader.load(Driver.class);
+DriverManager是被根加载器加载的，那么在加载时遇到以上代码，会尝试加载所有Driver的实现类，但是这些实现类基本都是第三方提供的，根据双亲委派原则，第三方的类不能被根加载器加载。
+
+<br>
+JDBC中通过引入ThreadContextClassLoader（线程上下文加载器，默认情况下是AppClassLoader）的方式破坏了双亲委派原则。
+第一行，获取当前线程的线程上下⽂类加载器 AppClassLoader，⽤于加载 classpath 中的具体实现类。
+
+<br>
+为什么TOMCAT要破坏双亲委派？
+
+<br>
+不同的应用程序可能会依赖同一个第三方类库的不同版本，但是不同版本的类库中某一个类的全路径名可能是一样的。如多个应用都要依赖hollis.jar，但是A应用需要依赖1.0.0版本，但是B应用需要依赖1.0.1版本。这两个版本中都有一个类是com.hollis.Test.class。如果采用默认的双亲委派类加载机制，那么是无法加载多个相同的类。所以，Tomcat破坏双亲委派原则，提供隔离的机制，为每个web容器单独提供一个WebAppClassLoader加载器。Tomcat的类加载机制：为了实现隔离性，优先加载 Web 应用自己定义的类，所以没有遵照双亲委派的约定，每一个应用自己的类加载器——WebAppClassLoader负责加载本身的目录下的class文件，加载不到时再交给CommonClassLoader加载，这和双亲委派刚好相反。
+<br>
+简单来说就是tomcat下的应用可以互相隔离，各自可以用不同版本的第三方类库
 
 
 ### 24 spring解决循环依赖
+三级缓存解决循环依赖:
+```
 
+
+/ 一级缓存，缓存正常的bean实例
+/** Cache of singleton objects: bean name to bean instance. */
+private final Map<String, Object> singletonObjects = new ConcurrentHashMap<>(256);
+
+// 二级缓存，缓存还未进行依赖注入和初始化方法调用的bean实例
+/** Cache of early singleton objects: bean name to bean instance. */
+private final Map<String, Object> earlySingletonObjects = new HashMap<>(16);
+
+// 三级缓存，缓存bean实例的ObjectFactory
+/** Cache of singleton factories: bean name to ObjectFactory. */
+private final Map<String, ObjectFactory<?>> singletonFactories = new HashMap<>(16);
+
+public Object getSingleton(String beanName) {
+    return getSingleton(beanName, true);
+}
+
+protected Object getSingleton(String beanName, boolean allowEarlyReference) {
+    // 先尝试中一级缓存获取
+    Object singletonObject = this.singletonObjects.get(beanName);
+    // 获取不到，并且当前需要获取的bean正在创建中
+    // 第一次容器初始化触发getBean(A)的时候，这个isSingletonCurrentlyInCreation判断一定为false
+    // 这个时候就会去走创建bean的流程，创建bean之前会先把这个bean标记为正在创建
+    // 然后A实例化之后，依赖注入B，触发B的实例化，B再注入A的时候，会再次触发getBean(A)
+    // 此时isSingletonCurrentlyInCreation就会返回true了
+
+    // 当前需要获取的bean正在创建中时，代表出现了循环依赖（或者一前一后并发获取这个bean）
+    // 这个时候才需要去看二、三级缓存
+    if (singletonObject == null && isSingletonCurrentlyInCreation(beanName)) {
+        // 加锁了
+        synchronized (this.singletonObjects) {
+            // 从二级缓存获取
+            singletonObject = this.earlySingletonObjects.get(beanName);
+            if (singletonObject == null && allowEarlyReference) {
+                // 二级缓存也没有，并且允许获取早期引用的话 - allowEarlyReference传进来是true
+                ObjectFactory<?> singletonFactory = this.singletonFactories.get(beanName);
+                // 从三级缓存获取ObjectFactory
+                if (singletonFactory != null) {
+                    // 通过ObjectFactory获取bean实例
+                    singletonObject = singletonFactory.getObject();
+                    // 放入二级缓存
+                    this.earlySingletonObjects.put(beanName, singletonObject);
+                    // 从三级缓存删除
+                    // 也就是说对于一个单例bean，ObjectFactory#getObject只会调用到一次
+                    // 获取到早期bean实例之后，就把这个bean实例从三级缓存升级到二级缓存了
+                    this.singletonFactories.remove(beanName);
+                }
+            }
+        }
+    }
+    // 不管从哪里获取到的bean实例，都会返回
+    return singletonObject;
+}
+
+```
 
 ### 25 spring aop的实现细节
 
+利用asm进行字节码增强，修改字节码，产生子类,接管了之前的方法
 
 ### 26 DDD的思想
 
 
 ### 27 网络拥塞等情况解决方案如滑动窗口
+HTTP/2解决了HTTP的队头阻塞问题，但是并没有解决TCP队头阻塞问题
+HTTP/2因为没有顺序了，所以就不需要阻塞了，就有效的解决了HTTP对队头阻塞的问题。
+TCP传输过程中会把数据拆分为一个个按照顺序排列的数据包，这些数据包通过网络传输到了接收端，接收端再按照顺序将这些数据包组合成原始数据，这样就完成了数据传输。但是如果其中的某一个数据包没有按照顺序到达，接收端会一直保持连接等待数据包返回，这时候就会阻塞后续请求。这就发生了TCP队头阻塞。HTTP/1.1的管道化持久连接也是使得同一个TCP链接可以被多个HTTP使用，但是HTTP/1.1中规定一个域名可以有6个TCP连接。而HTTP/2中，同一个域名只是用一个TCP连接。所以，在HTTP/2中，TCP队头阻塞造成的影响会更大，因为HTTP/2的多路复用技术使得多个请求其实是基于同一个TCP连接的，那如果某一个请求造成了TCP队头阻塞，那么多个请求都会受到影响。<br>
+HTTP通信时间总和 = TCP连接时间 + HTTP交易时间 = 1.5 RTT + 1 RTT = 2.5 RTT
+TCP三次握手的过程客户端和服务器之间需要交互三次，那么也就是说需要消耗1.5 RTT。另外，如果使用的是安全的HTTPS协议，就还需要使用TLS协议进行安全数据传输，这个过程又要消耗一个RTT（TLS不同版本的握手机制不同，这里按照最小的消耗来算）那么也就是说，一个纯HTTP/2的连接，需要消耗1.5个RTT，如果是一个HTTPS连接，就需要消耗3-4个RTT。
 
 
 ### 28 http2与http3兼谈多路复用与webSocket
@@ -419,7 +675,13 @@ QUIC 协议有一个非常独特的特性，称为前向纠错（Forward Error C
 10. 浏览器使用CPU、GPU完成网页渲染
 
 ### 32 HTTPS 对称与非对称加密
-
+做密码机工作的时候读过北邮的一篇关于加密算法的文章。非对称加密。<br>
+常见的对称加密算法有DES、3DES、AES、Blowfish、IDEA、RC5、RC6.<br>
+要想使用非对称加密算法，首先要有一对key，一个被称为private key私钥，一个成为public key公钥，然后可以把你的public key分发给想给你传密文的用户，然后用户使用该public key加密过得密文，只有使用你的private key才能解密，也就是说，只要你自己保存好你的private key，就能确保，别人想给你发的密文不被破解，所以你不用担心别人的密钥被盗<br>
+常见的非对称加密算法有RSA、DSA.<br>
+由于进行的都是大数计算，使得 RSA 最快的情况也比 DES 慢上好几倍，无论是软件还是硬件实现。速度一直是 RSA 的缺陷。一般来说只用于少量数据加密。RSA 的速度是对应同样安全级别的对称密码算法的1/1000左右。
+比起 DES 和其它对称算法来说，RSA 要慢得多。实际上一般使用一种对称算法来加密信息，然后用 RSA 来加密比较短的公钥，然后将用 RSA 加密的公钥和用对称算法加密的消息发送给接收方。
+这样一来对随机数的要求就更高了，尤其对产生对称密码的要求非常高，否则的话可以越过 RSA 来直接攻击对称密码。
 
 ### 33 netty的架构 & netty与kafka的零拷贝
 
@@ -431,9 +693,12 @@ kafka吞吐量更高：
 4）存储具有O(1)的复杂度，读物因为分区和segment，是O(log(n))的复杂度。
 5）分区机制，有助于提高吞吐量。
 
+零拷贝不依赖用户进程空间的copy
 
-### 34 golang的协程与管道对比java的线程& futureTask
 
+### 34 golang的协程与管道对比java的线程 & futureTask & callable
+
+操作系统层面，进程运行有5个状态：运行态、就绪态、阻塞态、创建态、结束态。jvm的线程调用的是内核线程。
 
 ### 35 微服务的思考
 
@@ -453,17 +718,30 @@ kafka吞吐量更高：
 ### 40 导入导出文件通用化解决
 
 
-### 41 项目管理与人员任务分配心得 & 代码管理与review
+### 41 第三方登录原理
 
 
 ### 42 阿里云与AWS与腾讯云的使用体验
 
 
-### 43 CAP
+### 43 CAP & zk 与redis的比较
 
+ CAP理论
+-  CAP理论：一个分布式系统不可能同时满足一致性，可用性和分区容错性这个三个基本需求，最多只能同时满足其中两项
+- 一致性(C)：数据在多个副本之间是否能够保持一致的特性。
+- 可用性(A)：是指系统提供的服务必须一致处于可用状态，对于每一个用户的请求总是在有限的时间内返回结果，超过时间就认为系统是不可用的
+- 分区容错性(P)：分布式系统在遇到任何网络分区故障的时候，仍然需要能够保证对外提供满足一致性和可用性的服务，除非整个网络环境都发生故障。
+
+ CAP定理的应用
+- 放弃P(CA)：如果希望能够避免系统出现分区容错性问题，一种较为简单的做法就是将所有的数据(或者是与事物先相关的数据)都放在一个分布式节点上，这样虽然无法保证100%系统不会出错，但至少不会碰到由于网络分区带来的负面影响
+- 放弃A(CP):其做法是一旦系统遇到网络分区或其他故障时，那受到影响的服务需要等待一定的时间，应用等待期间系统无法对外提供正常的服务，即不可用
+- 放弃C(AP):这里说的放弃一致性，并不是完全不需要数据一致性，是指放弃数据的强一致性，保留数据的最终一致性。
 
 ### 44 分类聚类算法 && TF/IDF算法
 
+es 包含检索和排序两块核心，检索基于倒排索引；排序采用tf * idf算法，词频（term frequency，TF）指的是某一个给定的词语在该文件中出现的频率;某一特定词语的IDF，可以由总文件数目除以包含该词语之文件的数目.这个算法的核心要义就是一个词在一个文档里出现的频率很高，而在所有文档里出现的频率较低，那么检索这个词的时候，这个文档排名就会靠前。<br>
+QueryElevationComponent
+elevate.xml
 
 ### 45 vue mvvc
 
