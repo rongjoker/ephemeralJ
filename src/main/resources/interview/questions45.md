@@ -666,6 +666,45 @@ QUIC 协议有一个非常独特的特性，称为前向纠错（Forward Error C
 
 ### 29 BIO NIO AIO
 
+[美团Java NIO浅析](https://tech.meituan.com/2016/11/04/nio.html)
+
+标准/典型的Reactor：
+步骤1：等待事件到来（Reactor负责）。
+步骤2：将读就绪事件分发给用户定义的处理器（Reactor负责）。
+步骤3：读数据（用户处理器负责）。
+步骤4：处理数据（用户处理器负责）。
+
+```
+  Channel channel;
+   while(channel=Selector.select()){//选择就绪的事件和对应的连接
+      if(channel.event==accept){
+         registerNewChannelHandler(channel);//如果是新连接，则注册一个新的读写处理器
+         Selector.interested(read);
+      }
+      if(channel.event==write){
+         getChannelHandler(channel).channelWritable(channel);//如果可以写，则执行写事件
+      }
+      if(channel.event==read){
+          byte[] data = channel.read();
+          if(channel.read()==0)//没有读到数据，表示本次数据读完了
+          {
+          getChannelHandler(channel).channelReadComplate(channel，data;//处理读完成事件
+          }
+          if(过载保护){
+          Selector.interested(read);
+          }
+
+```
+
+NIO由原来的阻塞读写（占用线程）变成了单线程轮询事件，找到可以进行读写的网络描述符进行读写。除了事件的轮询是阻塞的（没有可干的事情必须要阻塞），剩余的I/O操作都是纯CPU操作，没有必要开启多线程。 并且由于线程的节约，连接数大的时候因为线程切换带来的问题也随之解决，进而为处理海量连接提供了可能。
+
+<br>
+我们需要的线程，其实主要包括以下几种： 1. 事件分发器，单线程选择就绪的事件。 2. I/O处理器，包括connect、read、write等，这种纯CPU操作，一般开启CPU核心个线程就可以。 3. 业务线程，在处理完I/O后，业务一般还会有自己的业务逻辑，有的还会有其他的阻塞I/O，如DB操作，RPC等。只要有阻塞，就需要单独的线程。
+
+Java的Selector对于Linux系统来说，有一个致命限制：同一个channel的select不能被并发的调用。因此，如果有多个I/O线程，必须保证：一个socket只能属于一个IoThread，而一个IoThread可以管理多个socket。
+
+另外连接的处理和读写的处理通常可以选择分开，这样对于海量连接的注册和读写就可以分发。虽然read()和write()是比较高效无阻塞的函数，但毕竟会占用CPU，如果面对更高的并发则无能为力。
+
 
 ### 30 短链如何实现
 [如何实现一个短链接服务](https://www.zhihu.com/question/20103344/answer/911532621)
@@ -714,8 +753,37 @@ QUIC 协议有一个非常独特的特性，称为前向纠错（Forward Error C
 比起 DES 和其它对称算法来说，RSA 要慢得多。实际上一般使用一种对称算法来加密信息，然后用 RSA 来加密比较短的公钥，然后将用 RSA 加密的公钥和用对称算法加密的消息发送给接收方。
 这样一来对随机数的要求就更高了，尤其对产生对称密码的要求非常高，否则的话可以越过 RSA 来直接攻击对称密码。
 
-#### TODO
+
+
 HTTPS详细握手过程，CA证书存放的位置，TSL1.2和TSL1.3的主要区别，对称密钥和非对称密钥等?
+HTTPS 其实就是在 HTTP 层和 TCP 之间加了一个 SSL/TLS 层
+
+SSL / TLS 握手详细过程
+
+1. "client hello" 消息：客户端通过发送 “client hello” 消息向服务器发起握手请求，该消息包含了客户端所支持的 TLS 版本，支持的算法列表和密码组合以供服务器进行选择，还有一个 “client random” 随机字符串。
+
+2. "server hello" 消息：服务器发送 “server hello” 消息对客户端进行回应，该消息包含了服务器选择的加密算法，服务器选择的密码组合，数字证书和 “server random” 随机字符串。 
+   
+3. 验证：客户端对服务器发来的证书进行验证，确保对方的合法身份，验证过程可以细化为以下几个步骤：
+
+检查数字签名
+验证证书链
+检查证书的有效期
+检查证书的撤回状态 (撤回代表证书已失效)
+
+4. "premaster secret"字符串：客户端向服务器发送另一个随机字符串 “premaster secret (预主密钥)”，这个字符串是经过服务器的公钥加密过的，只有对应的私钥才能解密。
+
+5. 使用私钥：服务器使用私钥解密 “premaster secret”。
+
+6. 生成共享密钥：客户端和服务器均使用 client random，server random 和 premaster secret，并通过相同的算法生成相同的共享密钥 KEY。
+
+7. 客户端就绪：客户端发送经过共享密钥 KEY 加密过的 “finished” 信号，为了防止握手过程遭到篡改，该消息的内容是前一阶段所有握手消息的MAC值。
+
+8. 服务器就绪：服务器发送经过共享密钥 KEY 加密过的 “finished” 信号，该消息的内容是前一阶段所有握手消息的 MAC 值。
+
+9. 达成安全通信：握手完成，双方使用对称加密进行安全通信。
+
+[原文链接](https://blog.csdn.net/happyjacob/article/details/113447803)
 
 ### 33 netty的架构 & netty与kafka的零拷贝
 
@@ -736,7 +804,31 @@ linux操作系统 “零拷贝” 机制使用了sendfile方法， 允许操作�
 
 ### 34 golang的协程与管道对比java的线程 & futureTask & callable
 
+FutureTask的实现：
+```
+
+public class FutureTask<V> implements RunnableFuture<V>
+
+```
+FutureTask类实现了RunnableFuture接口，我们看一下RunnableFuture接口的实现：
+```
+
+public interface RunnableFuture<V> extends Runnable, Future<V> {
+void run();
+}
+
+```
+可以看出RunnableFuture继承了Runnable接口和Future接口，而FutureTask实现了RunnableFuture接口。所以它既可以作为Runnable被线程执行，又可以作为Future得到Callable的返回值。
+
+
 操作系统层面，进程运行有5个状态：运行态、就绪态、阻塞态、创建态、结束态。jvm的线程调用的是内核线程。
+
+Java的NIO用于业务的问题，其核心痛点应该是JDBC。这是个诞生了几十年的，必须使用Blocking IO的DB交互协议。其上承载了Java庞大的生态和业务逻辑。Java要改自己的编程方式，必须得重新设计和实现JDBC
+
+[为什么 Java 坚持多线程不选择协程？ - 大宽宽的回答 - 知乎](https://www.zhihu.com/question/332042250/answer/734115120)
+
+做为Huawei JDK的协程特性的开发者:
+[为什么 Java 坚持多线程不选择协程？ - 海纳的回答 - 知乎](https://www.zhihu.com/question/332042250/answer/732749013)
 
 ### 35 微服务的思考
 1. 微服务的好处，可以很好的解耦数据、产品、开发、基础设施等，使维护迭代大型应用变成可能，变成全异步和全并行
