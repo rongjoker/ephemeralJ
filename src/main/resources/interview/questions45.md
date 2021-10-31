@@ -401,6 +401,7 @@ def aggs_geohash_grid():
 渐进式rehash会在rehash的同时，保留新旧两个hash结构，如下图所示，查询时会同时查询两个hash结构，然后在后续的定时任务以及hash操作指令中，循环渐进地将旧hash的内容一点点地迁到新的hash结构中。当搬迁完成了，就会使用新的hash结构取而代之。当hash移除最后一个元素后，该数据结构自动删除，内存被回收。<br>
 set 也是用的dict数据结构，value为NUll
 5. hyperloglog底层怎么实现的?为什么会有误差呢?
+   Redis 内部都是使用字符串位图来存储 HyperLogLog 所有桶的计数值。密集存储的结构非常简单，就是连续 16384 个 6bit 串成的字符串位图
 
 
 
@@ -433,6 +434,10 @@ javax.servlet.Filter#doFilter()
 
 观察者模式（或发布/订阅） （可以通过行为方法识别，根据自己的状态调用另一个抽象/接口类型的实例上的方法）
 所有实现java.util.EventListener（因此实际上各地的Swing）
+
+
+观察者模式与消费者模式的区别：
+这两个模式确实有点相似，都为了实现程序的解耦产生的，观察者一般又称发布/订阅模式，它一般是有一个主题对象，然后有多个订阅者去关注它，当它的状态发生变化时，会自动通知这些订阅者；而消费者模式类似一个缓存队列的概念，它也称为生产者/消费者模式，生产者只负责生产数据不去做处理（缓解高并发的问题），而消费者只从消费中间件里拿到所要处理的数据，并进行相应的逻辑处理工作，生产者与消费者是相互不知道对方的存在的
 
 
 ### 19 volatile cas synchronize 
@@ -890,7 +895,9 @@ HAVING 区间加数和 = (2 + 4)
 ```
 
 
-### 42 阿里云与AWS与腾讯云的使用体验
+### 42 系统设计
+
+一个系统用户在coupang上的操作会产生log这个log会放到kafka里面然后有个datacollector将kafka里面log放到S3里面User可以再coupang页面上面提交一个request里面有ID你需要设计一个nearrealtime的系统去支持从user发出请求开始所有时间之后log都要发送给客户界面理解错误的点也是在这里我理解为offline的需要去S3里面querylog但是大叔给了个提示：可以设计个kafkaconsumer直接从kafka拿incoming的log然后步入正轨开始设计要求还有一大堆：每个loglatency必须小于1s避免singlepointfailure还有四五个要求没有全部记下来然后我设计就是用dynamdb去存并且解释了dynamoD
 
 
 ### 43 CAP & zk 与redis的比较  & 羊群效应
@@ -928,3 +935,23 @@ elevate.xml
 
 ### 45 vue mvvc
 
+它可以总共分为8个阶段：创建前/后,载入前/后，更新前/后，销毁前/销毁后
+第一次页面加载时会触发beforeCreate,created,beforeMount,mounted
+
+computed是计算属性，也就是计算值，它更多用于计算值的场景
+computed具有缓存性，computed的值在getter执行后是会缓存的，只有在它依赖的属性值改变之后，下一次获取computed的值时重新调用对应的getter来计算
+computed适用于计算比较消耗性能的计算场景
+
+watch无缓存性，页面重新渲染时值不变化也会执行
+状态管理:Store的代码结构一般由State、Getters、Mutation、Actions这四种组成
+
+Model-View-ViewModel
+
+```
+Vue是以数据为驱动的，Vue自身将DOM和数据进行绑定，一旦创建绑定，DOM和数据将保持同步，每当数据发生变化，DOM会跟着变化。
+
+ViewModel是Vue的核心，它是Vue的一个实例。Vue实例时作用域某个HTML元素上的，这个HTML元素可以是body，也可以是某个id所指代的元素。
+
+DOM Listeners和Data Bindings是实现双向绑定的关键，实现的原理是Object.defineProperty中的get和set方法，及消息订阅模式。DOM Listeners监听页面所有View层DOM元素的变化，当发生变化，Model层的数据随之变化；Data Bindings监听Model层的数据，当数据发生变化，View层的DOM元素随之变化。
+
+```
